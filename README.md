@@ -24,6 +24,10 @@ YouCode is a frontend development online school with great community.
 ## Page Preview
 **Stay tuned for updates!**
 
+## Check it out!
+
+[![](./readmeImage.png)](https://marcin10lw.github.io/To-do-list-react/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
