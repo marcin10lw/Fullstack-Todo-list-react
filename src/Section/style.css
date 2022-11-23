@@ -1,0 +1,32 @@
+.section{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 7px 0px hsl(0, 0%, 68%);
+}
+
+.section__container{
+    background-color: white;
+    margin-bottom: 2px;
+    padding: 20px;
+}
+
+.section__container--flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+@media(max-width: 767px) {
+    .section__container--flex {
+        flex-direction: column;
+    }
+}
+
+.section__subHeader{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    align-self: flex-start;
+}
