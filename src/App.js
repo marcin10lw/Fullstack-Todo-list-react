@@ -6,7 +6,7 @@ import Section from "./Section";
 import Main from "./Main";
 
 let tasks = [
-  {id: 1, content: "Zrobić pranie", done: false},
+  {id: 1, content: "Posprzątać w domu", done: false},
   {id: 2, content: "Nakarmić koty", done: true},
 ]
 let hideDoneTasks = false;
