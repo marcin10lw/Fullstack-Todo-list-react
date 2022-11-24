@@ -1,14 +1,12 @@
 import "./style.css";
 
-const Section = ({ sectionHeader, sectionContent, sectionOptionalContent }) => (
+const Section = ({ header, content, optionalContent }) => (
   <section className="section">
-    <div className="section__container section__container--flex">
-      <h2 className="section__subHeader">{sectionHeader}</h2>
-      {sectionOptionalContent}
+    <div className="section__flex">
+      <h2 className="section__subHeader">{header}</h2>
+      {optionalContent}
     </div>
-    <div className="section__container">
-      {sectionContent}
-    </div>
+      {content}
   </section>
 );
 

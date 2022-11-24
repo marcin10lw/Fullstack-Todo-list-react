@@ -16,14 +16,14 @@ function App() {
     <Main>
       <Header />
       <Section 
-          sectionHeader="Dodaj nowe zadanie"
-          sectionContent={<Form />}
-        />
+          header="Dodaj nowe zadanie"
+          content={<Form />}
+      />
       <Section
-          sectionHeader="Lista zadań"
-          sectionOptionalContent={<Buttons tasks={tasks} hideDoneTasks={hideDoneTasks}/>}
-          sectionContent={<TasksList tasks={tasks} hideDoneTasks={hideDoneTasks}/>}
-        />
+          header="Lista zadań"
+          optionalContent={<Buttons tasks={tasks} hideDoneTasks={hideDoneTasks}/>}
+          content={<TasksList tasks={tasks} hideDoneTasks={hideDoneTasks}/>}
+      />
     </Main>
   );
 }
