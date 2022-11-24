@@ -22,6 +22,9 @@ YouCode is a frontend development online school with great community.
     -ES6+ FEATURES
 
 ## Page Preview
+
+![](toDoListPreview.png)
+
 **Stay tuned for updates!**
 
 ## Check it out!
