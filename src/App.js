@@ -9,7 +9,7 @@ let tasks = [
   {id: 1, content: "Posprzątać w domu", done: false},
   {id: 2, content: "Nakarmić koty", done: true},
 ]
-let hideDoneTasks = false;
+let hideDone = false;
 
 function App() {
   return (
@@ -21,8 +21,8 @@ function App() {
       />
       <Section
           header="Lista zadań"
-          optionalContent={<Buttons tasks={tasks} hideDoneTasks={hideDoneTasks}/>}
-          content={<TasksList tasks={tasks} hideDoneTasks={hideDoneTasks}/>}
+          optionalContent={<Buttons tasks={tasks} hideDone={hideDone}/>}
+          content={<TasksList tasks={tasks} hideDone={hideDone}/>}
       />
     </Main>
   );
