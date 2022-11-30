@@ -32,7 +32,11 @@ function App() {
   const toggleDone = (id) => {
     setTasks(tasks => tasks.map(task => {
       return task.id === id ? {...task, done: !task.done} : task;
-    }))
+    }));
+  }
+
+  const deleteTask = (id) => {
+    setTasks(tasks => tasks.filter(task => task.id !== id));
   }
   
   return (
@@ -57,6 +61,7 @@ function App() {
               tasks={tasks}
               hideDone={hideDone}
               toggleDone={toggleDone}
+              deleteTask={deleteTask}
             />
           }
       />
