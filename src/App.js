@@ -14,7 +14,9 @@ function App() {
   const [hideDone, setHideDone] = useState(false);
 
   const hideCompleted = () => {
-    setHideDone(hideDone => !hideDone);
+    if (tasks.some(task => task.done)) {
+      setHideDone(hideDone => !hideDone);
+    }
   }
 
   const completeAll = () => {
