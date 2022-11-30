@@ -6,9 +6,6 @@ import Header from "./Header";
 import Section from "./Section";
 import Main from "./Main";
 
-
-let hideDone = false;
-
 function App() {
   const [tasks, setTasks] = useState([
     {id: 1, content: "Posprzątać w domu", done: false},
@@ -38,13 +35,28 @@ function App() {
   const deleteTask = (id) => {
     setTasks(tasks => tasks.filter(task => task.id !== id));
   }
+
+  const addNewTask = (newTask) => {
+    if(newTask) {
+      setTasks(tasks => {
+        return [
+          ...tasks,
+          {
+            content: newTask,
+            done: false,
+            id: tasks.length === 0 ? 1 : tasks.length + 1,
+          },
+        ]
+      });
+    }
+  }
   
   return (
     <Main>
       <Header />
       <Section 
           header="Dodaj nowe zadanie"
-          content={<Form />}
+          content={<Form addNewTask={addNewTask} />}
       />
       <Section
           header="Lista zadań"
