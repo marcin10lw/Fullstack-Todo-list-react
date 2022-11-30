@@ -19,6 +19,15 @@ function App() {
   const hideCompleted = () => {
     setHideDone(hideDone => !hideDone);
   }
+
+  const completeAll = () => {
+    setTasks(tasks => tasks.map(task => {
+      return {
+        ...task,
+        done: true,
+      }
+    }));
+  }
   
   return (
     <Main>
@@ -34,6 +43,7 @@ function App() {
               tasks={tasks}
               hideDone={hideDone}
               hideCompleted={hideCompleted}
+              completeAll={completeAll}
             />
           }
           content={<TasksList tasks={tasks} hideDone={hideDone}/>}
