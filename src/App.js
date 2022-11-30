@@ -28,6 +28,12 @@ function App() {
       }
     }));
   }
+
+  const toggleDone = (id) => {
+    setTasks(tasks => tasks.map(task => {
+      return task.id === id ? {...task, done: !task.done} : task;
+    }))
+  }
   
   return (
     <Main>
@@ -46,7 +52,13 @@ function App() {
               completeAll={completeAll}
             />
           }
-          content={<TasksList tasks={tasks} hideDone={hideDone}/>}
+          content={
+            <TasksList
+              tasks={tasks}
+              hideDone={hideDone}
+              toggleDone={toggleDone}
+            />
+          }
       />
     </Main>
   );
