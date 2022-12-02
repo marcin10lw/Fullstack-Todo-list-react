@@ -6,8 +6,6 @@ I present to you my To-do list created with React.js.
 
 Using this tool is a great way to stay organized when we have a lot on our minds. Go ahead and make your day more bearable!
 
-**No interactions have been added to the app yet!**
-
 ## YouCode
 
 This project is a task within [YouCode](https://youcode.pl/zostawiam-maila/).
@@ -17,13 +15,16 @@ YouCode is a frontend development online school with great community.
 ## Technologies used
 
     -REACT.JS
+    -CREATE-REACT-APP
+    -WEBPACK
+    -BABEL
     -BEM
     -FLEXBOX
     -ES6+ FEATURES
 
 ## Page Preview
 
-![](toDoListPreview.png)
+![](toDoList-react-Preview.gif)
 
 **Stay tuned for updates!**
 
