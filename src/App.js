@@ -7,10 +7,7 @@ import Section from "./Section";
 import Main from "./Main";
 
 function App() {
-  const [tasks, setTasks] = useState([
-    {id: 1, content: "Posprzątać w domu", done: false},
-    {id: 2, content: "Nakarmić koty", done: true},
-  ])
+  const [tasks, setTasks] = useState([])
   const [hideDone, setHideDone] = useState(false);
 
   const hideCompleted = () => {
