@@ -12,6 +12,7 @@ const Form = ({addNewTask}) => {
     event.preventDefault();
     if (taskContent.trim()) {
       addNewTask(taskContent.trim());
+      setTaskContent("");
     }
   }
   return (
