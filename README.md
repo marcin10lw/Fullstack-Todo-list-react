@@ -24,7 +24,7 @@ YouCode is a frontend development online school with great community.
 
 ## Page Preview
 
-![](toDoList-react-Preview.gif)
+![](to-do-list-react-preview.gif)
 
 **Stay tuned for updates!**
 
