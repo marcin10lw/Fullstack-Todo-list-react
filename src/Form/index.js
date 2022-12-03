@@ -10,7 +10,9 @@ const Form = ({addNewTask}) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    addNewTask(taskContent.trim());
+    if (taskContent.trim()) {
+      addNewTask(taskContent.trim());
+    }
   }
   return (
     <form className="form" onSubmit={onFormSubmit} >
