@@ -10,11 +10,12 @@ const Form = ({addNewTask}) => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    if (taskContent.trim() === "") {
+    const contentTrimmed = taskContent.trim();
+    if (contentTrimmed === "") {
       return;
     }
 
-    addNewTask(taskContent.trim());
+    addNewTask(contentTrimmed);
     setTaskContent("");
   }
   return (
