@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Form from "./Form";
 import TasksList from "./TasksList";
 import Buttons from "./Buttons";
@@ -9,6 +9,10 @@ import Main from "./Main";
 function App() {
   const [tasks, setTasks] = useState([])
   const [hideDone, setHideDone] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const hideCompleted = () => {
     if (tasks.some(task => task.done)) {
