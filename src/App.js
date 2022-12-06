@@ -7,13 +7,15 @@ import Section from "./Section";
 import Main from "./Main";
 
 function App() {
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || []
+  );
   const [hideDone, setHideDone] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
-
+  
   const hideCompleted = () => {
     if (tasks.some(task => task.done)) {
       setHideDone(hideDone => !hideDone);
