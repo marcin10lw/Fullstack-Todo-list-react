@@ -51,26 +51,12 @@ const useTasks = () => {
     });
   };
 
-  return [
-    tasks,
-    setTasks,
-    completeAll,
-    toggleDone,
-    deleteTask,
-    addNewTask
-  ]
+  return [tasks, completeAll, toggleDone, deleteTask, addNewTask];
 };
 
 function App() {
-  const [
-    tasks,
-    setTasks,
-    completeAll,
-    toggleDone,
-    deleteTask,
-    addNewTask
-  ] = useTasks();
-  
+  const [tasks, completeAll, toggleDone, deleteTask, addNewTask] = useTasks();
+
   const [hideDone, setHideDone] = useState(
     JSON.parse(localStorage.getItem("hideDone")) || false
   );
