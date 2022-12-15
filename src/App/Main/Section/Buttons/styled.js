@@ -5,7 +5,7 @@ export const StyledButtons = styled.div`
   align-items: center;
   gap: 10px;
 
-  @media (max-width: 767px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.mobile}px) {
     flex-direction: column;
   }
 `;

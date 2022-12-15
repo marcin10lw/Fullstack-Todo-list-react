@@ -7,7 +7,7 @@ export const StyledForm = styled.form`
   gap: 20px;
   padding: 20px;
 
-  @media (max-width: 767px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.mobile}px) {
     flex-direction: column;
     gap: 10px;
   }
@@ -18,7 +18,7 @@ export const NewTask = styled.input`
   border: 2px solid hsl(0, 0%, 84%);
   flex-grow: 1;
 
-  @media (max-width: 767px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.mobile}px) {
     width: 100%;
   } ;
 `;
@@ -38,7 +38,7 @@ export const Button = styled.button`
     opacity: 0.70;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.mobile}px) {
     width: 100%;
     &:hover {
       transform: scale(1);

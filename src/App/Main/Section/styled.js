@@ -16,7 +16,7 @@ export const Flex = styled.div`
   padding: 20px;
   border-bottom: 2px solid #ebecea;
 
-  @media (max-width: 767px) {
+  @media (max-width: ${({theme}) => theme.breakpoints.mobile}px) {
     flex-direction: column;
   }
 `;
