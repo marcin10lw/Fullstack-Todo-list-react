@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Form from "./Form";
-import TasksList from "./TasksList";
-import Buttons from "./Buttons";
-import Header from "./Header";
-import Section from "./Section";
+import Form from "./Main/Section/Form";
+import TasksList from "../TasksList";
+import Buttons from "./Main/Section/Buttons";
+import Header from "./Main/Header";
+import Section from "./Main/Section";
 import Main from "./Main";
-import { useTasks } from "./useTasks";
+import { useTasks } from "../useTasks";
 
 function App() {
   const [tasks, completeAll, toggleDone, deleteTask, addNewTask] = useTasks();
