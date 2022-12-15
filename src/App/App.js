@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Form from "./Main/Section/Form";
-import TasksList from "../TasksList";
+import TasksList from "./Main/Section/TasksList";
 import Buttons from "./Main/Section/Buttons";
 import Header from "./Main/Header";
 import Section from "./Main/Section";
@@ -9,7 +9,7 @@ import { useTasks } from "../useTasks";
 
 function App() {
   const [tasks, completeAll, toggleDone, deleteTask, addNewTask] = useTasks();
-
+  
   const [hideDone, setHideDone] = useState(
     JSON.parse(localStorage.getItem("hideDone")) || false
   );
