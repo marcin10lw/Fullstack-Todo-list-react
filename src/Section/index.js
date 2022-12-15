@@ -1,12 +1,11 @@
-import "./style.css";
-import { StyledSection } from "./styled";
+import { StyledSection, Flex, Subheader } from "./styled";
 
 const Section = ({ header, content, optionalContent }) => (
   <StyledSection>
-    <div className="section__flex">
-      <h2 className="section__subHeader">{header}</h2>
+    <Flex>
+      <Subheader>{header}</Subheader>
       {optionalContent}
-    </div>
+    </Flex>
       {content}
   </StyledSection>
 );
