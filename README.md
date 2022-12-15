@@ -18,13 +18,13 @@ YouCode is a frontend development online school with great community.
     -CREATE-REACT-APP
     -WEBPACK
     -BABEL
-    -BEM
+    -STYLED COMPONENTS
     -FLEXBOX
     -ES6+ FEATURES
 
 ## Page Preview
 
-![](to-do-list-react-preview.gif)
+![](todo-list-react-preview.gif)
 
 **Stay tuned for updates!**
 
