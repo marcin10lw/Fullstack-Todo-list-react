@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useTasks = () => {
+export const useTasks = () => {
   const [tasks, setTasks] = useState(
     JSON.parse(localStorage.getItem("tasks")) || []
   );
@@ -11,12 +11,7 @@ const useTasks = () => {
 
   const completeAll = () => {
     setTasks((tasks) =>
-      tasks.map((task) => {
-        return {
-          ...task,
-          done: true,
-        };
-      })
+      tasks.map((task) => ({...task, done: true}))
     );
   };
 
@@ -47,5 +42,3 @@ const useTasks = () => {
 
   return [tasks, completeAll, toggleDone, deleteTask, addNewTask];
 };
-
-export {useTasks};
