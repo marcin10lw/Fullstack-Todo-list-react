@@ -5,26 +5,28 @@ const Form = ({addNewTask}) => {
   const [taskContent, setTaskContent] = useState("");
   const inputRef = useRef(null);
   
-  const focusInput = () => {
-    return inputRef.current.focus();
-  }
+  const focusInput = () => inputRef.current.focus();
 
-  const onInputChange = (event) => setTaskContent(event.target.value);
+  const onInputChange = (event) => {
+    setTaskContent(event.target.value);
+  }
 
   const onFormSubmit = (event) => {
     event.preventDefault();
+
     const contentTrimmed = taskContent.trim();
-    if (contentTrimmed === "") {
-      return;
+
+    if (contentTrimmed) {
+      addNewTask(contentTrimmed);
     }
 
-    addNewTask(contentTrimmed);
     setTaskContent("");
     focusInput();
   }
   return (
     <StyledForm onSubmit={onFormSubmit} >
       <NewTask
+        autoFocus
         ref={inputRef}
         placeholder="Co jest do zrobienia?"
         value={taskContent}
