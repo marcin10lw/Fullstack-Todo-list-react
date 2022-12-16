@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { useTasks } from "../useTasks";
-import Form from "./Main/Section/Form";
-import TasksList from "./Main/Section/TasksList";
-import Buttons from "./Main/Section/Buttons";
-import Header from "./Main/Header";
-import Section from "./Main/Section";
+import Form from "./Form";
+import TasksList from "./TasksList";
+import Buttons from "./Buttons";
+import Header from "./Header";
+import Section from "./Section";
 import Main from "./Main";
 
 const theme = {
