@@ -23,6 +23,7 @@ const Form = ({addNewTask}) => {
     setTaskContent("");
     focusInput();
   }
+  
   return (
     <StyledForm onSubmit={onFormSubmit} >
       <NewTask
