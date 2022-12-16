@@ -9,9 +9,7 @@ const Form = ({addNewTask}) => {
     return inputRef.current.focus();
   }
 
-  const onInputChange = (event) => {
-    setTaskContent(event.target.value);
-  }
+  const onInputChange = (event) => setTaskContent(event.target.value);
 
   const onFormSubmit = (event) => {
     event.preventDefault();
