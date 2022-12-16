@@ -26,7 +26,7 @@ export const NewTask = styled.input`
 export const Button = styled.button`
   padding: 10px;
   border: 2px solid #008080;
-  background-color: teal;
+  background-color: ${({theme}) => theme.colors.teal};
   color: white;
   transition: opacity 200ms, transform 200ms;
 

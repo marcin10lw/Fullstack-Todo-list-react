@@ -35,7 +35,7 @@ export const Button = styled.button`
   width: 30px;
   height: 30px;
   border: none;
-  background-color: #008065;
+  background-color: ${({theme}) => theme.colors.teal};
   transition: opacity 150ms;
 
   &:hover {
