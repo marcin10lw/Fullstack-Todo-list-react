@@ -7,12 +7,7 @@ import Buttons from "./Buttons";
 import Header from "./Header";
 import Section from "./Section";
 import Main from "./Main";
-
-const theme = {
-  breakpoints: {
-    mobile: 767,
-  },
-};
+import {theme} from "./theme";
 
 function App() {
   const [tasks, completeAll, toggleDone, deleteTask, addNewTask] = useTasks();
