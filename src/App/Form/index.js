@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { StyledForm, NewTask, Button} from "./styled";
 
 const Form = ({addNewTask}) => {
