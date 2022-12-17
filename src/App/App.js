@@ -6,7 +6,7 @@ import TasksList from "./TasksList";
 import Buttons from "./Buttons";
 import Header from "./Header";
 import Section from "./Section";
-import Main from "./Main";
+import Container from "./Container/styled";
 import { theme } from "./theme";
 import { GlobalStyle } from "../GlobalStyle";
 
@@ -31,7 +31,7 @@ function App() {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Main>
+        <Container>
           <Header />
           <Section
             header="Dodaj nowe zadanie"
@@ -56,7 +56,7 @@ function App() {
               />
             }
           />
-        </Main>
+        </Container>
       </ThemeProvider>
     </>
   );
