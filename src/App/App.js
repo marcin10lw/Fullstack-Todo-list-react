@@ -7,17 +7,12 @@ import Buttons from "./Buttons";
 import Header from "./Header";
 import Section from "./Section";
 import Container from "./Container/styled";
+import { useLocalStorageState } from "../useLocalStorageState";
 
 function App() {
   const [tasks, completeAll, toggleDone, deleteTask, addNewTask] = useTasks();
 
-  const [hideDone, setHideDone] = useState(
-    JSON.parse(localStorage.getItem("hideDone")) || false
-  );
-
-  useEffect(() => {
-    localStorage.setItem("hideDone", JSON.stringify(hideDone));
-  }, [hideDone]);
+  const [hideDone, setHideDone] = useLocalStorageState("hideDone", false);
 
   const hideCompleted = () => {
     if (tasks.some((task) => task.done)) {
