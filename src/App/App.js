@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import { ThemeProvider } from "styled-components";
 import { useTasks } from "../useTasks";
 import Form from "./Form";
 import TasksList from "./TasksList";
