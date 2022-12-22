@@ -7,8 +7,6 @@ import Buttons from "./Buttons";
 import Header from "./Header";
 import Section from "./Section";
 import Container from "./Container/styled";
-import { theme } from "./theme";
-import { GlobalStyle } from "../GlobalStyle";
 
 function App() {
   const [tasks, completeAll, toggleDone, deleteTask, addNewTask] = useTasks();
@@ -29,35 +27,32 @@ function App() {
 
   return (
     <>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Container>
-          <Header />
-          <Section
-            header="Dodaj nowe zadanie"
-            content={<Form addNewTask={addNewTask} />}
-          />
-          <Section
-            header="Lista zadań"
-            optionalContent={
-              <Buttons
-                tasks={tasks}
-                hideDone={hideDone}
-                hideCompleted={hideCompleted}
-                completeAll={completeAll}
-              />
-            }
-            content={
-              <TasksList
-                tasks={tasks}
-                hideDone={hideDone}
-                toggleDone={toggleDone}
-                deleteTask={deleteTask}
-              />
-            }
-          />
-        </Container>
-      </ThemeProvider>
+      <Container>
+        <Header />
+        <Section
+          header="Dodaj nowe zadanie"
+          content={<Form addNewTask={addNewTask} />}
+        />
+        <Section
+          header="Lista zadań"
+          optionalContent={
+            <Buttons
+              tasks={tasks}
+              hideDone={hideDone}
+              hideCompleted={hideCompleted}
+              completeAll={completeAll}
+            />
+          }
+          content={
+            <TasksList
+              tasks={tasks}
+              hideDone={hideDone}
+              toggleDone={toggleDone}
+              deleteTask={deleteTask}
+            />
+          }
+        />
+      </Container>
     </>
   );
 }
