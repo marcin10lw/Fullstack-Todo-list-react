@@ -7,7 +7,7 @@ import Section from "../../common/Section";
 import Container from "../../common/Container/styled";
 
 function Tasks() {
-  const [completeAll, toggleDone, deleteTask] = useTasks();
+  const [deleteTask] = useTasks();
 
   return (
     <>
@@ -16,17 +16,8 @@ function Tasks() {
         <Section header="Dodaj nowe zadanie" content={<Form />} />
         <Section
           header="Lista zadań"
-          optionalContent={
-            <Buttons
-              completeAll={completeAll}
-            />
-          }
-          content={
-            <TasksList
-              toggleDone={toggleDone}
-              deleteTask={deleteTask}
-            />
-          }
+          optionalContent={<Buttons />}
+          content={<TasksList deleteTask={deleteTask} />}
         />
       </Container>
     </>
