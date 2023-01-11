@@ -6,26 +6,24 @@ import Header from "../../common/Header";
 import Section from "../../common/Section";
 import Container from "../../common/Container/styled";
 import { useLocalStorageState } from "../../useLocalStorageState";
+import { useSelector } from "react-redux";
+import { selectTasks } from "./tasksSlice";
 
 function Tasks() {
-  const [tasks, completeAll, toggleDone, deleteTask, addNewTask] = useTasks();
+  const [completeAll, toggleDone, deleteTask, addNewTask] = useTasks();
 
+  const { tasks } = useSelector(selectTasks);
   const [hideDone, setHideDone] = useLocalStorageState("hideDone", false);
 
   const hideCompleted = () => {
-    if (tasks.some((task) => task.done)) {
-      setHideDone((hideDone) => !hideDone);
-    }
+    setHideDone((hideDone) => !hideDone);
   };
 
   return (
     <>
       <Container>
         <Header />
-        <Section
-          header="Dodaj nowe zadanie"
-          content={<Form addNewTask={addNewTask} />}
-        />
+        <Section header="Dodaj nowe zadanie" content={<Form />} />
         <Section
           header="Lista zadań"
           optionalContent={
