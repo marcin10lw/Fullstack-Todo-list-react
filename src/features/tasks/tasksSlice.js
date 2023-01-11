@@ -3,10 +3,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 const tasksSlice = createSlice({
   name: "tasks",
   initialState: {
-    tasks: [
-      { id: 1, content: "test 1", done: false },
-      { id: 2, content: "test 2", done: true },
-    ],
+    tasks: [],
     hideDone: false,
   },
   reducers: {
@@ -35,9 +32,14 @@ const tasksSlice = createSlice({
 
       tasks[index].done = !tasks[index].done;
     },
+    deleteTask: ({ tasks }, { payload }) => {
+      const index = tasks.findIndex((task) => task.id === payload);
+
+      tasks.splice(index, 1);
+    },
   },
 });
 
-export const { addTask, toggleHideDone, completeAll, toggleDone } = tasksSlice.actions;
+export const { addTask, toggleHideDone, completeAll, toggleDone, deleteTask } = tasksSlice.actions;
 export const selectTasks = (state) => state.tasks;
 export default tasksSlice.reducer;

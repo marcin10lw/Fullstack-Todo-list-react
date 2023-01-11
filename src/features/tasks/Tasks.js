@@ -1,4 +1,3 @@
-import { useTasks } from "../../useTasks";
 import Form from "./Form";
 import TasksList from "./TasksList";
 import Buttons from "./Buttons";
@@ -7,8 +6,6 @@ import Section from "../../common/Section";
 import Container from "../../common/Container/styled";
 
 function Tasks() {
-  const [deleteTask] = useTasks();
-
   return (
     <>
       <Container>
@@ -17,7 +14,7 @@ function Tasks() {
         <Section
           header="Lista zadań"
           optionalContent={<Buttons />}
-          content={<TasksList deleteTask={deleteTask} />}
+          content={<TasksList />}
         />
       </Container>
     </>
