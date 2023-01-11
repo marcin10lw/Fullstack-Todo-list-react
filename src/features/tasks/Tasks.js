@@ -1,13 +1,13 @@
-import { useTasks } from "../useTasks";
+import { useTasks } from "../../useTasks";
 import Form from "./Form";
 import TasksList from "./TasksList";
 import Buttons from "./Buttons";
-import Header from "./Header";
-import Section from "./Section";
-import Container from "./Container/styled";
-import { useLocalStorageState } from "../useLocalStorageState";
+import Header from "../../common/Header";
+import Section from "../../common/Section";
+import Container from "../../common/Container/styled";
+import { useLocalStorageState } from "../../useLocalStorageState";
 
-function App() {
+function Tasks() {
   const [tasks, completeAll, toggleDone, deleteTask, addNewTask] = useTasks();
 
   const [hideDone, setHideDone] = useLocalStorageState("hideDone", false);
@@ -50,4 +50,4 @@ function App() {
   );
 }
 
-export default App;
+export default Tasks;
