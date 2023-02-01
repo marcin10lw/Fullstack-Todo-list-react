@@ -27,13 +27,13 @@ const tasksSlice = createSlice({
     completeAll: ({ tasks }) => {
       tasks.forEach((task) => (task.done = true));
     },
-    toggleDone: ({ tasks }, { payload }) => {
-      const index = tasks.findIndex((task) => task.id === payload);
+    toggleDone: ({ tasks }, { payload: taskId }) => {
+      const index = tasks.findIndex((task) => task.id === taskId);
 
       tasks[index].done = !tasks[index].done;
     },
-    deleteTask: ({ tasks }, { payload }) => {
-      const index = tasks.findIndex((task) => task.id === payload);
+    deleteTask: ({ tasks }, { payload: taskId }) => {
+      const index = tasks.findIndex((task) => task.id === taskId);
 
       tasks.splice(index, 1);
     },
