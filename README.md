@@ -41,7 +41,7 @@ YouCode is a frontend development online school with great community.
 
 ## Check it out!
 
-[![](./readmeImage.png)](https://marcin10lw.github.io/To-do-list-react/)
+[![](./readmeImage.png)](https://marcin10lw.github.io/To-do-list-react/#/zadania)
 
 ## Create React App
 
