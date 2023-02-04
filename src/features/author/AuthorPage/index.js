@@ -1,7 +1,8 @@
 import Container from "../../../common/Container/styled";
 import Header from "../../../common/Header";
 import Section from "../../../common/Section";
-import { Paragraph, Link, Wrapper } from "./styled";
+import { Paragraph, Link } from "./styled";
+import { Wrapper } from "../../../common/Wrapper";
 
 const AuthorPage = () => {
   return (

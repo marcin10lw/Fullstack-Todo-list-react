@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  padding: 20px;
-`;
-
 export const Paragraph = styled.p`
   margin: 0;
   line-height: 1.5;
