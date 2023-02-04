@@ -12,7 +12,6 @@ export const GlobalStyle = createGlobalStyle`
 body {
   font-family: "Roboto", sans-serif;
   background-color: #ebecea;
-  padding: 20px;
   word-break: break-word;
 }
 `;
