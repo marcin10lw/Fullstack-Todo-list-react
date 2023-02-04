@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+const teal = ({ theme }) => theme.colors.teal;
+
 export const StyledForm = styled.form`
   display: flex;
   align-items: center;
@@ -7,7 +9,7 @@ export const StyledForm = styled.form`
   gap: 20px;
   padding: 20px;
 
-  @media (max-width: ${({theme}) => theme.breakpoints.mobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     flex-direction: column;
     gap: 10px;
   }
@@ -18,15 +20,15 @@ export const NewTask = styled.input`
   border: 2px solid hsl(0, 0%, 84%);
   flex-grow: 1;
 
-  @media (max-width: ${({theme}) => theme.breakpoints.mobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     width: 100%;
   } ;
 `;
 
 export const Button = styled.button`
   padding: 10px;
-  border: 2px solid #008080;
-  background-color: ${({theme}) => theme.colors.teal};
+  border: 2px solid ${teal};
+  background-color: ${teal};
   color: white;
   transition: opacity 200ms, transform 200ms;
 
@@ -35,10 +37,10 @@ export const Button = styled.button`
     transform: scale(1.1);
   }
   &:active {
-    opacity: 0.70;
+    opacity: 0.7;
   }
 
-  @media (max-width: ${({theme}) => theme.breakpoints.mobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     width: 100%;
     &:hover {
       transform: scale(1);

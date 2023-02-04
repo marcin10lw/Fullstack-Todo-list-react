@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
+const white = ({ theme }) => theme.colors.white;
+
 export const StyledNavbar = styled.nav`
   background-color: ${({ theme }) => theme.colors.teal};
 `;
@@ -17,7 +19,7 @@ export const LinksList = styled.ul`
 
 export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  color: white;
+  color: ${white};
   position: relative;
 
   &:hover {
@@ -40,7 +42,7 @@ export const StyledNavLink = styled(NavLink)`
       display: block;
       width: 100%;
       height: 1px;
-      background-color: white;
+      background-color: ${white};
       position: absolute;
       bottom: 1;
     }

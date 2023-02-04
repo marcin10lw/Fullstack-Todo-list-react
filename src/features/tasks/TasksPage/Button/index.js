@@ -7,11 +7,11 @@ export const Button = styled.button`
   transition: color 150ms;
 
   &:hover {
-    color: hsl(180deg 100% 25% / 70%);
+    color: ${({ theme }) => theme.colors.lightTeal};
   }
 
   &:disabled {
-    color: #c1c4c4;
+    color: ${({ theme }) => theme.colors.lightGrey};
 
     ${({ error }) =>
       error &&
