@@ -2,7 +2,7 @@
 
 ## Description
 
-I present to you my To-do list created with React.js. 
+I present to you my To-do list created with React.js.
 
 Using this tool is a great way to stay organized when we have a lot on our minds. Go ahead and make your day more bearable!
 
@@ -21,11 +21,21 @@ YouCode is a frontend development online school with great community.
     -STYLED COMPONENTS
     -FLEXBOX
     -REDUX
+    -REDUX-SAGA
+    -REACT-ROUTER
     -ES6+ FEATURES
 
 ## Page Preview
 
 ![](todo-list-react-preview.gif)
+
+## Page Not Found Preview
+
+![](todo-list-react-pageNotFound-preview.gif)
+
+## Task Not Found Preview
+
+![](todo-list-react-taskNotFound-preview.gif)
 
 **Stay tuned for updates!**
 

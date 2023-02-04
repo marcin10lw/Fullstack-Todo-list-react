@@ -10,7 +10,6 @@ function App() {
     <BrowserRouter basename="To-do-list-react">
       <Navbar />
       <Routes>
-        <Route path="/" element={<TasksPage />} />
         <Route path="/zadania" element={<TasksPage />} />
         <Route path="/zadania/:id" element={<TaskPage />} />
         <Route path="/autor" element={<AuthorPage />} />
