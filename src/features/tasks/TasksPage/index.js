@@ -1,12 +1,12 @@
 import Form from "./Form";
 import TasksList from "./TasksList";
 import Buttons from "./Buttons";
-import Header from "../../common/Header";
-import Section from "../../common/Section";
-import Container from "../../common/Container/styled";
 import DownloadButton from "./DownloadButton";
+import Header from "../../../common/Header";
+import Section from "../../../common/Section";
+import Container from "../../../common/Container/styled";
 
-function Tasks() {
+function TasksPage() {
   return (
     <>
       <Container>
@@ -26,4 +26,4 @@ function Tasks() {
   );
 }
 
-export default Tasks;
+export default TasksPage;

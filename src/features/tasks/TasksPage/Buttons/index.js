@@ -3,10 +3,10 @@ import {
   selectHideDone,
   selectIsEveryTaskDone,
   selectIsThereAnyTask,
-} from "../tasksSlice";
+} from "../../tasksSlice";
 import { Wrapper } from "./styled";
 import { Button } from "../Button";
-import { toggleHideDone, completeAll } from "../tasksSlice";
+import { toggleHideDone, completeAll } from "../../tasksSlice";
 
 const Buttons = () => {
   const hideDone = useSelector(selectHideDone);

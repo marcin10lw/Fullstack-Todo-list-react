@@ -1,7 +1,7 @@
-import Tasks from "./features/tasks/Tasks";
+import TasksPage from "./features/tasks/TasksPage";
 
 function App() {
-  return <Tasks />;
+  return <TasksPage />;
 }
 
 export default App;

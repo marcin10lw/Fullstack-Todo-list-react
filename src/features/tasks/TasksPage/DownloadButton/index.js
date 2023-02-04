@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../Button";
-import { fetchExampleTasks, selectStatus } from "../tasksSlice";
+import { fetchExampleTasks, selectStatus } from "../../tasksSlice";
 
 const DownloadButton = () => {
   const status = useSelector(selectStatus);

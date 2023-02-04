@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { StyledForm, NewTask, Button } from "./styled";
-import { addTask } from "../tasksSlice";
+import { addTask } from "../../tasksSlice";
 import { useDispatch } from "react-redux";
 
 const Form = () => {
