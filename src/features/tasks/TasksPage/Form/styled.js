@@ -15,16 +15,6 @@ export const StyledForm = styled.form`
   }
 `;
 
-export const NewTask = styled.input`
-  padding: 10px;
-  border: 2px solid hsl(0, 0%, 84%);
-  flex-grow: 1;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
-    width: 100%;
-  } ;
-`;
-
 export const Button = styled.button`
   padding: 10px;
   border: 2px solid ${teal};
