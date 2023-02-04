@@ -73,4 +73,7 @@ export const selectIsThereAnyTask = (state) => selectTasks(state).length > 0;
 
 export const selectStatus = (state) => selectTasksState(state).status;
 
+export const selectTaskById = (state, id) =>
+  selectTasks(state).find((task) => task.id === id);
+
 export default tasksSlice.reducer;

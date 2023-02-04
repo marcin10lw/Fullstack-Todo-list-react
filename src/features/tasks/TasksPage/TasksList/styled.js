@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import checkMark from "./images/check.png";
-import removeMark from './images/delete.png';
+import removeMark from "./images/delete.png";
 
 export const Tasks = styled.ul`
   list-style: none;
@@ -35,7 +36,7 @@ export const Button = styled.button`
   width: 30px;
   height: 30px;
   border: none;
-  background-color: ${({theme}) => theme.colors.teal};
+  background-color: ${({ theme }) => theme.colors.teal};
   transition: opacity 150ms;
 
   &:hover {
@@ -60,4 +61,14 @@ export const Button = styled.button`
       background-size: cover;
       background-position: center;
     `}
+`;
+
+export const StyledLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.darkTeal};
+  text-decoration: none;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.teal};
+    text-decoration: underline;
+  }
 `;

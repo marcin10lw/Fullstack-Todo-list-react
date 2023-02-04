@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
 
 export const Paragraph = styled.p`
   margin: 0;
+  line-height: 1.5;
 
   &:nth-child(2) {
     margin: 16px 0;
