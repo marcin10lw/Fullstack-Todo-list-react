@@ -1,7 +1,7 @@
-const Header = () => (
-    <header>
-        <h1>Lista zadań</h1>
-    </header>
+const Header = ({ heading }) => (
+  <header>
+    <h1>{heading}</h1>
+  </header>
 );
 
 export default Header;
