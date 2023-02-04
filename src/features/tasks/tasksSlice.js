@@ -1,11 +1,12 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { getValueFromLocalStorage } from "./tasksLocalStorage";
 
 const tasksSlice = createSlice({
   name: "tasks",
   initialState: {
-    tasks: [],
+    tasks: getValueFromLocalStorage("tasks", []),
     status: "success",
-    hideDone: false,
+    hideDone: getValueFromLocalStorage("hideDone", false),
   },
   reducers: {
     addTask: {
@@ -59,9 +60,11 @@ export const {
   setStatus,
 } = tasksSlice.actions;
 
-export const selectTasksState = (state) => state.tasks;
+const selectTasksState = (state) => state.tasks;
 
-const selectTasks = (state) => selectTasksState(state).tasks;
+export const selectTasks = (state) => selectTasksState(state).tasks;
+
+export const selectHideDone = (state) => selectTasksState(state).hideDone;
 
 export const selectIsEveryTaskDone = (state) =>
   selectTasks(state).every(({ done }) => done);
