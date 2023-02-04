@@ -3,6 +3,7 @@ import { StyledForm, Button } from "./styled";
 import { addTask } from "../../tasksSlice";
 import { useDispatch } from "react-redux";
 import { Input } from "../Input";
+import { Wrapper } from "../../../../common/Wrapper";
 
 const Form = () => {
   const [taskContent, setTaskContent] = useState("");
@@ -30,16 +31,18 @@ const Form = () => {
   };
 
   return (
-    <StyledForm onSubmit={onFormSubmit}>
-      <Input
-        autoFocus
-        ref={inputRef}
-        placeholder="Co jest do zrobienia?"
-        value={taskContent}
-        onChange={onInputChange}
-      />
-      <Button>Dodaj zadanie</Button>
-    </StyledForm>
+    <Wrapper>
+      <StyledForm onSubmit={onFormSubmit}>
+        <Input
+          autoFocus
+          ref={inputRef}
+          placeholder="Co jest do zrobienia?"
+          value={taskContent}
+          onChange={onInputChange}
+        />
+        <Button>Dodaj zadanie</Button>
+      </StyledForm>
+    </Wrapper>
   );
 };
 

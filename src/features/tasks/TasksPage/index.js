@@ -5,6 +5,7 @@ import DownloadButton from "./DownloadButton";
 import Header from "../../../common/Header";
 import Section from "../../../common/Section";
 import Container from "../../../common/Container/styled";
+import SearchTasks from "./SearchTasks";
 
 function TasksPage() {
   return (
@@ -16,6 +17,7 @@ function TasksPage() {
           optionalContent={<DownloadButton />}
           content={<Form />}
         />
+        <Section header="Wyszukiwarka" content={<SearchTasks />} />
         <Section
           header="Lista zadań"
           optionalContent={<Buttons />}

@@ -7,7 +7,6 @@ export const StyledForm = styled.form`
   align-items: center;
   width: 100%;
   gap: 20px;
-  padding: 20px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     flex-direction: column;
@@ -21,6 +20,7 @@ export const Button = styled.button`
   background-color: ${teal};
   color: white;
   transition: opacity 200ms, transform 200ms;
+  flex-shrink: 0;
 
   &:hover {
     opacity: 0.85;
