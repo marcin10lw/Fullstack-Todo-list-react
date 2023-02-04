@@ -10,7 +10,7 @@ function TasksPage() {
   return (
     <>
       <Container>
-        <Header />
+        <Header heading="Lista zadań" />
         <Section
           header="Dodaj nowe zadanie"
           optionalContent={<DownloadButton />}
