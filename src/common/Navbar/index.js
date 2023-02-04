@@ -5,7 +5,7 @@ const Navbar = () => {
     <StyledNavbar>
       <LinksList>
         <li>
-          <StyledNavLink to="/zadania">Zadania</StyledNavLink>
+          <StyledNavLink to="/">Zadania</StyledNavLink>
         </li>
 
         <li>
