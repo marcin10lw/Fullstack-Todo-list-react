@@ -9,7 +9,7 @@ const Navbar = () => {
         </li>
 
         <li>
-          <StyledNavLink to="autor">Autor</StyledNavLink>
+          <StyledNavLink to="autor">O autorze</StyledNavLink>
         </li>
       </LinksList>
     </StyledNavbar>

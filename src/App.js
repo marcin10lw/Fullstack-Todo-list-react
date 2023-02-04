@@ -12,6 +12,7 @@ function App() {
         <Route path="/zadania" element={<TasksPage />} />
         <Route path="/zadania/:id" element={<TaskPage />} />
         <Route path="/autor" element={<AuthorPage />} />
+        {/* <Route path="*" element={<AuthorPage />} /> */}
       </Routes>
     </BrowserRouter>
   );

@@ -69,6 +69,5 @@ export const StyledLink = styled(Link)`
 
   &:hover {
     color: ${({ theme }) => theme.colors.teal};
-    text-decoration: underline;
   }
 `;

@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Container from "../../../common/Container/styled";
+import Header from "../../../common/Header";
 import Section from "../../../common/Section";
 import { selectTaskById } from "../tasksSlice";
 import { TaskPageContent } from "./styled";
@@ -12,12 +13,13 @@ const TaskPage = () => {
 
   return (
     <Container>
+      <Header heading="Szczegóły zadania" />
       <Section
-        header={task ? task.content : "Nie znaleziono zadania"}
+        header={task ? task.content : "Nie ma takiego zadania"}
         content={
           task && (
             <TaskPageContent>
-              Ukończono: <strong>{task.done ? "Tak" : "Nie"}</strong>
+              <strong>Ukończone:</strong> {task.done ? "Tak" : "Nie"}
             </TaskPageContent>
           )
         }
