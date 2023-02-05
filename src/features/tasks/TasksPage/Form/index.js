@@ -34,7 +34,6 @@ const Form = () => {
     <Wrapper>
       <StyledForm onSubmit={onFormSubmit}>
         <Input
-          autoFocus
           ref={inputRef}
           placeholder="Co jest do zrobienia?"
           value={taskContent}
