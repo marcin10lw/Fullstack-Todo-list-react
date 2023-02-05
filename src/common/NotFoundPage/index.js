@@ -7,9 +7,11 @@ import { NotFoundPageSection, GoBackLink } from "./styled";
 const NotFoundPage = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       navigate("/zadania");
     }, 7000);
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (
