@@ -20,7 +20,7 @@ YouCode is a frontend development online school with great community.
     -BABEL
     -STYLED COMPONENTS
     -FLEXBOX
-    -REDUX
+    -REDUX-TOOLKIT
     -REDUX-SAGA
     -REACT-ROUTER
     -ES6+ FEATURES
