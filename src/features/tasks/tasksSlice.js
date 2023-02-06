@@ -39,12 +39,15 @@ const tasksSlice = createSlice({
 
       tasks.splice(index, 1);
     },
-    fetchExampleTasks: () => {},
-    setExampleTasks: (state, { payload: exampleTasks }) => {
-      state.tasks = exampleTasks;
+    fetchExampleTasks: (state) => {
+      state.status = "pending";
     },
-    setStatus: (state, { payload }) => {
-      state.status = payload;
+    fetchExampleTasksSuccess: (state, { payload: exampleTasks }) => {
+      state.tasks = exampleTasks;
+      state.status = "success";
+    },
+    fetchExampleTasksError: (state) => {
+      state.status = "error";
     },
   },
 });
@@ -56,8 +59,8 @@ export const {
   toggleDone,
   deleteTask,
   fetchExampleTasks,
-  setExampleTasks,
-  setStatus,
+  fetchExampleTasksSuccess,
+  fetchExampleTasksError,
 } = tasksSlice.actions;
 
 const selectTasksState = (state) => state.tasks;

@@ -6,18 +6,17 @@ import {
   selectHideDone,
   selectTasks,
   setExampleTasks,
-  setStatus,
+  fetchExampleTasksSuccess,
+  fetchExampleTasksError,
 } from "./tasksSlice";
 
 function* fetchExampleTasksWorker() {
   try {
-    yield put(setStatus("pending"));
     yield delay(1000);
     const tasks = yield call(getExampleTasks);
-    yield put(setExampleTasks(tasks));
-    yield put(setStatus("success"));
+    yield put(fetchExampleTasksSuccess(tasks));
   } catch (error) {
-    yield put(setStatus("error"));
+    yield put(fetchExampleTasksError());
   }
 }
 
