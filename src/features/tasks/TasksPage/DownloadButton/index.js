@@ -1,10 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../Button";
-import { fetchExampleTasks, selectStatus } from "../../tasksSlice";
+import {
+  fetchExampleTasks,
+  selectIsThereAnyTask,
+  selectStatus,
+} from "../../tasksSlice";
 
 const DownloadButton = () => {
+  const isThereAnyTask = useSelector(selectIsThereAnyTask);
+
   const status = useSelector(selectStatus);
   const disapatch = useDispatch();
+
+  const buttonDisabled =
+    status === "pending" || status === "error" || isThereAnyTask;
 
   let buttonText = "";
   if (status === "success") {
@@ -18,7 +27,7 @@ const DownloadButton = () => {
 
   return (
     <Button
-      disabled={status === "pending" || status === "error"}
+      disabled={buttonDisabled}
       error={status === "error"}
       onClick={() => disapatch(fetchExampleTasks())}
     >
