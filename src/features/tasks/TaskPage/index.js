@@ -5,6 +5,7 @@ import Container from "../../../common/Container/styled";
 import Header from "../../../common/Header";
 import Section from "../../../common/Section";
 import { selectTaskById } from "../tasksSlice";
+import NotesArea from "./NotesArea";
 import { TaskPageContent } from "./styled";
 
 const TaskPage = () => {
@@ -24,6 +25,7 @@ const TaskPage = () => {
           )
         }
       />
+      <Section header="Notes" content={<NotesArea />} />
     </Container>
   );
 };
