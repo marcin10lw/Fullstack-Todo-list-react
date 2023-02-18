@@ -25,7 +25,7 @@ const TaskPage = () => {
           )
         }
       />
-      <Section header="Notes" content={<NotesArea />} />
+      <Section header="Notatki" content={<NotesArea task={task} />} />
     </Container>
   );
 };
