@@ -18,11 +18,7 @@ const tasksSlice = createSlice({
           payload: {
             id: nanoid(),
             content,
-            notes: {
-              noteContent: "",
-              markdownNoteContent: "",
-              currentTab: "basic",
-            },
+            noteContent: "",
             done: false,
           },
         };
@@ -32,7 +28,7 @@ const tasksSlice = createSlice({
       const { taskId, noteValue } = action.payload;
       const index = tasks.findIndex((task) => task.id === taskId);
 
-      tasks[index].notes.noteContent = noteValue;
+      tasks[index].noteContent = noteValue;
     },
     toggleHideDone: (state) => {
       state.hideDone = !state.hideDone;
