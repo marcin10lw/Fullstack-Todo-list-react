@@ -9,6 +9,7 @@ export const StyledNotesArea = styled.textarea`
   width: 100%;
   height: 200px;
   padding: 7px 10px;
+  line-height: 1.4;
 
   &:focus {
     outline: 1px solid ${({ theme }) => theme.colors.teal};
