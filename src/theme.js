@@ -5,6 +5,7 @@ export const theme = {
     darkTeal: "#0f5555",
     white: "#ffffff",
     lightGrey: "#c1c4c4",
+    doveGrey: "#727272",
   },
   breakpoints: {
     mobile: 767,
