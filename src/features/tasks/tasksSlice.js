@@ -18,10 +18,17 @@ const tasksSlice = createSlice({
           payload: {
             id: nanoid(),
             content,
+            noteContent: "",
             done: false,
           },
         };
       },
+    },
+    addNoteContent: ({ tasks }, action) => {
+      const { taskId, noteValue } = action.payload;
+      const index = tasks.findIndex((task) => task.id === taskId);
+
+      tasks[index].noteContent = noteValue;
     },
     toggleHideDone: (state) => {
       state.hideDone = !state.hideDone;
@@ -54,6 +61,7 @@ const tasksSlice = createSlice({
 
 export const {
   addTask,
+  addNoteContent,
   toggleHideDone,
   completeAll,
   toggleDone,
