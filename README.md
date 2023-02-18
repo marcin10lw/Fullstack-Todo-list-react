@@ -6,6 +6,10 @@ I present to you my To-do list created with React.js.
 
 Using this tool is a great way to stay organized when we have a lot on our minds. Go ahead and make your day more bearable!
 
+## Check out the Demo!
+
+[![](./readmeImage.png)](https://marcin10lw.github.io/To-do-list-react/)
+
 ## YouCode
 
 This project is a task within [YouCode](https://youcode.pl/zostawiam-maila/).
@@ -38,10 +42,6 @@ YouCode is a frontend development online school with great community.
 ![](todo-list-react-taskNotFound-preview.gif)
 
 **Stay tuned for updates!**
-
-## Check it out!
-
-[![](./readmeImage.png)](https://marcin10lw.github.io/To-do-list-react/)
 
 ## Create React App
 
