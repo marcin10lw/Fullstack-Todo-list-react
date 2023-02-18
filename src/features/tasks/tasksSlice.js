@@ -51,7 +51,7 @@ const tasksSlice = createSlice({
       state.status = "pending";
     },
     fetchExampleTasksSuccess: (state, { payload: exampleTasks }) => {
-      state.tasks = exampleTasks;
+      state.tasks = exampleTasks.map((task) => ({ ...task, date: new Date() }));
       state.status = "success";
     },
     fetchExampleTasksError: (state) => {
