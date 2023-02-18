@@ -1,3 +1,4 @@
+import { StyledTaskDate } from "./styled";
 import { format } from "date-fns";
 import { cs } from "date-fns/locale";
 
@@ -7,7 +8,7 @@ const TaskDate = ({ task }) => {
     locale: cs,
   });
 
-  return <span>Utworzono w: {formatedDate}</span>;
+  return <StyledTaskDate>Utworzono w: {formatedDate}</StyledTaskDate>;
 };
 
 export default TaskDate;
