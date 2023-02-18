@@ -7,6 +7,7 @@ import Section from "../../../common/Section";
 import { selectTaskById } from "../tasksSlice";
 import NotesArea from "./NotesArea";
 import { TaskPageContent } from "./styled";
+import TaskDate from "./TaskDate";
 
 const TaskPage = () => {
   const { id } = useParams();
@@ -24,6 +25,7 @@ const TaskPage = () => {
             </TaskPageContent>
           )
         }
+        optionalContent={<TaskDate task={task} />}
       />
       <Section header="Notatki" content={<NotesArea task={task} />} />
     </Container>
