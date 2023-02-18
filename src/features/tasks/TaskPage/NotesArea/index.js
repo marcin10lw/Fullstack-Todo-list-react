@@ -1,24 +1,22 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Wrapper } from "../../../../common/Wrapper";
-import { addNoteContent, selectTasks } from "../../tasksSlice";
+import { addNoteContent } from "../../tasksSlice";
 import { StyledNotesArea } from "./styled";
 
 const NotesArea = ({ task }) => {
-  const [noteInput, setNoteInput] = useState("");
+  const taskId = task.id;
   const dispatch = useDispatch();
 
   const onInputChange = ({ target }) => {
-    setNoteInput(target.value);
-    console.log(noteInput);
-    dispatch(addNoteContent(task, noteInput));
+    const noteValue = target.value;
+    dispatch(addNoteContent({ taskId, noteValue }));
   };
 
   return (
     <Wrapper>
       <StyledNotesArea
         placeholder="Wpisz swoje notatki..."
-        value={noteInput}
+        value={task.noteContent}
         onChange={onInputChange}
       />
     </Wrapper>
