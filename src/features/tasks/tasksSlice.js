@@ -20,6 +20,7 @@ const tasksSlice = createSlice({
             content,
             noteContent: "",
             done: false,
+            date: new Date(),
           },
         };
       },
