@@ -5,6 +5,7 @@ import Container from "../../../common/Container/styled";
 import Header from "../../../common/Header";
 import Section from "../../../common/Section";
 import { selectTaskById } from "../tasksSlice";
+import Deadline from "./Deadline";
 import NotesArea from "./NotesArea";
 import { TaskPageContent } from "./styled";
 import TaskDate from "./TaskDate";
@@ -27,6 +28,7 @@ const TaskPage = () => {
         }
         optionalContent={<TaskDate task={task} />}
       />
+      <Section header="Deadline" content={<Deadline />} />
       <Section header="Notatki" content={<NotesArea task={task} />} />
     </Container>
   );
