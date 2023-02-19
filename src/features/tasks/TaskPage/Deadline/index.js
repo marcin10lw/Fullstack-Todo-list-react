@@ -1,7 +1,8 @@
-import { DateAndTime } from "./styled";
+import { DateInput, Text } from "./styled";
 import { Wrapper } from "../../../../common/Wrapper";
 import { useDispatch } from "react-redux";
 import { addDeadlineDate } from "../../tasksSlice";
+import format from "date-fns/format";
 
 const Deadline = ({ task }) => {
   const dispatch = useDispatch();
@@ -10,16 +11,19 @@ const Deadline = ({ task }) => {
     dispatch(addDeadlineDate({ taskId: task.id, deadlineDate: target.value }));
   };
 
-  const minDate = new Date().toISOString().slice(0, -8);
+  const minDate = format(new Date(), "yyyy-MM-dd");
   return (
     <Wrapper>
-      <DateAndTime
-        value={task.deadline}
-        onChange={onInputChange}
-        name="dateAndTime"
-        type="datetime-local"
-        min={minDate}
-      />
+      <label>
+        <Text>Wybierz deadline</Text>
+        <DateInput
+          value={task.deadline}
+          onChange={onInputChange}
+          name="date"
+          type="date"
+          min={minDate}
+        />
+      </label>
     </Wrapper>
   );
 };
