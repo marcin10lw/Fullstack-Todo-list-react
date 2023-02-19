@@ -1,6 +1,6 @@
-import { StyledTaskDate } from "./styled";
 import { format } from "date-fns";
 import pl from "date-fns/locale/pl";
+import { InfoText } from "../InfoText";
 
 const TaskDate = ({ task }) => {
   const date = Date.parse(task.date);
@@ -8,7 +8,7 @@ const TaskDate = ({ task }) => {
     locale: pl,
   });
 
-  return <StyledTaskDate>Utworzono: {formatedDate}</StyledTaskDate>;
+  return <InfoText>Utworzono: {formatedDate}</InfoText>;
 };
 
 export default TaskDate;
