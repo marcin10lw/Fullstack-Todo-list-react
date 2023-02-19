@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DateInput = styled.input`
-  max-width: 20%;
+  max-width: 200px;
   padding: 5px 8px;
   border: 1px solid ${({ theme }) => theme.colors.lightGrey};
   border-radius: 3px;
