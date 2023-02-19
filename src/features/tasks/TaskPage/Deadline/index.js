@@ -1,19 +1,20 @@
 import { DateAndTime } from "./styled";
-import { useState } from "react";
 import { Wrapper } from "../../../../common/Wrapper";
+import { useDispatch } from "react-redux";
+import { addDeadlineDate } from "../../tasksSlice";
 
 const Deadline = ({ task }) => {
-  const [startDate, setStartDate] = useState("");
+  const dispatch = useDispatch();
 
   const onInputChange = ({ target }) => {
-    setStartDate(target.value);
+    dispatch(addDeadlineDate({ taskId: task.id, deadlineDate: target.value }));
   };
-  console.log(startDate);
+
   const minDate = new Date().toISOString().slice(0, -8);
   return (
     <Wrapper>
       <DateAndTime
-        value={startDate}
+        value={task.deadline}
         onChange={onInputChange}
         name="dateAndTime"
         type="datetime-local"

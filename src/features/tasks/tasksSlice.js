@@ -21,15 +21,10 @@ const tasksSlice = createSlice({
             noteContent: "",
             done: false,
             date: new Date(),
+            deadline: "",
           },
         };
       },
-    },
-    addNoteContent: ({ tasks }, action) => {
-      const { taskId, noteValue } = action.payload;
-      const index = tasks.findIndex((task) => task.id === taskId);
-
-      tasks[index].noteContent = noteValue;
     },
     toggleHideDone: (state) => {
       state.hideDone = !state.hideDone;
@@ -57,6 +52,19 @@ const tasksSlice = createSlice({
     fetchExampleTasksError: (state) => {
       state.status = "error";
     },
+    addNoteContent: ({ tasks }, action) => {
+      const { taskId, noteValue } = action.payload;
+      const index = tasks.findIndex((task) => task.id === taskId);
+
+      tasks[index].noteContent = noteValue;
+    },
+    addDeadlineDate: ({ tasks }, action) => {
+      const { taskId, deadlineDate } = action.payload;
+      const index = tasks.findIndex((task) => task.id === taskId);
+
+      tasks[index].deadline = deadlineDate;
+      // console.log(tasks[index].deadline);
+    },
   },
 });
 
@@ -70,6 +78,7 @@ export const {
   fetchExampleTasks,
   fetchExampleTasksSuccess,
   fetchExampleTasksError,
+  addDeadlineDate,
 } = tasksSlice.actions;
 
 const selectTasksState = (state) => state.tasks;

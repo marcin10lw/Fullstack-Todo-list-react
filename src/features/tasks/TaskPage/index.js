@@ -28,7 +28,7 @@ const TaskPage = () => {
         }
         optionalContent={<TaskDate task={task} />}
       />
-      <Section header="Deadline" content={<Deadline />} />
+      <Section header="Deadline" content={<Deadline task={task} />} />
       <Section header="Notatki" content={<NotesArea task={task} />} />
     </Container>
   );
