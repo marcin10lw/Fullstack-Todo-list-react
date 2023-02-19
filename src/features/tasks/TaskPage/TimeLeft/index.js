@@ -1,14 +1,7 @@
-import { useTimeLeft } from "./useFormattedTimeLeft";
-import { StyledTimeLeft } from "./styled";
+import { InfoText } from "../InfoText";
 
-const TimeLeft = ({ task }) => {
-  const [formattedTimeLeft] = useTimeLeft(task);
-
-  return (
-    task.deadline && (
-      <StyledTimeLeft>Pozostało: {formattedTimeLeft}</StyledTimeLeft>
-    )
-  );
+const TimeLeft = ({ task, timeLeft }) => {
+  return task.deadline && <InfoText>Pozostało: {timeLeft}</InfoText>;
 };
 
 export default TimeLeft;
