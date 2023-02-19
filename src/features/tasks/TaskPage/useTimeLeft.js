@@ -1,4 +1,4 @@
-import { formatDistanceStrict, setHours } from "date-fns";
+import { formatDistanceStrict, isBefore, setHours } from "date-fns";
 import { pl } from "date-fns/locale";
 import { useEffect, useState } from "react";
 
@@ -9,6 +9,7 @@ const useTimeLeft = (task) => {
     ? task.deadline.deadlineDate
     : new Date();
   const formattedDeadline = setHours(new Date(deadlineDate), 24);
+  // const formattedDeadline = new Date(2023, 1, 19, 21, 19, 0);
 
   useEffect(() => {
     const dateIntervalId = setInterval(() => {
@@ -27,7 +28,9 @@ const useTimeLeft = (task) => {
     }
   );
 
-  return [formattedTimeLeft];
+  const isPassedDeadline = isBefore(Date.parse(formattedDeadline), new Date());
+
+  return [formattedTimeLeft, isPassedDeadline];
 };
 
 export { useTimeLeft };
