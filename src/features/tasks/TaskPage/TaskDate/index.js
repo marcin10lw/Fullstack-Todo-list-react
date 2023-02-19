@@ -8,7 +8,7 @@ const TaskDate = ({ task }) => {
     locale: cs,
   });
 
-  return <StyledTaskDate>Utworzono w: {formatedDate}</StyledTaskDate>;
+  return <StyledTaskDate>Utworzono: {formatedDate}</StyledTaskDate>;
 };
 
 export default TaskDate;
