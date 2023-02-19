@@ -23,7 +23,6 @@ const tasksSlice = createSlice({
             date: new Date(),
             deadline: {
               deadlineDate: "",
-              deadlinePassed: false,
             },
           },
         };
@@ -64,7 +63,7 @@ const tasksSlice = createSlice({
     addDeadlineDate: ({ tasks }, action) => {
       const { taskId, deadlineDate } = action.payload;
       const index = tasks.findIndex((task) => task.id === taskId);
-      
+
       tasks[index].deadline.deadlineDate = deadlineDate;
     },
   },
