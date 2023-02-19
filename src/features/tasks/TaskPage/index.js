@@ -9,6 +9,7 @@ import Deadline from "./Deadline";
 import NotesArea from "./NotesArea";
 import { TaskPageContent } from "./styled";
 import TaskDate from "./TaskDate";
+import TimeLeft from "./TimeLeft";
 
 const TaskPage = () => {
   const { id } = useParams();
@@ -28,7 +29,11 @@ const TaskPage = () => {
         }
         optionalContent={<TaskDate task={task} />}
       />
-      <Section header="Deadline" content={<Deadline task={task} />} />
+      <Section
+        header="Deadline"
+        content={<Deadline task={task} />}
+        optionalContent={<TimeLeft task={task} />}
+      />
       <Section header="Notatki" content={<NotesArea task={task} />} />
     </Container>
   );
