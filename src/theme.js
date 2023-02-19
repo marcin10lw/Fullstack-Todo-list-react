@@ -6,6 +6,8 @@ export const theme = {
     white: "#ffffff",
     lightGrey: "#c1c4c4",
     doveGrey: "#727272",
+    rose: "#aa7285",
+    hibiscus: "#b72b5b",
   },
   breakpoints: {
     mobile: 767,
