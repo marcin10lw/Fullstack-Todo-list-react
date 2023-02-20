@@ -4,7 +4,7 @@ import { InfoText } from "../InfoText";
 
 const TaskDate = ({ task }) => {
   const date = Date.parse(task.date);
-  const formatedDate = format(date, "eee, dd/MM/yyyy 'o' HH:mm:ss", {
+  const formatedDate = format(date, "eee dd/MM/yyyy 'o' HH:mm:ss", {
     locale: pl,
   });
 
