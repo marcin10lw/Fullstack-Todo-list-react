@@ -9,7 +9,7 @@ const useTimeLeft = (task) => {
     ? task.deadline.deadlineDate
     : new Date();
   const formattedDeadline = setHours(new Date(deadlineDate), 24);
-  // const formattedDeadline = new Date(2023, 1, 19, 21, 19, 0);
+  // const formattedDeadline = new Date(2023, 1, 20, 20, 44, 50);
 
   useEffect(() => {
     const dateIntervalId = setInterval(() => {
