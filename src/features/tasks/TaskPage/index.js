@@ -4,23 +4,16 @@ import { useParams } from "react-router-dom";
 import Container from "../../../common/Container/styled";
 import Header from "../../../common/Header";
 import Section from "../../../common/Section";
+import { Wrapper } from "../../../common/Wrapper";
 import { selectTaskById } from "../tasksSlice";
 import Deadline from "./Deadline";
 import NotesArea from "./NotesArea";
-import {
-  TaskPageContent,
-  TimePassedInfo,
-  TaskDoneInfo,
-  TaskNotDoneInfo,
-} from "./styled";
 import TaskDate from "./TaskDate";
 import TimeLeft from "./TimeLeft";
-import { useTimeLeft } from "./useTimeLeft";
 
 const TaskPage = () => {
   const { id } = useParams();
   const task = useSelector((state) => selectTaskById(state, id));
-  const [timeLeft, isPassedDeadline] = useTimeLeft(task);
 
   return (
     <Container>
@@ -29,9 +22,9 @@ const TaskPage = () => {
         header={task ? task.content : "Nie ma takiego zadania"}
         content={
           task && (
-            <TaskPageContent>
+            <Wrapper>
               <strong>Ukończone:</strong> {task.done ? "Tak" : "Nie"}
-            </TaskPageContent>
+            </Wrapper>
           )
         }
         optionalContent={<TaskDate task={task} />}
@@ -39,21 +32,24 @@ const TaskPage = () => {
       <Section
         header="Deadline"
         content={<Deadline task={task} />}
+        // optionalContent={
+        //   !task.done &&
+        //   task.deadline.deadlineDate !== "" &&
+        //   (!isPassedDeadline ? (
+        //     <TimeLeft task={task} timeLeft={timeLeft} />
+        //   ) : (
+        //     <div>
+        //       <TimePassedInfo>Czas minął:</TimePassedInfo>
+        //       {task.done ? (
+        //         <TaskDoneInfo>Ukończono zadanie</TaskDoneInfo>
+        //       ) : (
+        //         <TaskNotDoneInfo>Nie ukończono zadania</TaskNotDoneInfo>
+        //       )}
+        //     </div>
+        //   ))
+        // }
         optionalContent={
-          !task.done &&
-          task.deadline.deadlineDate !== "" &&
-          (!isPassedDeadline ? (
-            <TimeLeft task={task} timeLeft={timeLeft} />
-          ) : (
-            <div>
-              <TimePassedInfo>Czas minął:</TimePassedInfo>
-              {task.done ? (
-                <TaskDoneInfo>Ukończono zadanie</TaskDoneInfo>
-              ) : (
-                <TaskNotDoneInfo>Nie ukończono zadania</TaskNotDoneInfo>
-              )}
-            </div>
-          ))
+          task.deadline.deadlineDate && !task.done && <TimeLeft task={task} />
         }
       />
       <Section header="Notatki" content={<NotesArea task={task} />} />
