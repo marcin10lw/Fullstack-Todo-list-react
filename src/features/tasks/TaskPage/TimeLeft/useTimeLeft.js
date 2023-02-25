@@ -8,8 +8,6 @@ const useTimeLeft = (task) => {
   const deadlineDate = task.deadline.deadlineDate
     ? task.deadline.deadlineDate
     : new Date();
-  const formattedDeadline = setHours(new Date(deadlineDate), 24);
-  // const formattedDeadline = new Date(2023, 1, 20, 20, 44, 50);
 
   useEffect(() => {
     const dateIntervalId = setInterval(() => {
@@ -21,14 +19,14 @@ const useTimeLeft = (task) => {
 
   const formattedTimeLeft = formatDistanceStrict(
     Date.parse(currentDate),
-    Date.parse(formattedDeadline),
+    Date.parse(deadlineDate),
     {
       locale: pl,
       includeSeconds: true,
     }
   );
 
-  const isPassedDeadline = isBefore(Date.parse(formattedDeadline), new Date());
+  const isPassedDeadline = isBefore(Date.parse(deadlineDate), new Date());
 
   return [formattedTimeLeft, isPassedDeadline];
 };
