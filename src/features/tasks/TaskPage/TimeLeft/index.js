@@ -1,4 +1,4 @@
-import { TimePassedInfo, TaskNotDoneInfo } from "./styled";
+import { TimePassedInfo, TaskNotDoneInfo, TaskDoneInfo } from "./styled";
 import { InfoText } from "../InfoText";
 import { useTimeLeft } from "./useTimeLeft";
 
@@ -9,8 +9,12 @@ const TimeLeft = ({ task }) => {
     <InfoText>Pozostało: {timeLeft}</InfoText>
   ) : (
     <div>
-      <TimePassedInfo>Czas minął:</TimePassedInfo>
-      <TaskNotDoneInfo>Nie ukończono zadania</TaskNotDoneInfo>
+      <TimePassedInfo>Minął termin na ukończenie zadania:</TimePassedInfo>
+      {task.done ? (
+        <TaskDoneInfo>Ukończono</TaskDoneInfo>
+      ) : (
+        <TaskNotDoneInfo>Nie ukończono</TaskNotDoneInfo>
+      )}
     </div>
   );
 };
