@@ -15,4 +15,9 @@ export const DateInput = styled.input`
 export const Text = styled.span`
   color: ${({ theme }) => theme.colors.doveGrey};
   margin-right: 10px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+    display: block;
+    margin-bottom: 10px;
+  }
 `;
