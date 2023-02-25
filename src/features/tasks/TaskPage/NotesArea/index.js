@@ -1,23 +1,55 @@
 import { useDispatch } from "react-redux";
 import { Wrapper } from "../../../../common/Wrapper";
 import { addNoteContent } from "../../tasksSlice";
-import { StyledNotesArea } from "./styled";
+import { Editor } from "@tinymce/tinymce-react";
+import { useRef } from "react";
 
 const NotesArea = ({ task }) => {
+  const editorRef = useRef(null);
   const taskId = task.id;
-  const dispatch = useDispatch();
 
-  const onInputChange = ({ target }) => {
-    const noteValue = target.value;
-    dispatch(addNoteContent({ taskId, noteValue }));
-  };
+  const dispatch = useDispatch();
 
   return (
     <Wrapper>
-      <StyledNotesArea
-        placeholder="Wpisz swoje notatki..."
+      <Editor
+        apiKey="fopxtqzer870cih0vmnm8xp3fyt9evpk80jufssdmuy1n4cw"
+        onInit={(evt, editor) => (editorRef.current = editor)}
+        // initialValue="<p>This is the initial content of the editor.</p>"
         value={task.noteContent}
-        onChange={onInputChange}
+        onEditorChange={(noteValue) =>
+          dispatch(addNoteContent({ taskId, noteValue }))
+        }
+        
+        init={{
+          height: 300,
+          menubar: true,
+          plugins: [
+            "advlist",
+            "autolink",
+            "lists",
+            "link",
+            "image",
+            "charmap",
+            "preview",
+            "anchor",
+            "searchreplace",
+            "visualblocks",
+            "code",
+            "fullscreen",
+            "insertdatetime",
+            "media",
+            "code",
+            "help",
+            "wordcount",
+          ],
+          toolbar:
+            "undo redo | blocks | " +
+            "bold italic forecolor | alignleft aligncenter " +
+            "alignright alignjustify | bullist numlist outdent indent | " +
+            "removeformat | help",
+          content_style: "body { font-size:16px, border-radius:3px} ",
+        }}
       />
     </Wrapper>
   );
