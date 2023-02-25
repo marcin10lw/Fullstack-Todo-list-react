@@ -30,27 +30,9 @@ const TaskPage = () => {
         optionalContent={<TaskDate task={task} />}
       />
       <Section
-        header="Deadline"
+        header="Termin"
         content={<Deadline task={task} />}
-        // optionalContent={
-        //   !task.done &&
-        //   task.deadline.deadlineDate !== "" &&
-        //   (!isPassedDeadline ? (
-        //     <TimeLeft task={task} timeLeft={timeLeft} />
-        //   ) : (
-        //     <div>
-        //       <TimePassedInfo>Czas minął:</TimePassedInfo>
-        //       {task.done ? (
-        //         <TaskDoneInfo>Ukończono zadanie</TaskDoneInfo>
-        //       ) : (
-        //         <TaskNotDoneInfo>Nie ukończono zadania</TaskNotDoneInfo>
-        //       )}
-        //     </div>
-        //   ))
-        // }
-        optionalContent={
-          task.deadline.deadlineDate && !task.done && <TimeLeft task={task} />
-        }
+        optionalContent={task.deadline.deadlineDate && <TimeLeft task={task} />}
       />
       <Section header="Notatki" content={<NotesArea task={task} />} />
     </Container>
