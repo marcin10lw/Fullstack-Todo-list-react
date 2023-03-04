@@ -7,6 +7,7 @@ import Section from "../../../common/Section";
 import { Wrapper } from "../../../common/Wrapper";
 import { selectTaskById } from "../tasksSlice";
 import Deadline from "./Deadline";
+import EditContent from "./EditContent";
 import NotesArea from "./NotesArea";
 import TaskDate from "./TaskDate";
 import TimeLeft from "./TimeLeft";
@@ -20,6 +21,7 @@ const TaskPage = () => {
       <Header heading="Szczegóły zadania" />
       <Section
         header={task ? task.content : "Nie ma takiego zadania"}
+        optionalElement={<EditContent task={task} />}
         content={
           task && (
             <Wrapper>
@@ -27,14 +29,20 @@ const TaskPage = () => {
             </Wrapper>
           )
         }
-        optionalContent={<TaskDate task={task} />}
+        optionalContent={task && <TaskDate task={task} />}
       />
-      <Section
-        header="Termin"
-        content={<Deadline task={task} />}
-        optionalContent={task.deadline.deadlineDate && <TimeLeft task={task} />}
-      />
-      <Section header="Notatki" content={<NotesArea task={task} />} />
+      {task && (
+        <>
+          <Section
+            header="Termin"
+            content={<Deadline task={task} />}
+            optionalContent={
+              task.deadline.deadlineDate && <TimeLeft task={task} />
+            }
+          />
+          <Section header="Notatki" content={<NotesArea task={task} />} />
+        </>
+      )}
     </Container>
   );
 };
