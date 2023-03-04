@@ -18,28 +18,39 @@ YouCode is a frontend development online school with great community.
 
 ## Technologies used
 
-    -REACT.JS
-    -CREATE-REACT-APP
-    -WEBPACK
-    -BABEL
-    -STYLED COMPONENTS
-    -FLEXBOX
-    -REDUX-TOOLKIT
-    -REDUX-SAGA
-    -REACT-ROUTER
-    -ES6+ FEATURES
+    ✔ REACT.JS
+    ✔ CREATE-REACT-APP
+    ✔ WEBPACK
+    ✔ BABEL
+    ✔ STYLED COMPONENTS
+    ✔ FLEXBOX
+    ✔ REDUX-TOOLKIT
+    ✔ REDUX-SAGA
+    ✔ REACT-ROUTER
+    ✔ ES6+ FEATURES
+
+## How I try to stand out (features added independently)
+
+    ✔ The ability to change the title
+    ✔ Task creation date
+    ✔ Deadline functionality
+    ✔ Notes field bootstrapped with tiny
+    ✔ Tasks date filtering system
+
+## How I plan to develope it
+
+    🔲 Connecting with firebase
+    🔲 Creating user authentication with firebase
+    🔲 Creating firestore database
+    🔲 Creating firestore storage
 
 ## Page Preview
 
-![](todo-list-react-preview.gif)
+![](todo-list-react.gif)
 
 ## Page Not Found Preview
 
 ![](todo-list-react-pageNotFound-preview.gif)
-
-## Task Not Found Preview
-
-![](todo-list-react-taskNotFound-preview.gif)
 
 **Stay tuned for updates!**
 
