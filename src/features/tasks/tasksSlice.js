@@ -66,6 +66,11 @@ const tasksSlice = createSlice({
 
       tasks[index].deadline.deadlineDate = deadlineDate;
     },
+    editTaskContent: ({ tasks }, { payload }) => {
+      const { id, newContent } = payload;
+      const index = tasks.findIndex((task) => task.id == id);
+      tasks[index].content = newContent;
+    },
   },
 });
 
@@ -80,6 +85,7 @@ export const {
   fetchExampleTasksSuccess,
   fetchExampleTasksError,
   addDeadlineDate,
+  editTaskContent,
 } = tasksSlice.actions;
 
 const selectTasksState = (state) => state.tasks;
@@ -100,8 +106,25 @@ export const selectTaskById = (state, id) =>
 
 export const selectTaskByQuery = (state, query) => {
   const tasks = selectTasks(state);
+
+  const taskDateSorted = tasks
+    .slice()
+    .sort((a, b) =>
+      b.deadline.deadlineDate.localeCompare(a.deadline.deadlineDate)
+    );
+
   if (!query || query === "") {
-    return tasks;
+    let newTasks = [];
+
+    taskDateSorted.forEach((task) => {
+      if (task.deadline.deadlineDate !== "") {
+        newTasks.unshift(task);
+      } else {
+        newTasks.push(task);
+      }
+    });
+
+    return newTasks;
   }
 
   return tasks.filter(({ content }) =>

@@ -5,7 +5,6 @@ import {
   fetchExampleTasks,
   selectHideDone,
   selectTasks,
-  setExampleTasks,
   fetchExampleTasksSuccess,
   fetchExampleTasksError,
 } from "./tasksSlice";
