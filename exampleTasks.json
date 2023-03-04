@@ -1,12 +1,22 @@
 [
   {
     "content": "Oznaczyć to zadanie jako ukończone",
+    "noteContent": "",
     "done": false,
-    "id": "7E24mC_I-dcbtD-aS0PhN"
+    "id": "7E24mC_I-dcbtD-aS0PhN",
+    "deadline": {
+      "deadlineDate": "",
+      "deadlinePassed": false
+    }
   },
   {
     "content": "Ukończyć wszystkie zadania",
+    "noteContent": "",
     "done": false,
-    "id": "FisBnCoiHYKkG8w6OFVXR"
+    "id": "FisBnCoiHYKkG8w6OFVXR",
+    "deadline": {
+      "deadlineDate": "",
+      "deadlinePassed": false
+    }
   }
 ]
