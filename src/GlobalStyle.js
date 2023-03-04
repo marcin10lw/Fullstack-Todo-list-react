@@ -13,5 +13,7 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #ebecea;
   word-break: break-word;
+  position: relative;
+  min-height: 100vh;
 }
 `;
