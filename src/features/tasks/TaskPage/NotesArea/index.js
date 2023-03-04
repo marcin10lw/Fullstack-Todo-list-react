@@ -13,14 +13,12 @@ const NotesArea = ({ task }) => {
   return (
     <Wrapper>
       <Editor
-        apiKey="fopxtqzer870cih0vmnm8xp3fyt9evpk80jufssdmuy1n4cw"
+        apiKey="snj860048tc4wfi54meb9km6wfj1ryymek3iy8cumhagp54c"
         onInit={(evt, editor) => (editorRef.current = editor)}
-        // initialValue="<p>This is the initial content of the editor.</p>"
         value={task.noteContent}
         onEditorChange={(noteValue) =>
           dispatch(addNoteContent({ taskId, noteValue }))
         }
-        
         init={{
           height: 300,
           menubar: true,
