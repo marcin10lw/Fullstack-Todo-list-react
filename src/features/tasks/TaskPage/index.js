@@ -40,7 +40,7 @@ const TaskPage = () => {
               task.deadline.deadlineDate && <TimeLeft task={task} />
             }
           />
-          <Section header="Notatki" content={<NotesArea task={task} />} />
+          {/* <Section header="Notatki" content={<NotesArea task={task} />} /> */}
         </>
       )}
     </Container>
