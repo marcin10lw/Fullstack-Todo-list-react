@@ -22,37 +22,41 @@ const TasksList = () => {
   const dispatch = useDispatch();
 
   return (
-    <Tasks>
-      {tasks.map((task) => {
-        const deadline = task.deadline.deadlineDate;
+    tasks && (
+      <Tasks>
+        {tasks.map((task) => {
+          const deadline = task.deadline.deadlineDate;
 
-        return (
-          <Task key={task.id} hiden={task.done && hideDone}>
-            <Button
-              done={task.done}
-              onClick={() => dispatch(toggleDone(task.id))}
-            />
+          return (
+            <Task key={task.id} hiden={task.done && hideDone}>
+              <Button
+                done={task.done}
+                onClick={() => dispatch(toggleDone(task.id))}
+              />
 
-            <Content done={task.done}>
-              <StyledLink to={`/zadania/${task.id}`}>{task.content}</StyledLink>
-            </Content>
+              <Content done={task.done}>
+                <StyledLink to={`/zadania/${task.id}`}>
+                  {task.content}
+                </StyledLink>
+              </Content>
 
-            {deadline && (
-              <DeadlineDate>
-                {format(Date.parse(deadline), "dd/MM/yyyy", {
-                  locale: pl,
-                })}
-              </DeadlineDate>
-            )}
+              {deadline && (
+                <DeadlineDate>
+                  {format(Date.parse(deadline), "dd/MM/yyyy", {
+                    locale: pl,
+                  })}
+                </DeadlineDate>
+              )}
 
-            <Button
-              remove={true}
-              onClick={() => dispatch(deleteTask(task.id))}
-            />
-          </Task>
-        );
-      })}
-    </Tasks>
+              <Button
+                remove={true}
+                onClick={() => dispatch(deleteTask(task.id))}
+              />
+            </Task>
+          );
+        })}
+      </Tasks>
+    )
   );
 };
 
