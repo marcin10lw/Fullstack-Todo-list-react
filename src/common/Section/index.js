@@ -1,12 +1,13 @@
 import { StyledSection, Flex, Subheader } from "./styled";
 
-const Section = ({ header, content, optionalContent }) => (
+const Section = ({ header, content, optionalContent, optionalElement }) => (
   <StyledSection>
     <Flex>
       <Subheader>{header}</Subheader>
+      {optionalElement}
       {optionalContent}
     </Flex>
-      {content}
+    {content}
   </StyledSection>
 );
 
