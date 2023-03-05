@@ -5,6 +5,7 @@ export const Button = styled.button`
   background-color: transparent;
   color: teal;
   transition: color 150ms;
+  padding: 0;
 
   &:hover {
     color: ${({ theme }) => theme.colors.lightTeal};
