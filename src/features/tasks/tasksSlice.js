@@ -2,12 +2,16 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { getValueFromLocalStorage } from "./tasksLocalStorage";
 
 const tasksInitialState = getValueFromLocalStorage("tasks", []).map((task) => {
-  return {
-    ...task,
-    deadline: {
-      deadlineDate: "",
-    },
-  };
+  if (task.deadline === undefined) {
+    return {
+      ...task,
+      deadline: {
+        deadlineDate: "",
+      },
+    };
+  }
+
+  return task;
 });
 
 const tasksSlice = createSlice({
@@ -116,25 +120,25 @@ export const selectTaskById = (state, id) =>
 export const selectTaskByQuery = (state, query) => {
   const tasks = selectTasks(state);
 
-  // const taskDateSorted = tasks
-  //   .slice()
-  //   .sort((a, b) =>
-  //     b.deadline.deadlineDate.localeCompare(a.deadline.deadlineDate)
-  //   );
+  const taskDateSorted = tasks
+    .slice()
+    .sort((a, b) =>
+      b.deadline.deadlineDate.localeCompare(a.deadline.deadlineDate)
+    );
 
-  // if (!query || query === "") {
-  //   let newTasks = [];
+  if (!query || query === "") {
+    let newTasks = [];
 
-  //   taskDateSorted.forEach((task) => {
-  //     if (task.deadline.deadlineDate !== "") {
-  //       newTasks.unshift(task);
-  //     } else {
-  //       newTasks.push(task);
-  //     }
-  //   });
+    taskDateSorted.forEach((task) => {
+      if (task.deadline.deadlineDate !== "") {
+        newTasks.unshift(task);
+      } else {
+        newTasks.push(task);
+      }
+    });
 
-  //   return newTasks;
-  // }
+    return newTasks;
+  }
 
   if (!query || query === "") {
     return tasks;
