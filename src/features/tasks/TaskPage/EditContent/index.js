@@ -1,4 +1,11 @@
-import { Form, Input, SaveNewContent, EditButton, Overlay } from "./styled";
+import {
+  Form,
+  Input,
+  SaveNewContent,
+  EditButton,
+  Overlay,
+  EditTaskMessage,
+} from "./styled";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { editTaskContent } from "../../tasksSlice";
@@ -20,11 +27,14 @@ const EditContent = ({ task }) => {
       <EditButton onClick={() => setShowEditWindow(true)}>Edytuj</EditButton>
       <Overlay onClick={() => setShowEditWindow(false)} show={showEditWindow} />
       <Form onSubmit={onTaskContentChange} show={showEditWindow}>
+        <EditTaskMessage>Change task title</EditTaskMessage>
         <Input
           onChange={({ target }) => setNewTaskContent(target.value)}
           value={newTaskContent}
         />
-        <SaveNewContent>Zapisz</SaveNewContent>
+        <SaveNewContent onClick={() => setShowEditWindow(false)}>
+          Zapisz
+        </SaveNewContent>
       </Form>
     </>
   );
