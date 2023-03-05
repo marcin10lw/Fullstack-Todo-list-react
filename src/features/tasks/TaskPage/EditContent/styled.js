@@ -96,6 +96,7 @@ export const SaveNewContent = styled.button`
   border: none;
   font-weight: 700;
   letter-spacing: 0.5px;
+  white-space: nowrap;
   font-size: 18px;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.teal};
