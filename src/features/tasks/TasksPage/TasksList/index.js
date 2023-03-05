@@ -20,7 +20,6 @@ const TasksList = () => {
   const tasks = useSelector((state) => selectTaskByQuery(state, query));
   const hideDone = useSelector(selectHideDone);
   const dispatch = useDispatch();
-  console.log(tasks);
 
   return (
     tasks && (
