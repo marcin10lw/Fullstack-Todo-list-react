@@ -1,10 +1,23 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { getValueFromLocalStorage } from "./tasksLocalStorage";
 
+const tasksInitialState = getValueFromLocalStorage("tasks", []).map((task) => {
+  if (task.deadline.deadlineDate === null) {
+    return {
+      ...task,
+      deadline: {
+        deadlineDate: "",
+      },
+    };
+  }
+
+  return task;
+});
+
 const tasksSlice = createSlice({
   name: "tasks",
   initialState: {
-    tasks: getValueFromLocalStorage("tasks", []),
+    tasks: tasksInitialState,
     status: "success",
     hideDone: getValueFromLocalStorage("hideDone", false),
   },
