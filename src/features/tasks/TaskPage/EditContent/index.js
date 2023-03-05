@@ -27,7 +27,7 @@ const EditContent = ({ task }) => {
       <EditButton onClick={() => setShowEditWindow(true)}>Edytuj</EditButton>
       <Overlay onClick={() => setShowEditWindow(false)} show={showEditWindow} />
       <Form onSubmit={onTaskContentChange} show={showEditWindow}>
-        <EditTaskMessage>Change task title</EditTaskMessage>
+        <EditTaskMessage>Edytuj tytuł zadania</EditTaskMessage>
         <Input
           onChange={({ target }) => setNewTaskContent(target.value)}
           value={newTaskContent}
