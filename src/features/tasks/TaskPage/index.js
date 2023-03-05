@@ -29,7 +29,7 @@ const TaskPage = () => {
             </Wrapper>
           )
         }
-        optionalContent={task && <TaskDate task={task} />}
+        optionalContent={task.date && <TaskDate task={task} />}
       />
       {task && (
         <>
