@@ -5,6 +5,7 @@ const Section = ({ header, content, optionalContent, optionalElement }) => (
     <Flex>
       <Subheader>{header}</Subheader>
       {optionalElement}
+
       {optionalContent}
     </Flex>
     {content}

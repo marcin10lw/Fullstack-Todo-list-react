@@ -16,7 +16,7 @@ export const Flex = styled.div`
   padding: 20px;
   border-bottom: 2px solid #ebecea;
 
-  @media (max-width: ${({theme}) => theme.breakpoints.mobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     flex-direction: column;
   }
 `;
@@ -26,4 +26,9 @@ export const Subheader = styled.h2`
   padding: 0;
   font-weight: bold;
   align-self: flex-start;
+  font-size: 24px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+    font-size: 20px;
+  }
 `;
