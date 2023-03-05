@@ -140,10 +140,6 @@ export const selectTaskByQuery = (state, query) => {
     return newTasks;
   }
 
-  if (!query || query === "") {
-    return tasks;
-  }
-
   return tasks.filter(({ content }) =>
     content.toUpperCase().includes(query.toUpperCase())
   );
