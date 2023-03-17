@@ -1,26 +1,37 @@
 import {
   Form,
   Input,
-  SaveNewContent,
+  SaveButton,
   EditButton,
   Overlay,
   EditTaskMessage,
+  ErrorMessage,
 } from "./styled";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { editTaskContent } from "../../tasksSlice";
 
 const EditContent = ({ task }) => {
+  const dispatch = useDispatch();
+
   const [newTaskContent, setNewTaskContent] = useState(task.content);
   const [showEditWindow, setShowEditWindow] = useState(false);
-
-  const dispatch = useDispatch();
+  const [error, setError] = useState(false);
 
   const onTaskContentChange = (event) => {
     event.preventDefault();
 
     if (newTaskContent.trim() === "") return;
     dispatch(editTaskContent({ id: task.id, newContent: newTaskContent }));
+  };
+
+  const onSaveTaskContent = () => {
+    if (newTaskContent.trim() == "") {
+      setError(true);
+      return;
+    }
+    setShowEditWindow(false);
+    setError(false);
   };
 
   return (
@@ -30,12 +41,14 @@ const EditContent = ({ task }) => {
       <Form onSubmit={onTaskContentChange} show={showEditWindow}>
         <EditTaskMessage>Edytuj tytuł zadania</EditTaskMessage>
         <Input
+          placeholder="nowa treść zadania..."
           onChange={({ target }) => setNewTaskContent(target.value)}
           value={newTaskContent}
         />
-        <SaveNewContent onClick={() => setShowEditWindow(false)}>
-          Zapisz
-        </SaveNewContent>
+        <ErrorMessage error={error}>
+          Treść zadania nie może być pusta
+        </ErrorMessage>
+        <SaveButton onClick={onSaveTaskContent}>Zapisz</SaveButton>
       </Form>
     </>
   );
