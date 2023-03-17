@@ -19,6 +19,7 @@ const EditContent = ({ task }) => {
   const onTaskContentChange = (event) => {
     event.preventDefault();
 
+    if (newTaskContent.trim() === "") return;
     dispatch(editTaskContent({ id: task.id, newContent: newTaskContent }));
   };
 
