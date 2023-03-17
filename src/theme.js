@@ -8,6 +8,7 @@ export const theme = {
     doveGrey: "#727272",
     rose: "#aa7285",
     hibiscus: "#b72b5b",
+    orange: "#e86849",
   },
   breakpoints: {
     mobile: 767,
