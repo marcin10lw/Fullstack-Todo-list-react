@@ -45,11 +45,15 @@ const LoginPage = () => {
   };
 
   const signInWithGoogle = async () => {
+    setIsLoading(true);
+
     try {
       await signInWithPopup(auth, provider);
+      setIsLoading(false);
       toast.success("You're Logged In.");
       navigate("/tasks");
     } catch (error) {
+      setIsLoading(false);
       console.error(error);
     }
   };
