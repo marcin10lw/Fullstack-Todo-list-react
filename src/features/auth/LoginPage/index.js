@@ -13,8 +13,7 @@ import {
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../config/firebase";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import Loader from "../../../common/Loader";
 
 const LoginPage = () => {
@@ -45,7 +44,6 @@ const LoginPage = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <ToastContainer />
       <Container auth>
         <AuthSection>
           <AuthHeading>Login</AuthHeading>

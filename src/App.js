@@ -7,10 +7,13 @@ import ResetPage from "./features/auth/ResetPage";
 import AuthorPage from "./features/author/AuthorPage";
 import TaskPage from "./features/tasks/TaskPage";
 import TasksPage from "./features/tasks/TasksPage";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <HashRouter>
+    <>
+      <ToastContainer pauseOnFocusLoss={false} pauseOnHover={false} />
       <Navbar />
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
@@ -22,7 +25,7 @@ function App() {
         <Route path="/author" element={<AuthorPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </HashRouter>
+    </>
   );
 }
 
