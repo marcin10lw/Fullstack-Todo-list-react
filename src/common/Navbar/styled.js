@@ -66,3 +66,22 @@ export const StyledNavLink = styled(NavLink)`
     }
   }
 `;
+
+export const LogoutButton = styled(StyledNavLink)`
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  &:hover {
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: #ffffff;
+      position: absolute;
+      bottom: 1;
+    }
+  }
+`;
