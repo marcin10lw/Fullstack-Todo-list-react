@@ -1,25 +1,36 @@
 import Container from "../../../common/Container/styled";
 import { AiOutlineGoogle } from "react-icons/ai";
-import { Form, FormSection, Heading, Input, Button, Reset } from "./styled";
+import { Text } from "./styled";
 import { Link } from "react-router-dom";
+import {
+  AuthSection,
+  AuthHeading,
+  AuthForm,
+  AuthInput,
+  AuthButton,
+  AuthMessage,
+} from "../AuthStyled";
 
 const LoginPage = () => {
   return (
     <Container auth>
-      <FormSection>
-        <Heading>Login</Heading>
-        <Form>
-          <Input type="email" placeholder="Email..." required />
-          <Input type="password" placeholder="Password..." required />
-          <Button>Login</Button>
-        </Form>
-        <Reset>
+      <AuthSection>
+        <AuthHeading>Login</AuthHeading>
+        <AuthForm>
+          <AuthInput type="email" placeholder="Email..." required />
+          <AuthInput type="password" placeholder="Password..." required />
+          <AuthButton>Login</AuthButton>
+        </AuthForm>
+        <Text>
           <Link to="/reset">Forgot Password?</Link>
-        </Reset>
-        <Button google>
+        </Text>
+        <AuthButton google>
           <AiOutlineGoogle size={20} /> Login With Google
-        </Button>
-      </FormSection>
+        </AuthButton>
+        <AuthMessage>
+          Don't have an account? <Link to="/register">Register</Link>
+        </AuthMessage>
+      </AuthSection>
     </Container>
   );
 };
