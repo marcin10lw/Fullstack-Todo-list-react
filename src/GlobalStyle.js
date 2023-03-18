@@ -16,4 +16,9 @@ body {
   position: relative;
   min-height: 100vh;
 }
+
+#loader {
+  position: fixed;
+  top: 0;
+}
 `;
