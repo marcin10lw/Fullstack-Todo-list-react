@@ -81,7 +81,7 @@ const tasksSlice = createSlice({
     },
     editTaskContent: ({ tasks }, { payload }) => {
       const { id, newContent } = payload;
-      const index = tasks.findIndex((task) => task.id == id);
+      const index = tasks.findIndex((task) => task.id === id);
       tasks[index].content = newContent;
     },
   },

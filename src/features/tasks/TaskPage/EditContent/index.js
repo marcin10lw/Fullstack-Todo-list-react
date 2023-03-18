@@ -26,7 +26,7 @@ const EditContent = ({ task }) => {
   };
 
   const onSaveTaskContent = () => {
-    if (newTaskContent.trim() == "") {
+    if (newTaskContent.trim() === "") {
       setError(true);
       return;
     }
