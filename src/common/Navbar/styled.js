@@ -2,9 +2,21 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const white = ({ theme }) => theme.colors.white;
+const bpMobile = ({ theme }) => theme.breakpoints.mobile;
+
+export const NavWrapper = styled.div`
+  background-color: ${({ theme }) => theme.colors.teal};
+  position: relative;
+`;
 
 export const StyledNavbar = styled.nav`
   background-color: ${({ theme }) => theme.colors.teal};
+
+  @media (max-width: ${bpMobile}px) {
+    position: fixed;
+    height: 100vh;
+    width: 50vw;
+  }
 `;
 
 export const LinksList = styled.ul`
@@ -15,6 +27,12 @@ export const LinksList = styled.ul`
   align-items: center;
   justify-content: center;
   gap: 40px;
+
+  @media (max-width: ${bpMobile}px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 20px;
+  }
 `;
 
 export const StyledNavLink = styled(NavLink)`
