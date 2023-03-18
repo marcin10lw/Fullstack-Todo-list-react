@@ -9,6 +9,10 @@ const Navbar = () => {
         </li>
 
         <li>
+          <StyledNavLink to="/register">Register</StyledNavLink>
+        </li>
+
+        <li>
           <StyledNavLink to="/zadania">Zadania</StyledNavLink>
         </li>
 
