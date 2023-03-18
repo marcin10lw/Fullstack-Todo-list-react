@@ -1,7 +1,7 @@
 import Container from "../../../common/Container/styled";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { Text } from "./styled";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   AuthSection,
   AuthHeading,
@@ -11,8 +11,8 @@ import {
   AuthMessage,
 } from "../AuthStyled";
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../config/firebase";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../../config/firebase";
 import { toast } from "react-toastify";
 import Loader from "../../../common/Loader";
 
@@ -20,6 +20,8 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const loginUser = async (event) => {
     event.preventDefault();
@@ -29,7 +31,8 @@ const LoginPage = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       setIsLoading(false);
-      toast.success("Logged In.");
+      toast.success("You're Logged In.");
+      navigate("/tasks");
     } catch (error) {
       const errorCode = error.code;
       if (errorCode === "auth/wrong-password") {
@@ -38,6 +41,16 @@ const LoginPage = () => {
         toast.error("This account does not exist");
       }
       setIsLoading(false);
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+      toast.success("You're Logged In.");
+      navigate("/tasks");
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -67,8 +80,8 @@ const LoginPage = () => {
           <Text>
             <Link to="/reset">Forgot Password?</Link>
           </Text>
-          <AuthButton google>
-            <AiOutlineGoogle size={20} /> Login With Google
+          <AuthButton onClick={signInWithGoogle} google>
+            <AiOutlineGoogle size={20} /> Sign In With Google
           </AuthButton>
           <AuthMessage>
             Don't have an account? <Link to="/register">Register</Link>

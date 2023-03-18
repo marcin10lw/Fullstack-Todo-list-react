@@ -1,8 +1,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import Container from "../../../common/Container/styled";
 import Loader from "../../../common/Loader";
 import { auth } from "../../../config/firebase";
@@ -36,7 +35,7 @@ const RegisterPage = () => {
       await createUserWithEmailAndPassword(auth, email, password);
       setIsLoading(false);
       toast.success("Account Registered.");
-      // navigate("/tasks");
+      navigate("/login");
     } catch (error) {
       const errorCode = error.code;
       if (errorCode === "auth/email-already-in-use") {
@@ -49,7 +48,6 @@ const RegisterPage = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <ToastContainer pauseOnFocusLoss={false} />
       <Container auth>
         <AuthSection>
           <AuthHeading>Register</AuthHeading>
