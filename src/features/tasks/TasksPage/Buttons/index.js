@@ -18,14 +18,14 @@ const Buttons = () => {
     isThereAnyTask && (
       <Wrapper>
         <Button onClick={() => dispatch(toggleHideDone())}>
-          {hideDone ? "Pokaż ukończone" : "Ukryj ukończone"}
+          {hideDone ? "Show done" : "Hide done"}
         </Button>
 
         <Button
           onClick={() => dispatch(completeAll())}
           disabled={isEveryTaskDone}
         >
-          Ukończ wszystkie
+          Complete all
         </Button>
       </Wrapper>
     )

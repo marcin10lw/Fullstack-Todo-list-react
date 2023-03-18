@@ -35,11 +35,11 @@ const Form = () => {
       <StyledForm onSubmit={onFormSubmit}>
         <Input
           ref={inputRef}
-          placeholder="Co jest do zrobienia?"
+          placeholder="New task..."
           value={taskContent}
           onChange={onInputChange}
         />
-        <Button>Dodaj zadanie</Button>
+        <Button>Add new task</Button>
       </StyledForm>
     </Wrapper>
   );

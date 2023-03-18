@@ -18,30 +18,35 @@ const TaskPage = () => {
 
   return (
     <Container>
-      <Header heading="Szczegóły zadania" />
-      <Section
-        header={task ? task.content : "Nie ma takiego zadania"}
-        optionalElement={<EditContent task={task} />}
-        content={
-          task && (
-            <Wrapper>
-              <strong>Ukończone:</strong> {task.done ? "Tak" : "Nie"}
-            </Wrapper>
-          )
-        }
-        optionalContent={task.date && <TaskDate task={task} />}
-      />
-      {task && (
+      {task ? (
         <>
+          <Header heading="Task details" />
           <Section
-            header="Termin"
-            content={<Deadline task={task} />}
-            optionalContent={
-              task.deadline.deadlineDate && <TimeLeft task={task} />
+            header={task.content}
+            optionalElement={<EditContent task={task} />}
+            content={
+              <Wrapper>
+                <strong>Done:</strong> {task.done ? "Yes" : "No"}
+              </Wrapper>
             }
+            optionalContent={<TaskDate task={task} />}
           />
-          <Section header="Notatki" content={<NotesArea task={task} />} />
+
+          <>
+            {task.deadline && (
+              <Section
+                header="Deadline"
+                content={<Deadline task={task} />}
+                optionalContent={
+                  task.deadline.deadlineDate && <TimeLeft task={task} />
+                }
+              />
+            )}
+            <Section header="Notes" content={<NotesArea task={task} />} />
+          </>
         </>
+      ) : (
+        <Header heading="There is no such task" />
       )}
     </Container>
   );

@@ -11,15 +11,15 @@ function TasksPage() {
   return (
     <>
       <Container>
-        <Header heading="Lista zadań" />
+        <Header heading="Todo List" />
         <Section
-          header="Dodaj nowe zadanie"
+          header="Add new task"
           optionalContent={<DownloadButton />}
           content={<Form />}
         />
-        <Section header="Wyszukiwarka" content={<SearchTasks />} />
+        <Section header="Search" content={<SearchTasks />} />
         <Section
-          header="Lista zadań"
+          header="Tasks"
           optionalContent={<Buttons />}
           content={<TasksList />}
         />

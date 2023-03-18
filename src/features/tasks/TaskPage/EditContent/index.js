@@ -36,19 +36,19 @@ const EditContent = ({ task }) => {
 
   return (
     <>
-      <EditButton onClick={() => setShowEditWindow(true)}>Edytuj</EditButton>
+      <EditButton onClick={() => setShowEditWindow(true)}>
+        Edit content
+      </EditButton>
       <Overlay onClick={() => setShowEditWindow(false)} show={showEditWindow} />
       <Form onSubmit={onTaskContentChange} show={showEditWindow}>
-        <EditTaskMessage>Edytuj tytuł zadania</EditTaskMessage>
+        <EditTaskMessage>Edit task content</EditTaskMessage>
         <Input
-          placeholder="nowa treść zadania..."
+          placeholder="new task content"
           onChange={({ target }) => setNewTaskContent(target.value)}
           value={newTaskContent}
         />
-        <ErrorMessage error={error}>
-          Treść zadania nie może być pusta
-        </ErrorMessage>
-        <SaveButton onClick={onSaveTaskContent}>Zapisz</SaveButton>
+        <ErrorMessage error={error}>Task's content can't be empty</ErrorMessage>
+        <SaveButton onClick={onSaveTaskContent}>Save</SaveButton>
       </Form>
     </>
   );

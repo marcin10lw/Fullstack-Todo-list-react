@@ -9,31 +9,29 @@ const AuthorPage = () => {
   const { pathname } = useLocation();
 
   return (
-    <Container inAuthorPage={pathname === "/autor"}>
-      <Header heading="O autorze" />
+    <Container inAuthorPage={pathname === "/author"}>
+      <Header heading="" />
       <Section
         header="Marcin Augun"
         content={
           <Wrapper>
             <Paragraph>
-              Witam Ciebie na podstronie <strong>"O autorze"</strong> w
-              zrobionej przeze mnie <strong>Liście Zadań</strong>. Zadanie to
-              jest częścią kursu{" "}
+              Welcome to the <strong>"About"</strong> page in my{" "}
+              <strong>Todo List</strong>. This application is part of the{" "}
               <Link
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://youcode.pl/zostawiam-maila/"
               >
-                YouCode - Frontend Developer od podstaw
-              </Link>
-              .
+                YouCode - Frontend Developer from scratch
+              </Link>{" "}
+              course.
             </Paragraph>
             <Paragraph>
-              Kurs rozpocząłem w październiku 2022 roku i była to świetna
-              decyzja.
+              I started the course in October 2022 and it was a great decision.
             </Paragraph>
             <Paragraph>
-              Do moich zainteresowań należą programowanie (głównie frontend i{" "}
+              My interests include programming (mainly frontend and{" "}
               <Link
                 href="https://www.arduino.cc/"
                 target="_blank"
@@ -41,7 +39,7 @@ const AuthorPage = () => {
               >
                 arduino
               </Link>
-              ) i produkcja muzyczna.
+              ) and music production.
             </Paragraph>
           </Wrapper>
         }

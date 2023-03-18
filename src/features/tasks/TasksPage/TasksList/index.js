@@ -11,7 +11,7 @@ import {
 import { toggleDone, deleteTask } from "../../tasksSlice";
 import { useSearchParams } from "react-router-dom";
 import { format } from "date-fns";
-import { pl } from "date-fns/locale";
+import enUS from "date-fns/locale/en-US";
 
 const TasksList = () => {
   const [searchParams] = useSearchParams();
@@ -35,15 +35,15 @@ const TasksList = () => {
               />
 
               <Content done={task.done}>
-                <StyledLink to={`/zadania/${task.id}`}>
+                <StyledLink to={`/tasks/${task.id}`}>
                   {task.content}
                 </StyledLink>
               </Content>
 
               {deadline && (
                 <DeadlineDate>
-                  {format(Date.parse(deadline), "dd/MM/yyyy", {
-                    locale: pl,
+                  {format(Date.parse(deadline), "do 'of' MMMM yyyy", {
+                    locale: enUS,
                   })}
                 </DeadlineDate>
               )}

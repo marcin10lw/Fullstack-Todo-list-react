@@ -13,7 +13,7 @@ const Deadline = ({ task }) => {
   return (
     <Wrapper>
       <label>
-        <Text>Wybierz termin</Text>
+        <Text>Set deadline</Text>
         <DateInput
           value={task.deadline.deadlineDate}
           onChange={onInputChange}

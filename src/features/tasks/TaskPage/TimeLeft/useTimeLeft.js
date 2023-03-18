@@ -1,5 +1,5 @@
 import { formatDistanceStrict, isBefore } from "date-fns";
-import { pl } from "date-fns/locale";
+import enUS from "date-fns/locale/en-US";
 import { useEffect, useState } from "react";
 
 const useTimeLeft = (task) => {
@@ -21,7 +21,7 @@ const useTimeLeft = (task) => {
     Date.parse(currentDate),
     Date.parse(deadlineDate),
     {
-      locale: pl,
+      locale: enUS,
       includeSeconds: true,
     }
   );

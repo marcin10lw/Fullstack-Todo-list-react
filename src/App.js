@@ -13,13 +13,13 @@ function App() {
     <HashRouter>
       <Navbar />
       <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/reset" element={<ResetPage />} />
-        <Route path="/" element={<Navigate to="/zadania" />} />
-        <Route path="/zadania" element={<TasksPage />} />
-        <Route path="/zadania/:id" element={<TaskPage />} />
-        <Route path="/autor" element={<AuthorPage />} />
+        <Route path="/tasks" element={<TasksPage />} />
+        <Route path="/tasks/:id" element={<TaskPage />} />
+        <Route path="/author" element={<AuthorPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </HashRouter>

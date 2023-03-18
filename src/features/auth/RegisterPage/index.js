@@ -36,7 +36,7 @@ const RegisterPage = () => {
       await createUserWithEmailAndPassword(auth, email, password);
       setIsLoading(false);
       toast.success("Account Registered.");
-      // navigate("/zadania");
+      // navigate("/tasks");
     } catch (error) {
       const errorCode = error.code;
       if (errorCode === "auth/email-already-in-use") {

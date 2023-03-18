@@ -17,12 +17,11 @@ const DownloadButton = () => {
 
   let buttonText = "";
   if (status === "success") {
-    buttonText = "Pobierz przykładowe zadania";
+    buttonText = "Get example tasks";
   } else if (status === "pending") {
-    buttonText = "Ładowanie...";
+    buttonText = "Loading...";
   } else {
-    buttonText =
-      "Nie udało się pobrać przykładowych zadań. Odśwież i spróbuj ponownie 🙂";
+    buttonText = "Operation failed. Refresh and try again 🙂";
   }
 
   return (

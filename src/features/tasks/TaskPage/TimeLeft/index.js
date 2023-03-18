@@ -6,14 +6,14 @@ const TimeLeft = ({ task }) => {
   const [timeLeft, isPassedDeadline] = useTimeLeft(task);
 
   return !isPassedDeadline ? (
-    <InfoText>Pozostało: {timeLeft}</InfoText>
+    <InfoText>Time left: {timeLeft}</InfoText>
   ) : (
     <div>
-      <TimePassedInfo>Minął termin na ukończenie zadania:</TimePassedInfo>
+      <TimePassedInfo>Deadline passed:</TimePassedInfo>
       {task.done ? (
-        <TaskDoneInfo>Ukończono</TaskDoneInfo>
+        <TaskDoneInfo>Done</TaskDoneInfo>
       ) : (
-        <TaskNotDoneInfo>Nie ukończono</TaskNotDoneInfo>
+        <TaskNotDoneInfo>Not done</TaskNotDoneInfo>
       )}
     </div>
   );
