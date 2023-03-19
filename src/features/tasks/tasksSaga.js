@@ -7,7 +7,10 @@ import {
   selectTasks,
   fetchExampleTasksSuccess,
   fetchExampleTasksError,
+  addTask,
+  setIsLoadingTasks,
 } from "./tasksSlice";
+import { addTaskToFirebase } from "./tasksFirestoreFunctions";
 
 function* fetchExampleTasksWorker() {
   try {
@@ -19,14 +22,26 @@ function* fetchExampleTasksWorker() {
   }
 }
 
-function* saveValueInLocalStorageWorker() {
-  const tasks = yield select(selectTasks);
-  const hideDone = yield select(selectHideDone);
-  yield call(saveValueInLocalStorage, "tasks", tasks);
-  yield call(saveValueInLocalStorage, "hideDone", hideDone);
+function* addTaskWorker({ payload: content }) {
+  yield put(setIsLoadingTasks(true));
+  try {
+    yield call(addTaskToFirebase, content);
+    yield put(setIsLoadingTasks(false));
+  } catch (error) {
+    yield put(setIsLoadingTasks(false));
+    console.error(error);
+  }
 }
 
+// function* saveValueInLocalStorageWorker() {
+//   const tasks = yield select(selectTasks);
+//   const hideDone = yield select(selectHideDone);
+//   yield call(saveValueInLocalStorage, "tasks", tasks);
+//   yield call(saveValueInLocalStorage, "hideDone", hideDone);
+// }
+
 export function* tasksSaga() {
-  yield takeEvery("*", saveValueInLocalStorageWorker);
+  // yield takeEvery("*", saveValueInLocalStorageWorker);
+  yield takeEvery(addTask.type, addTaskWorker);
   yield takeEvery(fetchExampleTasks.type, fetchExampleTasksWorker);
 }

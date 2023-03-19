@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { getValueFromLocalStorage } from "./valuesLocalStorage";
 
 const tasksInitialState = getValueFromLocalStorage("tasks", []).map((task) => {
@@ -19,28 +19,15 @@ const tasksSlice = createSlice({
   initialState: {
     tasks: tasksInitialState,
     status: "success",
+    isLoadingTasks: false,
     hideDone: getValueFromLocalStorage("hideDone", false),
   },
   reducers: {
-    addTask: {
-      reducer({ tasks }, { payload: task }) {
-        tasks.push(task);
-      },
-      prepare(content) {
-        return {
-          payload: {
-            id: nanoid(),
-            content,
-            noteContent: "",
-            done: false,
-            date: new Date(),
-            deadline: {
-              deadlineDate: "",
-            },
-          },
-        };
-      },
+    setIsLoadingTasks: (state, { payload }) => {
+      state.isLoadingTasks = payload;
+      console.log(payload);
     },
+    addTask: () => {},
     toggleHideDone: (state) => {
       state.hideDone = !state.hideDone;
     },
@@ -88,6 +75,7 @@ const tasksSlice = createSlice({
 });
 
 export const {
+  setIsLoadingTasks,
   addTask,
   addNoteContent,
   toggleHideDone,
@@ -144,5 +132,7 @@ export const selectTaskByQuery = (state, query) => {
     content.toUpperCase().includes(query.toUpperCase())
   );
 };
+export const selectIsLoadingTasks = (state) =>
+  selectTasksState(state).isLoadingTasks;
 
 export default tasksSlice.reducer;

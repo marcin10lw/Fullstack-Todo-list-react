@@ -4,6 +4,8 @@ import { addTask } from "../../tasksSlice";
 import { useDispatch } from "react-redux";
 import { Input } from "../Input";
 import { Wrapper } from "../../../../common/Wrapper";
+import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
+import { db } from "../../../../config/firebase";
 
 const Form = () => {
   const [taskContent, setTaskContent] = useState("");
@@ -13,11 +15,7 @@ const Form = () => {
 
   const focusInput = () => inputRef.current.focus();
 
-  const onInputChange = (event) => {
-    setTaskContent(event.target.value);
-  };
-
-  const onFormSubmit = (event) => {
+  const onFormSubmit = async (event) => {
     event.preventDefault();
 
     const contentTrimmed = taskContent.trim();
@@ -37,7 +35,7 @@ const Form = () => {
           ref={inputRef}
           placeholder="New task..."
           value={taskContent}
-          onChange={onInputChange}
+          onChange={({ target }) => setTaskContent(target.value)}
         />
         <Button>Add new task</Button>
       </StyledForm>
