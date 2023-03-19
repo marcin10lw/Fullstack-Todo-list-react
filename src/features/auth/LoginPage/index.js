@@ -2,6 +2,12 @@ import Container from "../../../common/Container/styled";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { Text } from "./styled";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../../config/firebase";
+import { toast } from "react-toastify";
+import Loader from "../../../common/Loader";
+import { addUserToDatabase } from "../authFirebaseFunctions";
 import {
   AuthSection,
   AuthHeading,
@@ -10,11 +16,6 @@ import {
   AuthButton,
   AuthMessage,
 } from "../AuthStyled";
-import { useState } from "react";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../../../config/firebase";
-import { toast } from "react-toastify";
-import Loader from "../../../common/Loader";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -48,10 +49,12 @@ const LoginPage = () => {
     setIsLoading(true);
 
     try {
-      await signInWithPopup(auth, provider);
+      const { user } = await signInWithPopup(auth, provider);
       setIsLoading(false);
       toast.success("You're Logged In.");
       navigate("/tasks");
+
+      addUserToDatabase(user);
     } catch (error) {
       setIsLoading(false);
       console.error(error);

@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import Container from "../../../common/Container/styled";
 import Loader from "../../../common/Loader";
 import { auth } from "../../../config/firebase";
+import { addUserToDatabase } from "../authFirebaseFunctions";
 import {
   AuthButton,
   AuthForm,
@@ -32,16 +33,23 @@ const RegisterPage = () => {
     setIsLoading(true);
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const { user } = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       setIsLoading(false);
       toast.success("Account Registered.");
       navigate("/tasks");
+
+      addUserToDatabase(user);
     } catch (error) {
       const errorCode = error.code;
+      setIsLoading(false);
+
       if (errorCode === "auth/email-already-in-use") {
         toast.error("User with this email arleady exists");
       }
-      setIsLoading(false);
     }
   };
 
