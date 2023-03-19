@@ -35,11 +35,11 @@ const RegisterPage = () => {
       await createUserWithEmailAndPassword(auth, email, password);
       setIsLoading(false);
       toast.success("Account Registered.");
-      navigate("/login");
+      navigate("/tasks");
     } catch (error) {
       const errorCode = error.code;
       if (errorCode === "auth/email-already-in-use") {
-        toast.error("User with this email arleady exist");
+        toast.error("User with this email arleady exists");
       }
       setIsLoading(false);
     }

@@ -12,17 +12,12 @@ import { ToastContainer } from "react-toastify";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./config/firebase";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  removeActiveUser,
-  selectIsLoggedIn,
-  setActiveUser,
-} from "./features/auth/authSlice";
+import { useDispatch } from "react-redux";
+import { removeActiveUser, setActiveUser } from "./features/auth/authSlice";
+import RequireAuth from "./common/RequireAuth";
 
 function App() {
   const dispatch = useDispatch();
-
-  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -59,8 +54,22 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/reset" element={<ResetPage />} />
-        <Route path="/tasks" element={<TasksPage />} />
-        <Route path="/tasks/:id" element={<TaskPage />} />
+        <Route
+          path="/tasks"
+          element={
+            <RequireAuth>
+              <TasksPage />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/tasks/:id"
+          element={
+            <RequireAuth>
+              <TaskPage />
+            </RequireAuth>
+          }
+        />
         <Route path="/author" element={<AuthorPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

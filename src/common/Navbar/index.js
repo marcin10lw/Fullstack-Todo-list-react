@@ -33,9 +33,11 @@ const Navbar = () => {
     <NavWrapper>
       <StyledNavbar>
         <LinksList>
-          <li>
-            <StyledNavLink to="/tasks">Tasks</StyledNavLink>
-          </li>
+          {isLoggedIn && (
+            <li>
+              <StyledNavLink to="/tasks">Tasks</StyledNavLink>
+            </li>
+          )}
 
           <li>
             <StyledNavLink to="author">About</StyledNavLink>
