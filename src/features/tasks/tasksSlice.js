@@ -1,49 +1,37 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getValueFromLocalStorage } from "./valuesLocalStorage";
 
-const tasksInitialState = getValueFromLocalStorage("tasks", []).map((task) => {
-  if (task.deadline === undefined) {
-    return {
-      ...task,
-      deadline: {
-        deadlineDate: "",
-      },
-    };
-  }
-
-  return task;
-});
-
 const tasksSlice = createSlice({
   name: "tasks",
   initialState: {
-    tasks: tasksInitialState,
+    tasks: [],
     status: "success",
     isLoadingTasks: false,
     hideDone: getValueFromLocalStorage("hideDone", false),
   },
   reducers: {
-    setIsLoadingTasks: (state, { payload }) => {
-      state.isLoadingTasks = payload;
-      console.log(payload);
+    setStatus: (state, { payload }) => {
+      state.status = payload;
+    },
+    fetchTasks: (state) => {
+      state.status = "loading";
+    },
+    fetchTasksSuccess: (state, { payload: tasks }) => {
+      state.status = "success";
+      state.tasks = tasks;
+    },
+    fetchTasksError: (state, { payload: tasks }) => {
+      state.status = "error";
     },
     addTask: () => {},
+    deleteTask: () => {},
     toggleHideDone: (state) => {
       state.hideDone = !state.hideDone;
     },
     completeAll: ({ tasks }) => {
       tasks.forEach((task) => (task.done = true));
     },
-    toggleDone: ({ tasks }, { payload: taskId }) => {
-      const index = tasks.findIndex((task) => task.id === taskId);
-
-      tasks[index].done = !tasks[index].done;
-    },
-    deleteTask: ({ tasks }, { payload: taskId }) => {
-      const index = tasks.findIndex((task) => task.id === taskId);
-
-      tasks.splice(index, 1);
-    },
+    toggleDone: () => {},
     fetchExampleTasks: (state) => {
       state.status = "pending";
     },
@@ -75,7 +63,10 @@ const tasksSlice = createSlice({
 });
 
 export const {
-  setIsLoadingTasks,
+  fetchTasks,
+  fetchTasksSuccess,
+  fetchTasksError,
+  setStatus,
   addTask,
   addNoteContent,
   toggleHideDone,
@@ -132,7 +123,5 @@ export const selectTaskByQuery = (state, query) => {
     content.toUpperCase().includes(query.toUpperCase())
   );
 };
-export const selectIsLoadingTasks = (state) =>
-  selectTasksState(state).isLoadingTasks;
 
 export default tasksSlice.reducer;

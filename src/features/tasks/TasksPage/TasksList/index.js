@@ -31,13 +31,13 @@ const TasksList = () => {
             <Task key={task.id} hiden={task.done && hideDone}>
               <Button
                 done={task.done}
-                onClick={() => dispatch(toggleDone(task.id))}
+                onClick={() =>
+                  dispatch(toggleDone({ id: task.id, done: task.done }))
+                }
               />
 
               <Content done={task.done}>
-                <StyledLink to={`/tasks/${task.id}`}>
-                  {task.content}
-                </StyledLink>
+                <StyledLink to={`/tasks/${task.id}`}>{task.content}</StyledLink>
               </Content>
 
               {deadline && (

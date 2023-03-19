@@ -6,16 +6,22 @@ import Header from "../../../common/Header";
 import Section from "../../../common/Section";
 import Container from "../../../common/Container/styled";
 import SearchTasks from "./SearchTasks";
-import { useSelector } from "react-redux";
-import { selectIsLoadingTasks } from "../tasksSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTasks, selectStatus } from "../tasksSlice";
 import Loader from "../../../common/Loader";
+import { useEffect } from "react";
 
 function TasksPage() {
-  const isLoadingTasks = useSelector(selectIsLoadingTasks);
+  const status = useSelector(selectStatus);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTasks());
+  }, [dispatch]);
 
   return (
     <>
-      {isLoadingTasks && <Loader />}
+      {status === "loading" && <Loader />}
       <Container>
         <Header heading="Todo List" />
         <Section

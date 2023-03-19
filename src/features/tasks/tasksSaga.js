@@ -1,4 +1,11 @@
-import { call, delay, put, select, takeEvery } from "redux-saga/effects";
+import {
+  call,
+  delay,
+  put,
+  select,
+  takeEvery,
+  takeLatest,
+} from "redux-saga/effects";
 import { getExampleTasks } from "./getExampleTasks";
 import { saveValueInLocalStorage } from "./valuesLocalStorage";
 import {
@@ -7,10 +14,20 @@ import {
   selectTasks,
   fetchExampleTasksSuccess,
   fetchExampleTasksError,
+  setStatus,
+  fetchTasks,
+  fetchTasksError,
+  fetchTasksSuccess,
   addTask,
-  setIsLoadingTasks,
+  toggleDone,
+  deleteTask,
 } from "./tasksSlice";
-import { addTaskToFirebase } from "./tasksFirestoreFunctions";
+import {
+  addFirebaseTask,
+  deleteFirebaseTask,
+  getFirebaseTasks,
+  toggleFirebaseTaskDone,
+} from "./tasksFirebaseFunctions";
 
 function* fetchExampleTasksWorker() {
   try {
@@ -22,14 +39,46 @@ function* fetchExampleTasksWorker() {
   }
 }
 
-function* addTaskWorker({ payload: content }) {
-  yield put(setIsLoadingTasks(true));
+function* toggleDoneWorker({ payload }) {
+  yield put(setStatus("loading"));
+
+  const { id, done } = yield payload;
   try {
-    yield call(addTaskToFirebase, content);
-    yield put(setIsLoadingTasks(false));
+    yield call(toggleFirebaseTaskDone, id, done);
+    yield put(setStatus("success"));
   } catch (error) {
-    yield put(setIsLoadingTasks(false));
+    yield put(setStatus("error"));
+  }
+}
+
+function* addTaskWorker({ payload: content }) {
+  yield put(setStatus("loading"));
+  try {
+    yield call(addFirebaseTask, content);
+    yield put(setStatus("success"));
+  } catch (error) {
+    yield put(setStatus("error"));
     console.error(error);
+  }
+}
+
+function* deleteTaskWorker({ payload: id }) {
+  yield put(setStatus("loading"));
+  try {
+    yield call(deleteFirebaseTask, id);
+    yield put(setStatus("success"));
+  } catch (error) {
+    yield put(setStatus("error"));
+    console.error(error);
+  }
+}
+
+function* fetchTasksWorker() {
+  try {
+    const tasks = yield call(getFirebaseTasks);
+    yield put(fetchTasksSuccess(tasks));
+  } catch (error) {
+    yield put(fetchTasksError());
   }
 }
 
@@ -42,6 +91,9 @@ function* addTaskWorker({ payload: content }) {
 
 export function* tasksSaga() {
   // yield takeEvery("*", saveValueInLocalStorageWorker);
+  yield takeLatest(fetchTasks.type, fetchTasksWorker);
   yield takeEvery(addTask.type, addTaskWorker);
+  yield takeEvery(toggleDone.type, toggleDoneWorker);
+  yield takeEvery(deleteTask.type, deleteTaskWorker);
   yield takeEvery(fetchExampleTasks.type, fetchExampleTasksWorker);
 }
