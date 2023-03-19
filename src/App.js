@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Navbar from "./common/Navbar";
 import NotFoundPage from "./common/NotFoundPage";
 import LoginPage from "./features/auth/LoginPage";
@@ -15,22 +15,24 @@ import { auth } from "./config/firebase";
 import { useDispatch } from "react-redux";
 import { removeActiveUser, setActiveUser } from "./features/auth/authSlice";
 import RequireAuth from "./common/RequireAuth";
+import Loader from "./common/Loader";
+import { createNameFromEmail } from "./features/auth/createNameFromEmail";
 
 function App() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        const emailUserName = user.email
-          .split("@")[0]
-          .match(/[a-zA-Z0-9]+/g)
-          .join("");
+        navigate("/tasks");
 
         dispatch(
           setActiveUser({
             email: user.email,
-            userName: user.displayName ? user.displayName : emailUserName,
+            userName: user.displayName
+              ? user.displayName
+              : createNameFromEmail(user.email),
             userId: user.uid,
           })
         );
