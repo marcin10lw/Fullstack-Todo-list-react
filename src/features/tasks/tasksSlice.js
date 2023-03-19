@@ -13,35 +13,15 @@ const tasksSlice = createSlice({
     setStatus: (state, { payload }) => {
       state.status = payload;
     },
-    fetchTasks: (state) => {
-      state.status = "loading";
-    },
-    fetchTasksSuccess: (state, { payload: tasks }) => {
-      state.status = "success";
-      state.tasks = tasks;
-    },
-    fetchTasksError: (state, { payload: tasks }) => {
-      state.status = "error";
+    setTasks: (state, { payload }) => {
+      state.tasks = payload;
     },
     addTask: () => {},
     deleteTask: () => {},
     toggleHideDone: (state) => {
       state.hideDone = !state.hideDone;
     },
-    completeAll: ({ tasks }) => {
-      tasks.forEach((task) => (task.done = true));
-    },
     toggleDone: () => {},
-    fetchExampleTasks: (state) => {
-      state.status = "pending";
-    },
-    fetchExampleTasksSuccess: (state, { payload: exampleTasks }) => {
-      state.tasks = exampleTasks.map((task) => ({ ...task, date: new Date() }));
-      state.status = "success";
-    },
-    fetchExampleTasksError: (state) => {
-      state.status = "error";
-    },
     addNoteContent: ({ tasks }, action) => {
       const { taskId, noteValue } = action.payload;
       const index = tasks.findIndex((task) => task.id === taskId);
@@ -63,19 +43,13 @@ const tasksSlice = createSlice({
 });
 
 export const {
-  fetchTasks,
-  fetchTasksSuccess,
-  fetchTasksError,
+  setTasks,
   setStatus,
   addTask,
   addNoteContent,
   toggleHideDone,
-  completeAll,
   toggleDone,
   deleteTask,
-  fetchExampleTasks,
-  fetchExampleTasksSuccess,
-  fetchExampleTasksError,
   addDeadlineDate,
   editTaskContent,
 } = tasksSlice.actions;

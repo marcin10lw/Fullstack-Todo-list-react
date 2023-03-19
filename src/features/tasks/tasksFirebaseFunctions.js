@@ -3,7 +3,6 @@ import {
   collection,
   deleteDoc,
   doc,
-  getDocs,
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
@@ -20,16 +19,6 @@ export const addFirebaseTask = async (content) => {
       deadlineDate: "",
     },
   });
-};
-
-export const getFirebaseTasks = async () => {
-  let tasks = [];
-  const querySnapshot = await getDocs(collection(db, "tasks"));
-  querySnapshot.forEach((doc) => {
-    tasks.push({ ...doc.data(), id: doc.id });
-  });
-
-  return tasks;
 };
 
 export const toggleFirebaseTaskDone = async (id, done) => {

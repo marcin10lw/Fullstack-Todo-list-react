@@ -1,42 +1,52 @@
 import Form from "./Form";
 import TasksList from "./TasksList";
 import Buttons from "./Buttons";
-import DownloadButton from "./DownloadButton";
 import Header from "../../../common/Header";
 import Section from "../../../common/Section";
 import Container from "../../../common/Container/styled";
 import SearchTasks from "./SearchTasks";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchTasks, selectStatus } from "../tasksSlice";
-import Loader from "../../../common/Loader";
+import { useDispatch } from "react-redux";
+import { setStatus, setTasks } from "../tasksSlice";
 import { useEffect } from "react";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { auth, db } from "../../../config/firebase";
 
 function TasksPage() {
-  const status = useSelector(selectStatus);
   const dispatch = useDispatch();
 
+  const tasksRef = collection(db, "tasks");
+
   useEffect(() => {
-    dispatch(fetchTasks());
-  }, [dispatch]);
+    dispatch(setStatus("loading"));
+
+    const queryTasks = query(
+      tasksRef,
+      where("userId", "==", auth.currentUser.uid)
+    );
+    const unsub = onSnapshot(queryTasks, (snapshot) => {
+      let tasks = [];
+
+      snapshot.forEach((doc) => {
+        tasks.push({ ...doc.data(), id: doc.id });
+      });
+      dispatch(setTasks(tasks));
+      dispatch(setStatus("success"));
+    });
+
+    return () => unsub();
+  }, [dispatch, tasksRef]);
 
   return (
-    <>
-      {status === "loading" && <Loader />}
-      <Container>
-        <Header heading="Todo List" />
-        <Section
-          header="Add new task"
-          optionalContent={<DownloadButton />}
-          content={<Form />}
-        />
-        <Section header="Search" content={<SearchTasks />} />
-        <Section
-          header="Tasks"
-          optionalContent={<Buttons />}
-          content={<TasksList />}
-        />
-      </Container>
-    </>
+    <Container>
+      <Header heading="Todo List" />
+      <Section header="Add new task" content={<Form />} />
+      <Section header="Search" content={<SearchTasks />} />
+      <Section
+        header="Tasks"
+        optionalContent={<Buttons />}
+        content={<TasksList />}
+      />
+    </Container>
   );
 }
 
