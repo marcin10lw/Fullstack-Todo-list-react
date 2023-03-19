@@ -1,6 +1,6 @@
 import { call, delay, put, select, takeEvery } from "redux-saga/effects";
 import { getExampleTasks } from "./getExampleTasks";
-import { saveValueInLocalStorage } from "./tasksLocalStorage";
+import { saveValueInLocalStorage } from "./valuesLocalStorage";
 import {
   fetchExampleTasks,
   selectHideDone,

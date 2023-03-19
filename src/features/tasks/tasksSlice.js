@@ -1,5 +1,5 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
-import { getValueFromLocalStorage } from "./tasksLocalStorage";
+import { getValueFromLocalStorage } from "./valuesLocalStorage";
 
 const tasksInitialState = getValueFromLocalStorage("tasks", []).map((task) => {
   if (task.deadline === undefined) {
