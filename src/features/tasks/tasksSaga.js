@@ -1,9 +1,16 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { setStatus, addTask, toggleDone, deleteTask } from "./tasksSlice";
+import {
+  setStatus,
+  addTask,
+  toggleDone,
+  deleteTask,
+  updateTask,
+} from "./tasksSlice";
 import {
   addFirebaseTask,
   deleteFirebaseTask,
   toggleFirebaseTaskDone,
+  updateFirebaseDoc,
 } from "./tasksFirebaseFunctions";
 
 function* toggleDoneWorker({ payload }) {
@@ -40,8 +47,22 @@ function* deleteTaskWorker({ payload: id }) {
   }
 }
 
+function* updateTaskWorker({ payload }) {
+  const { id, updatedProp } = yield payload;
+  console.log(payload);
+  yield put(setStatus("loading"));
+  try {
+    yield call(updateFirebaseDoc, id, updatedProp);
+    yield put(setStatus("success"));
+  } catch (error) {
+    yield put(setStatus("error"));
+    console.error(error);
+  }
+}
+
 export function* tasksSaga() {
   yield takeEvery(addTask.type, addTaskWorker);
   yield takeEvery(toggleDone.type, toggleDoneWorker);
   yield takeEvery(deleteTask.type, deleteTaskWorker);
+  yield takeEvery(updateTask.type, updateTaskWorker);
 }

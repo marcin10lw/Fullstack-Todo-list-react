@@ -9,7 +9,7 @@ import {
 } from "./styled";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { editTaskContent } from "../../tasksSlice";
+import { updateTask } from "../../tasksSlice";
 
 const EditContent = ({ task }) => {
   const dispatch = useDispatch();
@@ -21,18 +21,18 @@ const EditContent = ({ task }) => {
   const onTaskContentChange = (event) => {
     event.preventDefault();
 
-    if (newTaskContent.trim() === "") return;
-    dispatch(editTaskContent({ id: task.id, newContent: newTaskContent }));
-  };
-
-  const onSaveTaskContent = () => {
     if (newTaskContent.trim() === "") {
       setError(true);
       return;
     }
+    dispatch(
+      updateTask({ id: task.id, updatedProp: { ["content"]: newTaskContent } })
+    );
     setShowEditWindow(false);
     setError(false);
   };
+
+  const onSaveTaskContent = () => {};
 
   return (
     <>

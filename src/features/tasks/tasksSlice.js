@@ -17,10 +17,11 @@ const tasksSlice = createSlice({
     },
     addTask: () => {},
     deleteTask: () => {},
+    toggleDone: () => {},
+    updateTask: () => {},
     toggleHideDone: (state) => {
       state.hideDone = !state.hideDone;
     },
-    toggleDone: () => {},
     addNoteContent: ({ tasks }, action) => {
       const { taskId, noteValue } = action.payload;
       const index = tasks.findIndex((task) => task.id === taskId);
@@ -33,11 +34,6 @@ const tasksSlice = createSlice({
 
       tasks[index].deadline.deadlineDate = deadlineDate;
     },
-    editTaskContent: ({ tasks }, { payload }) => {
-      const { id, newContent } = payload;
-      const index = tasks.findIndex((task) => task.id === id);
-      tasks[index].content = newContent;
-    },
   },
 });
 
@@ -45,12 +41,12 @@ export const {
   setTasks,
   setStatus,
   addTask,
+  updateTask,
   addNoteContent,
   toggleHideDone,
   toggleDone,
   deleteTask,
   addDeadlineDate,
-  editTaskContent,
 } = tasksSlice.actions;
 
 const selectTasksState = (state) => state.tasks;
