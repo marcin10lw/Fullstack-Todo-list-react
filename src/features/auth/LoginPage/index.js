@@ -3,11 +3,7 @@ import { AiOutlineGoogle } from "react-icons/ai";
 import { Text } from "./styled";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import {
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signInWithRedirect,
-} from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../../config/firebase";
 import { toast } from "react-toastify";
 import Loader from "../../../common/Loader";
@@ -53,7 +49,7 @@ const LoginPage = () => {
     setIsLoading(true);
 
     try {
-      const { user } = await signInWithRedirect(auth, provider);
+      const { user } = await signInWithPopup(auth, provider);
       setIsLoading(false);
       toast.success("You're Logged In.");
       navigate("/tasks");
