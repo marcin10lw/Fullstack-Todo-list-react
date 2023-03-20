@@ -30,3 +30,11 @@ export const toggleFirebaseTaskDone = async (id, done) => {
 export const deleteFirebaseTask = async (id) => {
   await deleteDoc(doc(db, "tasks", id));
 };
+
+export const updateFirebaseDoc = async (id, updatedProp) => {
+  const key = Object.keys(updatedProp)[0];
+  const value = Object.values(updatedProp)[0];
+  await updateDoc(doc(db, "tasks", id), {
+    [key]: value,
+  });
+};
