@@ -1,36 +1,38 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { createNameFromEmail } from "./createNameFromEmail";
 
 const authSlice = createSlice({
   name: "auth",
   initialState: {
+    isLoading: false,
     isLoggedIn: false,
-    userName: null,
-    email: null,
-    userId: null,
+    user: null,
   },
   reducers: {
-    setActiveUser: (state, { payload }) => {
-      const { email, userName, userId } = payload;
+    setActiveUser: (state, { payload: user }) => {
+      if (!user.displayName) {
+        state.user = { ...user, displayName: createNameFromEmail(user.email) };
+      } else {
+        state.user = user;
+      }
       state.isLoggedIn = true;
-      state.email = email;
-      state.userName = userName;
-      state.userId = userId;
     },
     removeActiveUser: (state) => {
       state.isLoggedIn = false;
-      state.email = null;
-      state.userName = null;
-      state.userId = null;
+      state.user = null;
+    },
+    setIsLoading: (state, { payload }) => {
+      state.isLoading = payload;
     },
   },
 });
 
-export const { setActiveUser, removeActiveUser } = authSlice.actions;
+export const { setActiveUser, removeActiveUser, setIsLoading } =
+  authSlice.actions;
 
 const selectAuthState = (state) => state.auth;
 export const selectIsLoggedIn = (state) => selectAuthState(state).isLoggedIn;
-export const selectEmail = (state) => selectAuthState(state).email;
-export const selectUserName = (state) => selectAuthState(state).userName;
-export const selectUserId = (state) => selectAuthState(state).userId;
+export const selectUser = (state) => selectAuthState(state).user;
+export const selectIsLoading = (state) => selectAuthState(state).isLoading;
 
 export default authSlice.reducer;

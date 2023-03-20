@@ -3,10 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { auth } from "../../config/firebase";
-import {
-  selectIsLoggedIn,
-  selectUserName,
-} from "../../features/auth/authSlice";
+import { selectIsLoggedIn, selectUser } from "../../features/auth/authSlice";
 import {
   StyledNavbar,
   LinksList,
@@ -17,7 +14,7 @@ import {
 
 const Navbar = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const userName = useSelector(selectUserName);
+  const user = useSelector(selectUser);
 
   const navigate = useNavigate();
 
@@ -54,7 +51,7 @@ const Navbar = () => {
               Logout
             </LogoutButton>
           )}
-          {userName && <span>Hi, {userName}</span>}
+          {user && <span>Hi, {user.displayName}</span>}
         </LinksList>
       </StyledNavbar>
     </NavWrapper>
