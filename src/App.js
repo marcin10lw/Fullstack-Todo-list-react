@@ -3,34 +3,35 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { removeActiveUser, setActiveUser } from "./features/auth/authSlice";
-import { createNameFromEmail } from "./features/auth/createNameFromEmail";
-import { useDispatch } from "react-redux";
+import {
+  removeActiveUser,
+  selectIsLoading,
+  setActiveUser,
+  setIsLoading,
+} from "./features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth } from "./config/firebase";
 import { setTasks } from "./features/tasks/tasksSlice";
+import Loader from "./common/Loader";
 
 const App = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
+    dispatch(setIsLoading(true));
+
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch(
-          setActiveUser({
-            email: user.email,
-            userName: user.displayName
-              ? user.displayName
-              : createNameFromEmail(user.email),
-            userId: user.uid,
-          })
-        );
-
+        dispatch(setActiveUser(user));
         navigate("/tasks");
+        dispatch(setIsLoading(false));
       } else {
         dispatch(removeActiveUser());
         dispatch(setTasks([]));
+        dispatch(setIsLoading(false));
         navigate("/login");
       }
     });
@@ -38,6 +39,7 @@ const App = () => {
 
   return (
     <>
+      {isLoading && <Loader />}
       <ToastContainer
         autoClose={2500}
         limit={3}
