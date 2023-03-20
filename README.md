@@ -1,5 +1,7 @@
 # Marcin Augun - To-do list in React
 
+## Development in progress...
+
 ## Description
 
 I present to you my To-do list created with React.js.
