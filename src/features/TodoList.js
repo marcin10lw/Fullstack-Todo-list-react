@@ -8,8 +8,37 @@ import AuthorPage from "./author/AuthorPage";
 import TaskPage from "./tasks/TaskPage";
 import TasksPage from "./tasks/TasksPage";
 import RequireAuth from "../common/RequireAuth";
+import { useDispatch } from "react-redux";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { setStatus, setTasks } from "./tasks/tasksSlice";
+import { auth, db } from "../config/firebase";
+import { useEffect } from "react";
 
 function TodoList() {
+  const dispatch = useDispatch();
+
+  const tasksRef = collection(db, "tasks");
+
+  useEffect(() => {
+    dispatch(setStatus("loading"));
+
+    const queryTasks = query(
+      tasksRef,
+      where("userId", "==", auth.currentUser.uid)
+    );
+    const unsub = onSnapshot(queryTasks, (snapshot) => {
+      let tasks = [];
+
+      snapshot.forEach((doc) => {
+        tasks.push({ ...doc.data(), id: doc.id });
+      });
+      dispatch(setTasks(tasks));
+      dispatch(setStatus("success"));
+    });
+
+    return () => unsub();
+  }, [dispatch, tasksRef]);
+
   return (
     <>
       <Navbar />
