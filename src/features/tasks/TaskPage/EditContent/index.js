@@ -1,15 +1,9 @@
-import {
-  Form,
-  Input,
-  EditButton,
-  Overlay,
-  EditTaskMessage,
-  ErrorMessage,
-} from "./styled";
+import { Form, Input, EditButton, Overlay, EditTaskMessage } from "./styled";
 import { SaveButton } from "../SaveButton";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateTask } from "../../tasksSlice";
+import { ErrorMessage } from "../ErrorMessage";
 
 const EditContent = ({ task }) => {
   const dispatch = useDispatch();

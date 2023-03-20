@@ -1,25 +1,41 @@
 import { useDispatch } from "react-redux";
 import { Wrapper } from "../../../../common/Wrapper";
-import { addNoteContent } from "../../tasksSlice";
-import { Editor } from "@tinymce/tinymce-react";
+import { updateTask } from "../../tasksSlice";
 import { useRef } from "react";
-import { SaveButton } from "../SaveButton";
+import { useState } from "react";
+import { ErrorMessage } from "../ErrorMessage";
+import { Editor } from "@tinymce/tinymce-react";
+import { NoteSaveButton } from "./styled";
 
 const NotesArea = ({ task }) => {
+  const [noteContent, setNoteContent] = useState(task.noteContent);
+  const [error, setError] = useState(true);
   const editorRef = useRef(null);
   const taskId = task.id;
 
   const dispatch = useDispatch();
 
+  const saveNote = () => {
+    if (noteContent.trim() === "") {
+      setError(true);
+      return;
+    }
+    dispatch(
+      updateTask({
+        id: taskId,
+        updatedProp: { ["noteContent"]: noteContent },
+      })
+    );
+    setError(false);
+  };
+
   return (
     <Wrapper>
       <Editor
-        apiKey="snj860048tc4wfi54meb9km6wfj1ryymek3iy8cumhagp54c"
-        onInit={(evt, editor) => (editorRef.current = editor)}
-        value={task.noteContent}
-        onEditorChange={(noteValue) =>
-          dispatch(addNoteContent({ taskId, noteValue }))
-        }
+        apiKey={process.env.REACT_APP_API_KEY_TINY}
+        onInit={(editor) => (editorRef.current = editor)}
+        value={noteContent}
+        onEditorChange={(noteValue) => setNoteContent(noteValue)}
         init={{
           height: 300,
           menubar: true,
@@ -50,7 +66,8 @@ const NotesArea = ({ task }) => {
           content_style: "body { font-size:16px, border-radius:3px} ",
         }}
       />
-      <SaveButton>Save note</SaveButton>
+      {/* <ErrorMessage error={error}>Note's content can't be empty</ErrorMessage> */}
+      <NoteSaveButton onClick={saveNote}>Save note</NoteSaveButton>
     </Wrapper>
   );
 };
