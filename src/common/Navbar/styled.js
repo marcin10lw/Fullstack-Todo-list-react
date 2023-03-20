@@ -13,9 +13,9 @@ export const StyledNavbar = styled.nav`
   background-color: ${({ theme }) => theme.colors.teal};
 
   @media (max-width: ${bpMobile}px) {
-    position: fixed;
+    /* position: fixed;
     height: 100vh;
-    width: 50vw;
+    width: 50vw; */
   }
 `;
 
