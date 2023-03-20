@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectHideDone, selectTaskByQuery } from "../../tasksSlice";
+import {
+  selectHideDone,
+  selectStatus,
+  selectTaskByQuery,
+} from "../../tasksSlice";
 import {
   Tasks,
   Task,
@@ -17,10 +21,13 @@ const TasksList = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("szukaj");
 
-  const tasks = useSelector((state) => selectTaskByQuery(state, query));
-  const hideDone = useSelector(selectHideDone);
   const dispatch = useDispatch();
 
+  const tasks = useSelector((state) => selectTaskByQuery(state, query));
+  const hideDone = useSelector(selectHideDone);
+  const status = useSelector(selectStatus);
+
+  const buttonDisabled = status === "loading";
   return (
     tasks && (
       <Tasks>
@@ -30,6 +37,7 @@ const TasksList = () => {
           return (
             <Task key={task.id} hiden={task.done && hideDone}>
               <Button
+                disabled={buttonDisabled}
                 done={task.done}
                 onClick={() =>
                   dispatch(toggleDone({ id: task.id, done: task.done }))
@@ -49,6 +57,7 @@ const TasksList = () => {
               )}
 
               <Button
+                disabled={buttonDisabled}
                 remove={true}
                 onClick={() => dispatch(deleteTask(task.id))}
               />
