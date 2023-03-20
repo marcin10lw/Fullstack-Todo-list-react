@@ -3,6 +3,7 @@ import { Wrapper } from "../../../../common/Wrapper";
 import { addNoteContent } from "../../tasksSlice";
 import { Editor } from "@tinymce/tinymce-react";
 import { useRef } from "react";
+import { SaveButton } from "../SaveButton";
 
 const NotesArea = ({ task }) => {
   const editorRef = useRef(null);
@@ -49,6 +50,7 @@ const NotesArea = ({ task }) => {
           content_style: "body { font-size:16px, border-radius:3px} ",
         }}
       />
+      <SaveButton>Save note</SaveButton>
     </Wrapper>
   );
 };

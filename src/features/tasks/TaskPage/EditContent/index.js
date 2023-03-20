@@ -1,12 +1,12 @@
 import {
   Form,
   Input,
-  SaveButton,
   EditButton,
   Overlay,
   EditTaskMessage,
   ErrorMessage,
 } from "./styled";
+import { SaveButton } from "../SaveButton";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateTask } from "../../tasksSlice";
