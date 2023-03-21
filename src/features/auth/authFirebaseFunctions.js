@@ -4,8 +4,13 @@ import { createNameFromEmail } from "./createNameFromEmail";
 
 export const addUserToDatabase = async (user) => {
   await setDoc(doc(db, "users", user.uid), {
-    name: user.displayName ? user.displayName : createNameFromEmail(user.email),
+    accessToken: user.accessToken,
     email: user.email,
+    photoURL: user.photoURL,
+    phoneNumber: user.phoneNumber,
+    displayName: user.displayName
+      ? user.displayName
+      : createNameFromEmail(user.email),
     userId: user.uid,
     timeStamp: serverTimestamp(),
   });
