@@ -16,6 +16,7 @@ import { toggleDone, deleteTask } from "../../tasksSlice";
 import { useSearchParams } from "react-router-dom";
 import { format } from "date-fns";
 import enUS from "date-fns/locale/en-US";
+import EditContent from "../../EditContent";
 
 const TasksList = () => {
   const [searchParams] = useSearchParams();
@@ -55,6 +56,8 @@ const TasksList = () => {
                   })}
                 </DeadlineDate>
               )}
+
+              <EditContent task={task} />
 
               <Button
                 disabled={buttonDisabled}

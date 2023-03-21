@@ -10,7 +10,7 @@ import { Wrapper } from "../../../common/Wrapper";
 import { auth, db } from "../../../config/firebase";
 import { selectTaskById, setStatus, setTasks } from "../tasksSlice";
 import Deadline from "./Deadline";
-import EditContent from "./EditContent";
+import EditContent from "../EditContent";
 import NotesArea from "./NotesArea";
 import TaskDate from "./TaskDate";
 import TimeLeft from "./TimeLeft";
