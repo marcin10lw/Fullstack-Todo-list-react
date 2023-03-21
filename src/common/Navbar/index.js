@@ -14,6 +14,7 @@ import {
   LogoutButton,
   HideNavbarButton,
   HideNavbarIcon,
+  NavOverlay,
 } from "./styled";
 
 const Navbar = () => {
@@ -36,6 +37,10 @@ const Navbar = () => {
   return (
     <NavWrapper>
       <button onClick={() => setShowNavbar(true)}>toggle</button>
+      <NavOverlay
+        showNavbar={showNavbar}
+        onClick={() => setShowNavbar(false)}
+      />
       <StyledNavbar showNavbar={showNavbar}>
         <NavList>
           {isLoggedIn && (

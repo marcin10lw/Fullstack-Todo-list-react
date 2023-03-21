@@ -7,12 +7,28 @@ const bpMobile = ({ theme }) => theme.breakpoints.mobile;
 
 export const NavWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.teal};
-  position: relative;
+  /* position: relative; */
+`;
+
+export const NavOverlay = styled.div`
+  position: fixed;
+  min-height: 100vh;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  background: #5866666b;
+  transition: all 250ms ease-in-out;
+
+  ${({ showNavbar }) =>
+    showNavbar &&
+    css`
+      left: 0;
+    `}
 `;
 
 export const StyledNavbar = styled.nav`
   background-color: ${({ theme }) => theme.colors.teal};
-  z-index: 10;
+  z-index: 999;
 
   @media (max-width: ${bpMobile}px) {
     position: fixed;
