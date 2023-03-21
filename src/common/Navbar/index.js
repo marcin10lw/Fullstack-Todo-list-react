@@ -1,4 +1,5 @@
 import { signOut } from "firebase/auth";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -6,13 +7,17 @@ import { auth } from "../../config/firebase";
 import { selectIsLoggedIn, selectUser } from "../../features/auth/authSlice";
 import {
   StyledNavbar,
-  LinksList,
+  NavList,
+  ListElement,
   StyledNavLink,
   NavWrapper,
   LogoutButton,
+  HideNavbarButton,
+  HideNavbarIcon,
 } from "./styled";
 
 const Navbar = () => {
+  const [showNavbar, setShowNavbar] = useState(false);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
 
@@ -23,36 +28,48 @@ const Navbar = () => {
       await signOut(auth);
       toast.success("Logout Successfully");
       navigate("/login");
-    } catch (error) {}
+    } catch (error) {
+      toast.error("Couldn't Logout...");
+    }
   };
 
   return (
     <NavWrapper>
-      <StyledNavbar>
-        <LinksList>
+      <button onClick={() => setShowNavbar(true)}>toggle</button>
+      <StyledNavbar showNavbar={showNavbar}>
+        <NavList>
           {isLoggedIn && (
-            <li>
+            <ListElement>
               <StyledNavLink to="/tasks">Tasks</StyledNavLink>
-            </li>
+            </ListElement>
           )}
 
-          <li>
+          <ListElement>
             <StyledNavLink to="author">About</StyledNavLink>
-          </li>
+          </ListElement>
 
           {!isLoggedIn && (
-            <li>
+            <ListElement>
               <StyledNavLink to="/login">Login</StyledNavLink>
-            </li>
+            </ListElement>
           )}
 
           {isLoggedIn && (
-            <LogoutButton as="button" onClick={logoutUser}>
-              Logout
-            </LogoutButton>
+            <ListElement>
+              <LogoutButton as="button" onClick={logoutUser}>
+                Logout
+              </LogoutButton>
+            </ListElement>
           )}
-          {user && <span>Hi, {user.displayName}</span>}
-        </LinksList>
+          {user && (
+            <ListElement>
+              <span>Hi, {user.displayName}</span>
+            </ListElement>
+          )}
+        </NavList>
+        <HideNavbarButton onClick={() => setShowNavbar(false)}>
+          <HideNavbarIcon />
+        </HideNavbarButton>
       </StyledNavbar>
     </NavWrapper>
   );
