@@ -1,8 +1,22 @@
 import styled, { css } from "styled-components";
-import { Button } from "../../TasksPage/Button";
+import { Button } from "../TasksPage/Button";
+import { FiEdit } from "react-icons/fi";
 
 export const EditButton = styled(Button)`
   margin-right: auto;
+`;
+
+export const EditIcon = styled(FiEdit)`
+  color: #1b4332;
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  transition: all 100ms ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
 `;
 
 export const EditTaskMessage = styled.p`
@@ -50,8 +64,7 @@ export const Overlay = styled.div`
 `;
 
 export const Form = styled.form`
-  display: block;
-  position: absolute;
+  position: fixed;
   top: -200%;
   left: 50%;
   max-width: 450px;

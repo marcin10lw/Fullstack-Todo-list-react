@@ -1,9 +1,16 @@
-import { Form, Input, EditButton, Overlay, EditTaskMessage } from "./styled";
-import { SaveButton } from "../SaveButton";
+import {
+  Form,
+  Input,
+  EditButton,
+  Overlay,
+  EditTaskMessage,
+  EditIcon,
+} from "./styled";
+import { SaveButton } from "../TaskPage/SaveButton";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateTask } from "../../tasksSlice";
-import { ErrorMessage } from "../ErrorMessage";
+import { updateTask } from "../tasksSlice";
+import { ErrorMessage } from "../TaskPage/ErrorMessage";
 
 const EditContent = ({ task }) => {
   const dispatch = useDispatch();
@@ -31,7 +38,7 @@ const EditContent = ({ task }) => {
   return (
     <>
       <EditButton onClick={() => setShowEditWindow(true)}>
-        Edit content
+        <EditIcon />
       </EditButton>
       <Overlay onClick={() => setShowEditWindow(false)} show={showEditWindow} />
       <Form onSubmit={onTaskContentChange} show={showEditWindow}>
