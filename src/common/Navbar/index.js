@@ -36,13 +36,15 @@ const Navbar = () => {
 
   return (
     <NavWrapper>
-      <button onClick={() => setShowNavbar(true)}>toggle</button>
+      <button onClick={() => setShowNavbar((showNavbar) => !showNavbar)}>
+        toggle
+      </button>
       <NavOverlay
         showNavbar={showNavbar}
         onClick={() => setShowNavbar(false)}
       />
       <StyledNavbar showNavbar={showNavbar}>
-        <NavList>
+        <NavList onClick={() => setShowNavbar(false)}>
           {isLoggedIn && (
             <ListElement>
               <StyledNavLink to="/tasks">Tasks</StyledNavLink>
