@@ -47,7 +47,7 @@ const TaskPage = () => {
     <Container>
       {task ? (
         <>
-          <Header heading="Task details" />
+          <Header heading="Task details" optionalContent={true} />
           <Section
             header={task.content}
             optionalElement={<EditContent task={task} />}
