@@ -10,11 +10,12 @@ import {
   NavList,
   ListElement,
   StyledNavLink,
-  NavWrapper,
   LogoutButton,
   HideNavbarButton,
   HideNavbarIcon,
+  OpenNavbarIcon,
   NavOverlay,
+  OpenNavbarButton,
 } from "./styled";
 
 const Navbar = () => {
@@ -35,10 +36,12 @@ const Navbar = () => {
   };
 
   return (
-    <NavWrapper>
-      <button onClick={() => setShowNavbar((showNavbar) => !showNavbar)}>
-        toggle
-      </button>
+    <>
+      <OpenNavbarButton
+        onClick={() => setShowNavbar((showNavbar) => !showNavbar)}
+      >
+        <OpenNavbarIcon />
+      </OpenNavbarButton>
       <NavOverlay
         showNavbar={showNavbar}
         onClick={() => setShowNavbar(false)}
@@ -78,7 +81,7 @@ const Navbar = () => {
           <HideNavbarIcon />
         </HideNavbarButton>
       </StyledNavbar>
-    </NavWrapper>
+    </>
   );
 };
 
