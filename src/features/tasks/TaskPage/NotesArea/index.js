@@ -9,15 +9,16 @@ import { NoteSaveButton } from "./styled";
 
 const NotesArea = ({ task }) => {
   const [noteContent, setNoteContent] = useState(task.noteContent);
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
   const editorRef = useRef(null);
   const taskId = task.id;
 
   const dispatch = useDispatch();
-
+  console.log(error);
   const saveNote = () => {
     if (noteContent.trim() === "") {
       setError(true);
+      setTimeout(() => setError(false), 2000);
       return;
     }
     dispatch(
@@ -66,8 +67,10 @@ const NotesArea = ({ task }) => {
           content_style: "body { font-size:16px, border-radius:3px} ",
         }}
       />
-      {/* <ErrorMessage error={error}>Note's content can't be empty</ErrorMessage> */}
-      <NoteSaveButton onClick={saveNote}>Save note</NoteSaveButton>
+
+      <NoteSaveButton disabled={error} onClick={saveNote}>
+        {error ? "Note's content can't be empty" : "Save note"}
+      </NoteSaveButton>
     </Wrapper>
   );
 };
