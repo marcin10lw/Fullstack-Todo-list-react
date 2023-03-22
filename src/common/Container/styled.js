@@ -6,6 +6,10 @@ const Container = styled.main`
   margin: auto;
   padding: 40px 20px;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+    padding-top: 70px;
+  }
+
   ${({ inAuthorPage }) =>
     inAuthorPage &&
     css`
