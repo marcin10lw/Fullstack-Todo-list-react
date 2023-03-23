@@ -1,10 +1,12 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, select, takeEvery } from "redux-saga/effects";
 import {
   setStatus,
   addTask,
   toggleDone,
   deleteTask,
   updateTask,
+  toggleHideDone,
+  selectHideDone,
 } from "./tasksSlice";
 import {
   addFirebaseTask,
@@ -12,6 +14,7 @@ import {
   toggleFirebaseTaskDone,
   updateFirebaseDoc,
 } from "./tasksFirebaseFunctions";
+import { saveValueInLocalStorage } from "./valuesLocalStorage";
 
 function* toggleDoneWorker({ payload }) {
   yield put(setStatus("loading"));
@@ -59,9 +62,15 @@ function* updateTaskWorker({ payload }) {
   }
 }
 
+function* saveHideDoneToLocaleStorageWorker() {
+  const hideDone = yield select(selectHideDone);
+  yield call(saveValueInLocalStorage, "hideDone", hideDone);
+}
+
 export function* tasksSaga() {
   yield takeEvery(addTask.type, addTaskWorker);
   yield takeEvery(toggleDone.type, toggleDoneWorker);
   yield takeEvery(deleteTask.type, deleteTaskWorker);
   yield takeEvery(updateTask.type, updateTaskWorker);
+  yield takeEvery(toggleHideDone.type, saveHideDoneToLocaleStorageWorker);
 }

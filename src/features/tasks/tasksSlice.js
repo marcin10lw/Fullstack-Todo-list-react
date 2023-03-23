@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getValueFromLocalStorage } from "./valuesLocalStorage";
 
 const tasksSlice = createSlice({
   name: "tasks",
@@ -6,7 +7,7 @@ const tasksSlice = createSlice({
     tasks: [],
     status: "success",
     isLoadingTasks: false,
-    hideDone: false,
+    hideDone: getValueFromLocalStorage("hideDone", false),
   },
   reducers: {
     setStatus: (state, { payload }) => {
