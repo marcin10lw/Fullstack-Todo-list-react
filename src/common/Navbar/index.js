@@ -16,6 +16,8 @@ import {
   OpenNavbarIcon,
   NavOverlay,
   OpenNavbarButton,
+  UserPhoto,
+  UserFlex,
 } from "./styled";
 
 const Navbar = () => {
@@ -73,7 +75,12 @@ const Navbar = () => {
           )}
           {user && (
             <ListElement>
-              <span>Hi, {user.displayName}</span>
+              {/* <UserFlex> */}
+                <StyledNavLink to="/user">
+                  Hi, {user.displayName}
+                  {user.photoURL && <UserPhoto src={user.photoURL} />}
+                </StyledNavLink>
+              {/* </UserFlex> */}
             </ListElement>
           )}
         </NavList>

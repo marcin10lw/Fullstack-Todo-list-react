@@ -169,3 +169,25 @@ export const HideNavbarButton = styled.button`
     }
   }
 `;
+
+// export const UserFlex = styled.div`
+//   display: flex;
+//   align-items: center;
+//   gap: 10px;
+
+//   @media (max-width: ${bpMobile}px) {
+//     gap: 4px;
+//   }
+// `;
+
+export const UserPhoto = styled.img`
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-left: 10px;
+
+  @media (max-width: ${bpMobile}px) {
+    width: 26px;
+    height: 26px;
+  }
+`;
