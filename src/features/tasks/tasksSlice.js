@@ -70,15 +70,13 @@ export const selectTaskByQuery = (state, query) => {
 
   const taskDateSorted = tasks
     .slice()
-    .sort((a, b) =>
-      b.deadline.deadlineDate.localeCompare(a.deadline.deadlineDate)
-    );
+    .sort((a, b) => b.deadline.localeCompare(a.deadline));
 
   if (!query || query === "") {
     let newTasks = [];
 
     taskDateSorted.forEach((task) => {
-      if (task.deadline.deadlineDate !== "") {
+      if (task.deadline !== "") {
         newTasks.unshift(task);
       } else {
         newTasks.push(task);

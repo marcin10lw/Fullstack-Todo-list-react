@@ -1,6 +1,6 @@
 import Form from "./Form";
 import TasksList from "./TasksList";
-import Buttons from "./Buttons";
+import Buttons from "./HideDone";
 import Header from "../../../common/Header";
 import Section from "../../../common/Section";
 import Container from "../../../common/Container/styled";

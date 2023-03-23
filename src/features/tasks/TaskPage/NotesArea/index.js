@@ -14,7 +14,7 @@ const NotesArea = ({ task }) => {
   const taskId = task.id;
 
   const dispatch = useDispatch();
-  console.log(error);
+
   const saveNote = () => {
     if (noteContent.trim() === "") {
       setError(true);

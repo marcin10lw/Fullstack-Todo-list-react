@@ -49,7 +49,6 @@ function* deleteTaskWorker({ payload: id }) {
 
 function* updateTaskWorker({ payload }) {
   const { id, updatedProp } = yield payload;
-  console.log(payload);
   yield put(setStatus("loading"));
   try {
     yield call(updateFirebaseDoc, id, updatedProp);
