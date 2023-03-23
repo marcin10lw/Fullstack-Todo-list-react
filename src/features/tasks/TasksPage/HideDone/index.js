@@ -4,7 +4,7 @@ import { Wrapper } from "./styled";
 import { Button } from "../Button";
 import { toggleHideDone } from "../../tasksSlice";
 
-const Buttons = () => {
+const HideDone = () => {
   const hideDone = useSelector(selectHideDone);
   const isThereAnyTask = useSelector(selectIsThereAnyTask);
   const dispatch = useDispatch();
@@ -20,4 +20,4 @@ const Buttons = () => {
   );
 };
 
-export default Buttons;
+export default HideDone;

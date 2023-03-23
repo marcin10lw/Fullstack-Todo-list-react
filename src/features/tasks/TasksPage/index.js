@@ -1,6 +1,6 @@
 import Form from "./Form";
 import TasksList from "./TasksList";
-import Buttons from "./HideDone";
+import HideDone from "./HideDone";
 import Header from "../../../common/Header";
 import Section from "../../../common/Section";
 import Container from "../../../common/Container/styled";
@@ -43,7 +43,7 @@ function TasksPage() {
       <Section header="Search" content={<SearchTasks />} />
       <Section
         header="Tasks"
-        optionalContent={<Buttons />}
+        optionalContent={<HideDone />}
         content={<TasksList />}
       />
     </Container>
