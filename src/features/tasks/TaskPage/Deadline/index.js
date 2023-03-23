@@ -15,7 +15,7 @@ const Deadline = ({ task }) => {
       <label>
         <Text>Set deadline</Text>
         <DateInput
-          value={task.deadline.deadlineDate}
+          value={task.deadline}
           onChange={onInputChange}
           name="date"
           type="datetime-local"

@@ -15,9 +15,7 @@ export const addFirebaseTask = async (content) => {
     noteContent: "",
     done: false,
     date: Date(serverTimestamp()),
-    deadline: {
-      deadlineDate: "",
-    },
+    deadline: "",
   });
 };
 

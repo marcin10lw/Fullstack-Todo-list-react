@@ -59,18 +59,13 @@ const TaskPage = () => {
             optionalContent={<TaskDate task={task} />}
           />
 
-          <>
-            {task.deadline && (
-              <Section
-                header="Deadline"
-                content={<Deadline task={task} />}
-                optionalContent={
-                  task.deadline.deadlineDate && <TimeLeft task={task} />
-                }
-              />
-            )}
-            <Section header="Notes" content={<NotesArea task={task} />} />
-          </>
+          <Section
+            header="Deadline"
+            content={<Deadline task={task} />}
+            optionalContent={task.deadline && <TimeLeft task={task} />}
+          />
+
+          <Section header="Notes" content={<NotesArea task={task} />} />
         </>
       ) : (
         <Header heading="There is no such task" />

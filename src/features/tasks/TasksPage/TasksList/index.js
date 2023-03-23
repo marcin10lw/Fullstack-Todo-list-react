@@ -33,7 +33,7 @@ const TasksList = () => {
     tasks && (
       <Tasks>
         {tasks.map((task) => {
-          const deadline = task.deadline.deadlineDate;
+          const deadline = task.deadline;
 
           return (
             <Task key={task.id} hiden={task.done && hideDone}>

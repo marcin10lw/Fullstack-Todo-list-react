@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 const useTimeLeft = (task) => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
-  const deadlineDate = task.deadline.deadlineDate
-    ? task.deadline.deadlineDate
+  const deadlineDate = task.deadline
+    ? task.deadline
     : new Date();
 
   useEffect(() => {
