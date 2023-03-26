@@ -14,6 +14,7 @@ import EditContent from "../EditContent";
 import NotesArea from "./NotesArea";
 import TaskDate from "./TaskDate";
 import TimeLeft from "./TimeLeft";
+import StorageForm from "./StorageForm";
 
 const TaskPage = () => {
   const { id } = useParams();
@@ -66,6 +67,8 @@ const TaskPage = () => {
           />
 
           <Section header="Notes" content={<NotesArea task={task} />} />
+
+          <Section header="Storage" content={<StorageForm />} />
         </>
       ) : (
         <Header heading="There is no such task" />
