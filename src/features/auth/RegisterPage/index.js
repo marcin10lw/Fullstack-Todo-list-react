@@ -71,7 +71,7 @@ const RegisterPage = () => {
             type="password"
             placeholder="Password..."
             required
-            pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$"
             title="Password must contain at least one number, one lowercase letter, one uppercase letter, and be at least 8 characters long."
           />
           <AuthInput
