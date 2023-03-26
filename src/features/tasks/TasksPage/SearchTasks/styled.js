@@ -8,18 +8,22 @@ export const SearchFlex = styled.div`
 export const ClearIcon = styled(MdClear)`
   width: 30px;
   height: 30px;
-  color: ${({ theme }) => theme.colors.doveGrey};
 `;
 
 export const ClearInput = styled.button`
-  display: inline-block;
+  color: ${({ theme }) => theme.colors.doveGrey};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -0.5px;
   border: 2px solid hsl(0, 0%, 84%);
   border-left: none;
   background-color: transparent;
   width: 40px;
   cursor: pointer;
+  transition: color 80ms ease-in-out;
 
   &:hover {
-    opacity: 0.8;
+    color: ${({ theme }) => theme.colors.lightGrey};
   }
 `;

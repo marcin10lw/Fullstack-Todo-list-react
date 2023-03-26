@@ -3,9 +3,12 @@ import { Wrapper } from "../../../../common/Wrapper";
 import { ClearInput, SearchFlex, ClearIcon } from "./styled";
 import { Input } from "../Input";
 import { useSearchParams } from "react-router-dom";
+import { useRef } from "react";
 
 const SearchTasks = () => {
   const [searchParams, setSearchParams] = useSearchParams({ szukaj: "" });
+  const inputRef = useRef(null);
+
   const query = searchParams.get("szukaj");
 
   const onInputChange = ({ target }) => {
@@ -17,16 +20,26 @@ const SearchTasks = () => {
     }
   };
 
+  const onClearInput = () => {
+    let value = inputRef.current.value;
+    if (value === "") return;
+
+    value = "";
+    searchParams.delete("szukaj");
+    setSearchParams(searchParams);
+  };
+
   return (
     <Wrapper>
       <SearchFlex>
         <Input
+          ref={inputRef}
           search
           placeholder="Search..."
           value={query || ""}
           onChange={onInputChange}
         />
-        <ClearInput>
+        <ClearInput onClick={onClearInput}>
           <ClearIcon />
         </ClearInput>
       </SearchFlex>
