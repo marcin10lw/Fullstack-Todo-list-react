@@ -16,7 +16,7 @@ export const Task = styled.li`
   align-items: center;
   padding: 10px;
   border-bottom: 2px solid hsl(0, 0%, 85%);
-  grid-gap: 10px;
+  grid-gap: 12px;
   transition: border-bottom 100ms ease-in-out;
 
   &:hover {

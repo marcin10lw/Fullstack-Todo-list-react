@@ -1,5 +1,6 @@
 import React from "react";
 import { Wrapper } from "../../../../common/Wrapper";
+import { ClearInput, SearchFlex, ClearIcon } from "./styled";
 import { Input } from "../Input";
 import { useSearchParams } from "react-router-dom";
 
@@ -18,11 +19,17 @@ const SearchTasks = () => {
 
   return (
     <Wrapper>
-      <Input
-        placeholder="Search..."
-        value={query || ""}
-        onChange={onInputChange}
-      />
+      <SearchFlex>
+        <Input
+          search
+          placeholder="Search..."
+          value={query || ""}
+          onChange={onInputChange}
+        />
+        <ClearInput>
+          <ClearIcon />
+        </ClearInput>
+      </SearchFlex>
     </Wrapper>
   );
 };
