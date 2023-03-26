@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
+import { FaUserCircle } from "react-icons/fa";
 import styled, { css } from "styled-components";
 
 const white = ({ theme }) => theme.colors.white;
@@ -181,9 +182,20 @@ export const HideNavbarButton = styled.button`
 // `;
 
 export const UserPhoto = styled.img`
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
+  margin-left: 10px;
+
+  @media (max-width: ${bpMobile}px) {
+    width: 26px;
+    height: 26px;
+  }
+`;
+
+export const UserDummy = styled(FaUserCircle)`
+  width: 30px;
+  height: 30px;
   margin-left: 10px;
 
   @media (max-width: ${bpMobile}px) {
