@@ -12,7 +12,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth } from "./config/firebase";
-import { setTasks } from "./features/tasks/tasksSlice";
 import Loader from "./common/Loader";
 
 const App = () => {
@@ -30,7 +29,6 @@ const App = () => {
         dispatch(setIsLoading(false));
       } else {
         dispatch(removeActiveUser());
-        dispatch(setTasks([]));
         dispatch(setIsLoading(false));
         navigate("/login");
       }
