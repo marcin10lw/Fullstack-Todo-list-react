@@ -4,8 +4,8 @@ import { addTask } from "../../tasksSlice";
 import { useDispatch } from "react-redux";
 import { Input } from "../Input";
 import { Wrapper } from "../../../../common/Wrapper";
-import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
-import { db } from "../../../../config/firebase";
+import { serverTimestamp } from "firebase/firestore";
+import { auth } from "../../../../config/firebase";
 
 const Form = () => {
   const [taskContent, setTaskContent] = useState("");
@@ -21,7 +21,17 @@ const Form = () => {
     const contentTrimmed = taskContent.trim();
 
     if (contentTrimmed) {
-      dispatch(addTask(contentTrimmed));
+      dispatch(
+        addTask({
+          userId: auth.currentUser.uid,
+          content: contentTrimmed,
+          noteContent: "",
+          done: false,
+          createdAt: serverTimestamp(),
+          date: Date(serverTimestamp()),
+          deadline: "",
+        })
+      );
     }
 
     setTaskContent("");
