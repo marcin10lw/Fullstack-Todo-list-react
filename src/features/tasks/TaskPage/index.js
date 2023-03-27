@@ -68,7 +68,7 @@ const TaskPage = () => {
 
           <Section header="Notes" content={<NotesArea task={task} />} />
 
-          <Section header="Storage" content={<StorageForm />} />
+          <Section header="Storage" optionalContent={<StorageForm />} />
         </>
       ) : (
         <Header heading="There is no such task" />
