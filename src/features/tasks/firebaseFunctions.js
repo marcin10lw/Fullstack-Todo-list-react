@@ -3,20 +3,12 @@ import {
   collection,
   deleteDoc,
   doc,
-  serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
-import { auth, db } from "../../config/firebase";
+import { db } from "../../config/firebase";
 
-export const addFirebaseTask = async (content) => {
-  await addDoc(collection(db, "tasks"), {
-    userId: auth.currentUser.uid,
-    content,
-    noteContent: "",
-    done: false,
-    date: Date(serverTimestamp()),
-    deadline: "",
-  });
+export const addFirebaseDoc = async (data, collectionName) => {
+  await addDoc(collection(db, collectionName), data);
 };
 
 export const toggleFirebaseTaskDone = async (id, done) => {
@@ -25,8 +17,8 @@ export const toggleFirebaseTaskDone = async (id, done) => {
   });
 };
 
-export const deleteFirebaseTask = async (id) => {
-  await deleteDoc(doc(db, "tasks", id));
+export const deleteFirebaseDoc = async (id, collectionName) => {
+  await deleteDoc(doc(db, collectionName, id));
 };
 
 export const updateFirebaseDoc = async (id, updatedProp) => {
