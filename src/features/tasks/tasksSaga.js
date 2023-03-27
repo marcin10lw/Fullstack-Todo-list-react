@@ -9,11 +9,11 @@ import {
   selectHideDone,
 } from "./tasksSlice";
 import {
-  addFirebaseTask,
-  deleteFirebaseTask,
+  addFirebaseDoc,
+  deleteFirebaseDoc,
   toggleFirebaseTaskDone,
   updateFirebaseDoc,
-} from "./tasksFirebaseFunctions";
+} from "./firebaseFunctions";
 import { saveValueInLocalStorage } from "./valuesLocalStorage";
 
 function* toggleDoneWorker({ payload }) {
@@ -28,10 +28,10 @@ function* toggleDoneWorker({ payload }) {
   }
 }
 
-function* addTaskWorker({ payload: content }) {
+function* addTaskWorker({ payload: data }) {
   yield put(setStatus("loading"));
   try {
-    yield call(addFirebaseTask, content);
+    yield call(addFirebaseDoc, data, "tasks");
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));
@@ -42,7 +42,7 @@ function* addTaskWorker({ payload: content }) {
 function* deleteTaskWorker({ payload: id }) {
   yield put(setStatus("loading"));
   try {
-    yield call(deleteFirebaseTask, id);
+    yield call(deleteFirebaseDoc, id, "tasks");
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));
