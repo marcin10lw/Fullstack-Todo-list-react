@@ -1,3 +1,4 @@
+import { serverTimestamp } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -34,7 +35,12 @@ const useStorage = (file, taskId) => {
         const url = await getDownloadURL(uploadTask.snapshot.ref);
         setUrl(url);
         await addFirebaseDoc(
-          { url, taskId, userId: auth.currentUser.uid },
+          {
+            url,
+            taskId,
+            userId: auth.currentUser.uid,
+            createdAt: serverTimestamp(),
+          },
           "images"
         );
       }
