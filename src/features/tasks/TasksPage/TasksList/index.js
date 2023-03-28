@@ -3,6 +3,7 @@ import {
   selectHideDone,
   selectStatus,
   selectTaskByQuery,
+  setTasks,
 } from "../../tasksSlice";
 import {
   Tasks,
@@ -17,16 +18,23 @@ import { useSearchParams } from "react-router-dom";
 import { format } from "date-fns";
 import enUS from "date-fns/locale/en-US";
 import EditContent from "../../EditContent";
+import { useEffect } from "react";
+import useFirestore from "../../useFirestore";
 
 const TasksList = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("szukaj");
 
-  const dispatch = useDispatch();
-
   const tasks = useSelector((state) => selectTaskByQuery(state, query));
   const hideDone = useSelector(selectHideDone);
   const status = useSelector(selectStatus);
+  const data = useFirestore("tasks");
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setTasks(data));
+  }, [data]);
 
   const buttonDisabled = status === "loading";
   return (

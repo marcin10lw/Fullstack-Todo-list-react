@@ -12,12 +12,12 @@ import NotesArea from "./NotesArea";
 import TaskDate from "./TaskDate";
 import TimeLeft from "./TimeLeft";
 import StorageForm from "./StorageForm";
-import useQuerySnapshot from "../useQuerySnapshot";
+import useFirestore from "../useFirestore";
 
 const TaskPage = () => {
   const { id } = useParams();
   const task = useSelector((state) => selectTaskById(state, id));
-  const data = useQuerySnapshot("tasks");
+  const data = useFirestore("tasks");
 
   const dispatch = useDispatch();
 

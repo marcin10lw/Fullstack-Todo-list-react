@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { auth, db } from "../../config/firebase";
 import { setStatus, setTasks } from "./tasksSlice";
 
-const useQuerySnapshot = (collectionName) => {
+const useFirestore = (collectionName) => {
   const [data, setData] = useState([]);
 
   const dispatch = useDispatch();
@@ -34,4 +34,4 @@ const useQuerySnapshot = (collectionName) => {
   return data;
 };
 
-export default useQuerySnapshot;
+export default useFirestore;

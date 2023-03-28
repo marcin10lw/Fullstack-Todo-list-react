@@ -5,19 +5,8 @@ import Header from "../../../common/Header";
 import Section from "../../../common/Section";
 import Container from "../../../common/Container/styled";
 import SearchTasks from "./SearchTasks";
-import useQuerySnapshot from "../useQuerySnapshot";
-import { useDispatch } from "react-redux";
-import { setTasks } from "../tasksSlice";
-import { useEffect } from "react";
 
 function TasksPage() {
-  const data = useQuerySnapshot("tasks");
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(setTasks(data));
-  }, [data]);
-
   return (
     <Container>
       <Header heading="Todo List" />
