@@ -13,6 +13,7 @@ import TaskDate from "./TaskDate";
 import TimeLeft from "./TimeLeft";
 import StorageForm from "./StorageForm";
 import useFirestore from "../useFirestore";
+import ImagesList from "./ImagesList";
 
 const TaskPage = () => {
   const { id } = useParams();
@@ -51,6 +52,7 @@ const TaskPage = () => {
 
           <Section
             header="Storage"
+            content={<ImagesList taskId={task.id} />}
             optionalContent={<StorageForm taskId={task.id} />}
           />
         </>

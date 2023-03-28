@@ -17,8 +17,6 @@ const useStorage = (file, taskId) => {
     const uniqueName = `${file.name}${v4()}`;
     const storageRef = ref(storage, `images/${uniqueName}`);
 
-    console.log(uniqueName);
-
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
