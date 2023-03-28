@@ -5,14 +5,18 @@ import { v4 } from "uuid";
 import { auth, storage } from "../../../config/firebase";
 import { addFirebaseDoc } from "../firebaseFunctions";
 
-const useStorage = (file) => {
+const useStorage = (file, taskId) => {
   const [progress, setProgress] = useState(0);
+  const [error, setError] = useState(false);
   const [url, setUrl] = useState("");
-  console.log(file);
 
   useEffect(() => {
+    if (!file) return;
+
     const uniqueName = `${file.name}${v4()}`;
     const storageRef = ref(storage, `images/${uniqueName}`);
+
+    console.log(uniqueName);
 
     const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -24,16 +28,20 @@ const useStorage = (file) => {
         setProgress(progress);
       },
       (error) => {
-        console.log(error);
+        setError(true);
       },
       async () => {
         const url = await getDownloadURL(uploadTask.snapshot.ref);
-        await addFirebaseDoc({ url, userId: auth.currentUser.id }, "images");
+        setUrl(url);
+        await addFirebaseDoc(
+          { url, taskId, userId: auth.currentUser.uid },
+          "images"
+        );
       }
     );
   }, [file]);
 
-  return { progress, url };
+  return { progress, error, url };
 };
 
 export default useStorage;

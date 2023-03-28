@@ -1,10 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { BsPlusCircle } from "react-icons/bs";
 
-export const Label = styled.label`
-  display: flex;
-  align-items: center;
-  gap: 10px;
+export const Form = styled.form`
   font-size: 16px;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.darkTeal};
@@ -13,6 +10,12 @@ export const Label = styled.label`
   &:hover {
     color: ${({ theme }) => theme.colors.teal};
   }
+`;
+
+export const Label = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 10px;
 `;
 
 export const AddFile = styled(BsPlusCircle)`
