@@ -28,13 +28,13 @@ const TasksList = () => {
   const tasks = useSelector((state) => selectTaskByQuery(state, query));
   const hideDone = useSelector(selectHideDone);
   const status = useSelector(selectStatus);
-  const data = useFirestore("tasks");
+  const { docs } = useFirestore("tasks");
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setTasks(data));
-  }, [data]);
+    dispatch(setTasks(docs));
+  }, [docs]);
 
   const buttonDisabled = status === "loading";
   return (

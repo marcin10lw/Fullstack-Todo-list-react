@@ -2,18 +2,15 @@ import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { auth, db } from "../../config/firebase";
-import { setStatus, setTasks } from "./tasksSlice";
 
 const useFirestore = (collectionName) => {
-  const [data, setData] = useState([]);
+  const [docs, setDocs] = useState([]);
 
   const dispatch = useDispatch();
 
   const tasksRef = collection(db, collectionName);
 
   useEffect(() => {
-    dispatch(setStatus("loading"));
-
     const queryTasks = query(
       tasksRef,
       where("userId", "==", auth.currentUser.uid)
@@ -24,14 +21,13 @@ const useFirestore = (collectionName) => {
       snapshot.forEach((doc) => {
         docData.push({ ...doc.data(), id: doc.id });
       });
-      setData(docData);
-      dispatch(setStatus("success"));
+      setDocs(docData);
     });
 
     return () => unsub();
-  }, []);
+  }, [collectionName]);
 
-  return data;
+  return { docs };
 };
 
 export default useFirestore;

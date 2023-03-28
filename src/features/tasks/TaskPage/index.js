@@ -17,13 +17,13 @@ import useFirestore from "../useFirestore";
 const TaskPage = () => {
   const { id } = useParams();
   const task = useSelector((state) => selectTaskById(state, id));
-  const data = useFirestore("tasks");
+  const { docs } = useFirestore("tasks");
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setTasks(data));
-  }, [data]);
+    dispatch(setTasks(docs));
+  }, [docs]);
 
   return (
     <Container>
