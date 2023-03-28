@@ -81,11 +81,15 @@ export const Form = styled.form`
   transition: opacity 300ms ease-in-out, top 1000ms ease-in-out,
     transform 500ms ease-in-out;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+    max-width: 80%;
+  }
+
   ${({ show }) =>
     show &&
     css`
       opacity: 1;
-      top: 39%;
+      top: 50%;
       transform: translate(-50%, -50%) scale(1);
       transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
     `};
