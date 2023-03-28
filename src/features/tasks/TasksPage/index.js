@@ -5,36 +5,18 @@ import Header from "../../../common/Header";
 import Section from "../../../common/Section";
 import Container from "../../../common/Container/styled";
 import SearchTasks from "./SearchTasks";
+import useQuerySnapshot from "../useQuerySnapshot";
 import { useDispatch } from "react-redux";
-import { auth, db } from "../../../config/firebase";
-import { collection, onSnapshot, query, where } from "firebase/firestore";
-import { setStatus, setTasks } from "../tasksSlice";
+import { setTasks } from "../tasksSlice";
 import { useEffect } from "react";
 
 function TasksPage() {
+  const data = useQuerySnapshot("tasks");
   const dispatch = useDispatch();
 
-  const tasksRef = collection(db, "tasks");
-
   useEffect(() => {
-    dispatch(setStatus("loading"));
-
-    const queryTasks = query(
-      tasksRef,
-      where("userId", "==", auth.currentUser.uid)
-    );
-    const unsub = onSnapshot(queryTasks, (snapshot) => {
-      let tasks = [];
-
-      snapshot.forEach((doc) => {
-        tasks.push({ ...doc.data(), id: doc.id });
-      });
-      dispatch(setTasks(tasks));
-      dispatch(setStatus("success"));
-    });
-
-    return () => unsub();
-  }, []);
+    dispatch(setTasks(data));
+  }, [data]);
 
   return (
     <Container>
