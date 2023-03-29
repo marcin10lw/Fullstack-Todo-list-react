@@ -12,21 +12,23 @@ import {
 } from "./styled";
 import { motion } from "framer-motion";
 import { deleteFirebaseDoc, deleteFirebaseFile } from "../../firebaseFunctions";
+import { useDispatch, useSelector } from "react-redux";
+import { selectImagesByTaskId, setImages } from "../imagesSlice";
 
 const ImagesList = ({ taskId }) => {
   const { docs } = useFirestore("images");
   const [isRemoving, setIsRemoving] = useState(false);
 
   const [selectedImage, setSelectedImage] = useState(null);
-  const [images, setImages] = useState([]);
 
+  const dispatch = useDispatch();
   useEffect(() => {
-    setImages(docs);
+    dispatch(setImages(docs));
   }, [docs]);
 
-  const filteredImages = images
-    .filter((image) => image.taskId === taskId)
-    .reverse();
+  const filteredImages = useSelector((state) =>
+    selectImagesByTaskId(state, taskId)
+  ).reverse();
 
   const onRemoveImage = async (event, imageId, name) => {
     event.stopPropagation();
