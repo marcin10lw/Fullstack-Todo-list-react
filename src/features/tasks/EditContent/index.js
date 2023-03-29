@@ -5,6 +5,8 @@ import {
   Overlay,
   EditTaskMessage,
   EditIcon,
+  CloseButton,
+  CloseButtonIcon,
 } from "./styled";
 import { SaveButton } from "../TaskPage/SaveButton";
 import { useState } from "react";
@@ -50,6 +52,9 @@ const EditContent = ({ task }) => {
         />
         <ErrorMessage error={error}>Task's content can't be empty</ErrorMessage>
         <SaveButton onClick={onSaveTaskContent}>Save</SaveButton>
+        <CloseButton type="button" onClick={() => setShowEditWindow(false)}>
+          <CloseButtonIcon />
+        </CloseButton>
       </Form>
     </>
   );

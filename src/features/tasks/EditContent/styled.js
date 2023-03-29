@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { Button } from "../TasksPage/Button";
 import { FiEdit } from "react-icons/fi";
+import { IoIosClose } from "react-icons/io";
 
 export const EditButton = styled(Button)`
   margin-right: auto;
@@ -90,9 +91,34 @@ export const Form = styled.form`
     css`
       opacity: 1;
       top: 50%;
+      box-shadow: 0px 0px 20px #1b2525;
       transform: translate(-50%, -50%) scale(1);
       transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
     `};
+`;
+
+export const CloseButton = styled.button`
+  width: 28px;
+  height: 28px;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  color: grey;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  transition: color 100ms ease-in-out;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.hibiscus};
+  }
+`;
+
+export const CloseButtonIcon = styled(IoIosClose)`
+  display: block;
+  width: 100%;
+  height: 100%;
 `;
 
 export const Input = styled.input`
