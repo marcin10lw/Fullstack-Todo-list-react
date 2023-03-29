@@ -9,14 +9,19 @@ export const StyledImagesList = styled.ul`
   gap: 20px;
 `;
 
-export const ListItem = styled.li``;
-
 export const ImageWrapper = styled.div`
   box-shadow: 0px 3px 20px #c1c1c1;
+  cursor: pointer;
+  transition: transform 80ms ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
 export const Image = styled.img`
   display: block;
+  border-radius: 3px;
   width: 100%;
   min-height: 100%;
   aspect-ratio: 1 / 1;
