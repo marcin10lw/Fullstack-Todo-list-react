@@ -171,16 +171,6 @@ export const HideNavbarButton = styled.button`
   }
 `;
 
-// export const UserFlex = styled.div`
-//   display: flex;
-//   align-items: center;
-//   gap: 10px;
-
-//   @media (max-width: ${bpMobile}px) {
-//     gap: 4px;
-//   }
-// `;
-
 export const UserPhoto = styled.img`
   width: 30px;
   height: 30px;
