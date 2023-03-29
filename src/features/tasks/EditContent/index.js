@@ -2,7 +2,6 @@ import {
   Form,
   Input,
   EditButton,
-  Overlay,
   EditTaskMessage,
   EditIcon,
   CloseButton,
@@ -37,34 +36,40 @@ const EditContent = ({ task }) => {
     setError(false);
   };
 
-  const onSaveTaskContent = () => {};
-
   return (
     <>
       <EditButton onClick={() => setShowEditWindow(true)}>
         <EditIcon />
       </EditButton>
       {showEditWindow && (
-        <Backdrop
-          as={motion.div}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          onClick={() => setShowEditWindow(false)}
-        />
+        <>
+          <Backdrop
+            as={motion.div}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            onClick={() => setShowEditWindow(false)}
+          >
+            <Form onSubmit={onTaskContentChange}>
+              <EditTaskMessage>Edit task content</EditTaskMessage>
+              <Input
+                placeholder="new task content"
+                onChange={({ target }) => setNewTaskContent(target.value)}
+                value={newTaskContent}
+              />
+              <ErrorMessage error={error}>
+                Task's content can't be empty
+              </ErrorMessage>
+              <SaveButton>Save</SaveButton>
+              <CloseButton
+                type="button"
+                onClick={() => setShowEditWindow(false)}
+              >
+                <CloseButtonIcon />
+              </CloseButton>
+            </Form>
+          </Backdrop>
+        </>
       )}
-      <Form onSubmit={onTaskContentChange} show={showEditWindow}>
-        <EditTaskMessage>Edit task content</EditTaskMessage>
-        <Input
-          placeholder="new task content"
-          onChange={({ target }) => setNewTaskContent(target.value)}
-          value={newTaskContent}
-        />
-        <ErrorMessage error={error}>Task's content can't be empty</ErrorMessage>
-        <SaveButton onClick={onSaveTaskContent}>Save</SaveButton>
-        <CloseButton type="button" onClick={() => setShowEditWindow(false)}>
-          <CloseButtonIcon />
-        </CloseButton>
-      </Form>
     </>
   );
 };

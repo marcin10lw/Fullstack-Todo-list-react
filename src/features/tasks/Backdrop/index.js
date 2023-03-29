@@ -10,5 +10,5 @@ export const Backdrop = styled.div`
   height: 100vh;
   width: 100%;
   z-index: 999;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
 `;

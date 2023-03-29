@@ -65,9 +65,7 @@ export const Overlay = styled.div`
 `;
 
 export const Form = styled.form`
-  position: fixed;
-  top: -200%;
-  left: 50%;
+  position: relative;
   max-width: 450px;
   width: 100%;
   border: 1px solid grey;
@@ -76,26 +74,11 @@ export const Form = styled.form`
   border: none;
   padding: 40px;
   gap: 20px;
-  z-index: 10;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.5);
-  transition: opacity 300ms ease-in-out, top 1000ms ease-in-out,
-    transform 500ms ease-in-out;
   z-index: 1000;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     max-width: 80%;
   }
-
-  ${({ show }) =>
-    show &&
-    css`
-      opacity: 1;
-      top: 50%;
-      box-shadow: 0px 0px 20px #1b2525;
-      transform: translate(-50%, -50%) scale(1);
-      transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
-    `};
 `;
 
 export const CloseButton = styled.button`
