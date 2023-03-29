@@ -42,7 +42,7 @@ export const RemoveImageIcon = styled(MdDeleteForever)`
 
 export const ImageWrapper = styled.div`
   position: relative;
-  box-shadow: 0px 3px 20px #c1c1c1;
+  box-shadow: 2px 2px 7px 0px hsl(0deg 0% 68%);
   cursor: pointer;
   transition: transform 80ms ease-in-out;
   overflow: hidden;
