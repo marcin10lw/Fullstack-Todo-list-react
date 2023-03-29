@@ -5,7 +5,8 @@ import {
   doc,
   updateDoc,
 } from "firebase/firestore";
-import { db } from "../../config/firebase";
+import { deleteObject, ref } from "firebase/storage";
+import { db, storage } from "../../config/firebase";
 
 export const addFirebaseDoc = async (data, collectionName) => {
   await addDoc(collection(db, collectionName), data);
@@ -27,4 +28,9 @@ export const updateFirebaseDoc = async (id, updatedProp) => {
   await updateDoc(doc(db, "tasks", id), {
     [key]: value,
   });
+};
+
+export const deleteFirebaseFile = async (folder, name) => {
+  const fileRef = ref(storage, `${folder}/${name}`);
+  await deleteObject(fileRef);
 };

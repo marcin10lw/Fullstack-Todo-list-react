@@ -38,6 +38,7 @@ const useStorage = (file, taskId) => {
             taskId,
             userId: auth.currentUser.uid,
             createdAt: serverTimestamp(),
+            name: uniqueName,
           },
           "images"
         );
