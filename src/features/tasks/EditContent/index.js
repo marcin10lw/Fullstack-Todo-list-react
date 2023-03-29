@@ -13,6 +13,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateTask } from "../tasksSlice";
 import { ErrorMessage } from "../TaskPage/ErrorMessage";
+import { Backdrop } from "../Backdrop";
+import { motion } from "framer-motion";
 
 const EditContent = ({ task }) => {
   const dispatch = useDispatch();
@@ -42,7 +44,14 @@ const EditContent = ({ task }) => {
       <EditButton onClick={() => setShowEditWindow(true)}>
         <EditIcon />
       </EditButton>
-      <Overlay onClick={() => setShowEditWindow(false)} show={showEditWindow} />
+      {showEditWindow && (
+        <Backdrop
+          as={motion.div}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          onClick={() => setShowEditWindow(false)}
+        />
+      )}
       <Form onSubmit={onTaskContentChange} show={showEditWindow}>
         <EditTaskMessage>Edit task content</EditTaskMessage>
         <Input

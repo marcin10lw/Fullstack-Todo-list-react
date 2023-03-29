@@ -81,6 +81,7 @@ export const Form = styled.form`
   transform: translate(-50%, -50%) scale(0.5);
   transition: opacity 300ms ease-in-out, top 1000ms ease-in-out,
     transform 500ms ease-in-out;
+  z-index: 1000;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     max-width: 80%;
