@@ -8,6 +8,7 @@ import AuthorPage from "./author/AuthorPage";
 import TaskPage from "./tasks/TaskPage";
 import TasksPage from "./tasks/TasksPage";
 import RequireAuth from "../common/RequireAuth";
+import UserPage from "./user/UserPage";
 
 function TodoList() {
   return (
@@ -35,6 +36,14 @@ function TodoList() {
           }
         />
         <Route path="/author" element={<AuthorPage />} />
+        <Route
+          path="user"
+          element={
+            <RequireAuth>
+              <UserPage />
+            </RequireAuth>
+          }
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
