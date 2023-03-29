@@ -26,7 +26,7 @@ const DeleteTask = ({ taskId }) => {
       <TaskButton
         disabled={buttonDisabled}
         remove={true}
-        onClick={() => setShowAlert(true)}
+        onClick={onDeleteTask}
       />
       {showAlert && (
         <ConfirmDelete>All files for this task will be lost</ConfirmDelete>
