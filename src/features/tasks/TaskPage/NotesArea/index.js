@@ -3,13 +3,13 @@ import { Wrapper } from "../../../../common/Wrapper";
 import { updateTask } from "../../tasksSlice";
 import { useRef } from "react";
 import { useState } from "react";
-import { ErrorMessage } from "../ErrorMessage";
 import { Editor } from "@tinymce/tinymce-react";
 import { NoteSaveButton } from "./styled";
 
 const NotesArea = ({ task }) => {
   const [noteContent, setNoteContent] = useState(task.noteContent);
   const [error, setError] = useState(false);
+
   const editorRef = useRef(null);
   const taskId = task.id;
 

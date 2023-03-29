@@ -5,7 +5,7 @@ const tasksSlice = createSlice({
   name: "tasks",
   initialState: {
     tasks: [],
-    status: "success",
+    status: null,
     isLoadingTasks: false,
     hideDone: getValueFromLocalStorage("hideDone", false),
   },
@@ -23,18 +23,6 @@ const tasksSlice = createSlice({
     toggleHideDone: (state) => {
       state.hideDone = !state.hideDone;
     },
-    addNoteContent: ({ tasks }, action) => {
-      const { taskId, noteValue } = action.payload;
-      const index = tasks.findIndex((task) => task.id === taskId);
-
-      tasks[index].noteContent = noteValue;
-    },
-    addDeadlineDate: ({ tasks }, action) => {
-      const { taskId, deadlineDate } = action.payload;
-      const index = tasks.findIndex((task) => task.id === taskId);
-
-      tasks[index].deadline.deadlineDate = deadlineDate;
-    },
   },
 });
 
@@ -43,11 +31,9 @@ export const {
   setStatus,
   addTask,
   updateTask,
-  addNoteContent,
   toggleHideDone,
   toggleDone,
   deleteTask,
-  addDeadlineDate,
 } = tasksSlice.actions;
 
 const selectTasksState = (state) => state.tasks;
