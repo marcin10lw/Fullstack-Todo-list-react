@@ -5,30 +5,25 @@ import {
   selectTaskByQuery,
   setTasks,
 } from "../../tasksSlice";
-import {
-  Tasks,
-  Task,
-  Content,
-  Button,
-  StyledLink,
-  DeadlineDate,
-} from "./styled";
-import { toggleDone, deleteTask } from "../../tasksSlice";
+import { Tasks, Task, Content, StyledLink, DeadlineDate } from "./styled";
+import { toggleDone } from "../../tasksSlice";
 import { useSearchParams } from "react-router-dom";
 import { format } from "date-fns";
 import enUS from "date-fns/locale/en-US";
 import EditContent from "../../EditContent";
 import { useEffect } from "react";
 import useFirestore from "../../useFirestore";
+import DeleteTask from "./DeleteTask";
+import { TaskButton } from "./TaskButton";
 
 const TasksList = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("szukaj");
+  const { docs } = useFirestore("tasks");
 
   const tasks = useSelector((state) => selectTaskByQuery(state, query));
   const hideDone = useSelector(selectHideDone);
   const status = useSelector(selectStatus);
-  const { docs } = useFirestore("tasks");
 
   const dispatch = useDispatch();
 
@@ -45,7 +40,7 @@ const TasksList = () => {
 
           return (
             <Task key={task.id} hiden={task.done && hideDone}>
-              <Button
+              <TaskButton
                 disabled={buttonDisabled}
                 done={task.done}
                 onClick={() =>
@@ -67,11 +62,7 @@ const TasksList = () => {
 
               <EditContent task={task} />
 
-              <Button
-                disabled={buttonDisabled}
-                remove={true}
-                onClick={() => dispatch(deleteTask(task.id))}
-              />
+              <DeleteTask taskId={task.id} />
             </Task>
           );
         })}

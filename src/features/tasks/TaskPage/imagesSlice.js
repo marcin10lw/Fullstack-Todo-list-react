@@ -16,7 +16,12 @@ export const { setImages } = imagesSlice.actions;
 
 const selectImagesState = (state) => state.images;
 export const selectImages = (state) => selectImagesState(state).images;
-export const selectImagesByTaskId = (state, taskId) =>
-  selectImages(state).filter((image) => image.taskId === taskId);
+export const selectImagesByTaskId = (state, taskId) => {
+  if (!taskId) {
+    return [];
+  }
+
+  return selectImages(state).filter((image) => image.taskId === taskId);
+};
 
 export default imagesSlice.reducer;

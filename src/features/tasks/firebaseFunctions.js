@@ -34,3 +34,10 @@ export const deleteFirebaseFile = async (folder, name) => {
   const fileRef = ref(storage, `${folder}/${name}`);
   await deleteObject(fileRef);
 };
+
+export const deleteFirebaseFilesByTask = (folder, images) => {
+  images.forEach((image) => {
+    const fileRef = ref(storage, `${folder}/${image.name}`);
+    deleteObject(fileRef);
+  });
+};
