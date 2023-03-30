@@ -69,6 +69,7 @@ export const Form = styled.form`
   max-width: 450px;
   width: 100%;
   border: 1px solid grey;
+  box-shadow: 0px 0px 20px #1b2525;
   background-color: white;
   border-radius: 5px;
   border: none;

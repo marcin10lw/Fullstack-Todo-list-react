@@ -49,7 +49,11 @@ const EditContent = ({ task }) => {
             animate={{ opacity: 1 }}
             onClick={() => setShowEditWindow(false)}
           >
-            <Form onSubmit={onTaskContentChange}>
+            <Form
+              as={motion.form}
+              onSubmit={onTaskContentChange}
+              onClick={(event) => event.stopPropagation()}
+            >
               <EditTaskMessage>Edit task content</EditTaskMessage>
               <Input
                 placeholder="new task content"
