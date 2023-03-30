@@ -1,17 +1,29 @@
 import styled from "styled-components";
 
-export const StyledDeleteTask = styled.div`
-  height: 30px;
-  position: relative;
+export const DeleteTaskWrapper = styled.div`
+  background-color: white;
+  box-shadow: 0px 0px 20px #1b2525;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 400px;
+  font-size: 18px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+    max-width: 80%;
+  }
 `;
 
-export const ConfirmDelete = styled.div`
-  max-width: 400px;
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+export const ConfirmDelete = styled.p`
+  text-align: center;
+  margin: 0 0 20px;
+  color: ${({ theme }) => theme.colors.hibiscus};
   width: 100%;
-  background-color: grey;
-  opacity: 0.8;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  font-weight: 700;
+  line-height: 1.5;
 `;

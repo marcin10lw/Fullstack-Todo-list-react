@@ -15,7 +15,6 @@ import { useEffect } from "react";
 import useFirestore from "../../useFirestore";
 import DeleteTask from "./DeleteTask";
 import { TaskButton } from "./TaskButton";
-import { motion } from "framer-motion";
 
 const TasksList = () => {
   const [searchParams] = useSearchParams();
@@ -40,12 +39,7 @@ const TasksList = () => {
           const deadline = task.deadline;
 
           return (
-            <Task
-              as={motion.li}
-              layout
-              key={task.id}
-              hiden={task.done && hideDone}
-            >
+            <Task key={task.id} hiden={task.done && hideDone}>
               <TaskButton
                 disabled={buttonDisabled}
                 done={task.done}
@@ -68,7 +62,7 @@ const TasksList = () => {
 
               <EditContent task={task} />
 
-              <DeleteTask taskId={task.id} />
+              <DeleteTask task={task} />
             </Task>
           );
         })}

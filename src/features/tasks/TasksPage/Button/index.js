@@ -20,4 +20,14 @@ export const Button = styled.button`
         color: #b76b6b;
       `}
   }
+
+  ${({ remove }) =>
+    remove &&
+    css`
+      color: ${({ theme }) => theme.colors.hibiscus};
+
+      &:hover {
+        color: ${({ theme }) => theme.colors.rose};
+      }
+    `}
 `;
