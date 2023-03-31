@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectHideDone, selectIsThereAnyTask } from "../../tasksSlice";
 import { Wrapper } from "./styled";
-import { Button } from "../Button";
+import { Button } from "../../../../common/Button";
 import { toggleHideDone } from "../../tasksSlice";
 
 const HideDone = () => {
