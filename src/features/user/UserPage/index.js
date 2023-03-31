@@ -3,7 +3,7 @@ import Container from "../../../common/Container/styled";
 import Header from "../../../common/Header";
 import Section from "../../../common/Section";
 import { selectUser } from "../../auth/authSlice";
-import UpdateGeneralForm from "./UpdateGeneralForm";
+import UpdateGeneralInfo from "./UpdateGeneralInfo";
 
 const UserPage = () => {
   const user = useSelector(selectUser);
@@ -13,7 +13,7 @@ const UserPage = () => {
       <Header heading={`Hi, ${user.displayName}!`} />
       <Section
         header={"Update general information"}
-        content={<UpdateGeneralForm />}
+        content={<UpdateGeneralInfo />}
       />
     </Container>
   );
