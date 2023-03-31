@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import useStorage from "../useStorage";
+import useStorage from "../../../useStorage";
 import { AddFile, AddFileInput, ErrorText, Label, Form } from "./styled";
 
 const StorageForm = ({ taskId }) => {
   const [file, setFile] = useState(null);
   const [fileError, setFileError] = useState(false);
 
-  const { progress, error, url } = useStorage(file, taskId);
+  const { progress, error, url } = useStorage(file, "images", taskId);
 
   useEffect(() => {
     setFile(null);
