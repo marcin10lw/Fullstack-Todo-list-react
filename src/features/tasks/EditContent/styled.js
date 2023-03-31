@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { Button } from "../TasksPage/Button";
+import { Button } from "../../../common/Button";
 import { FiEdit } from "react-icons/fi";
 import { IoIosClose } from "react-icons/io";
 

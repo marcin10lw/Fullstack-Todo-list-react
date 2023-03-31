@@ -7,7 +7,7 @@ import { selectImages } from "../../../TaskPage/imagesSlice";
 import { deleteTask, selectStatus } from "../../../tasksSlice";
 import { TaskButton } from "../TaskButton";
 import { DeleteTaskWrapper, ConfirmDelete, ButtonsWrapper } from "./styled";
-import { Button } from "../../Button";
+import { Button } from "../../../../../common/Button";
 
 const DeleteTask = ({ task }) => {
   const [showAlert, setShowAlert] = useState(false);
