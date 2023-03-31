@@ -10,6 +10,7 @@ const authSlice = createSlice({
   },
   reducers: {
     setActiveUser: (state, { payload: user }) => {
+      console.log(user)
 
       if (!user.displayName) {
         state.user = { ...user, displayName: createNameFromEmail(user.email) };

@@ -12,6 +12,6 @@ export const addUserToDatabase = async (user) => {
       ? user.displayName
       : createNameFromEmail(user.email),
     userId: user.uid,
-    timeStamp: serverTimestamp(),
+    createdAt: serverTimestamp(),
   });
 };
