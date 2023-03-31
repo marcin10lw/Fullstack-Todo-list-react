@@ -3,13 +3,10 @@ import Header from "../../../common/Header";
 import Section from "../../../common/Section";
 import { Paragraph, Link } from "./styled";
 import { Wrapper } from "../../../common/Wrapper";
-import { useLocation } from "react-router-dom";
 
 const AuthorPage = () => {
-  const { pathname } = useLocation();
-
   return (
-    <Container inAuthorPage={pathname === "/author"}>
+    <Container narrow>
       <Header heading="" />
       <Section
         header="Marcin Augun"

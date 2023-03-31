@@ -10,8 +10,8 @@ const Container = styled.main`
     padding-top: 70px;
   }
 
-  ${({ inAuthorPage }) =>
-    inAuthorPage &&
+  ${({ narrow }) =>
+    narrow &&
     css`
       max-width: 900px;
     `}
