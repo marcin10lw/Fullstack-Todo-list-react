@@ -15,7 +15,10 @@ const useStorage = (file, folder, taskId) => {
     if (!file) return;
 
     const uniqueName = `${file.name}${v4()}`;
-    const storageRef = ref(storage, `${folder}/${uniqueName}`);
+    const storageRef = ref(
+      storage,
+      `${folder}/${auth.currentUser.uid}/${uniqueName}`
+    );
 
     const uploadTask = uploadBytesResumable(storageRef, file);
 

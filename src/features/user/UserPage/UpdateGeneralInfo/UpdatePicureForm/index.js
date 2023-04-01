@@ -43,7 +43,10 @@ const UpdatePictureForm = () => {
     setUploadStatus("loading");
 
     const uniqueName = `${file.name}${v4()}`;
-    const storageRef = ref(storage, `profile/${uniqueName}`);
+    const storageRef = ref(
+      storage,
+      `profile/${auth.currentUser.uid}/${uniqueName}`
+    );
     try {
       const snapshot = await uploadBytes(storageRef, file);
       const photoURL = await getDownloadURL(snapshot.ref);
