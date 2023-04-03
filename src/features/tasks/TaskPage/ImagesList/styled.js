@@ -64,3 +64,10 @@ export const Image = styled.img`
   aspect-ratio: 1 / 1;
   object-fit: cover;
 `;
+
+export const ImagesListInfo = styled.p`
+  margin: 0;
+  font-size: 20px;
+  text-align: center;
+  color: ${({ theme }) => theme.colors.doveGrey};
+`;

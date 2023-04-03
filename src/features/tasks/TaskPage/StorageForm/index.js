@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { checkIsAllowedFileType } from "../../../checkIsAllowedFileType";
+import {
+  checkIsAllowedFileSize,
+  checkIsAllowedFileType,
+} from "../../../checkIsAllowedFileType";
 import useStorage from "../../../useStorage";
 import { AddFile, AddFileInput, ErrorText, Label, Form } from "./styled";
 
@@ -16,7 +19,11 @@ const StorageForm = ({ taskId }) => {
   const onInputChange = ({ target }) => {
     const inputFile = target.files[0];
 
-    if (inputFile && checkIsAllowedFileType(inputFile.type)) {
+    if (
+      inputFile &&
+      checkIsAllowedFileType(inputFile.type) &&
+      checkIsAllowedFileSize(inputFile.size)
+    ) {
       setFile(inputFile);
       setFileError(false);
     } else {
@@ -34,7 +41,9 @@ const StorageForm = ({ taskId }) => {
       ) : (
         <Label>
           {fileError ? (
-            <ErrorText error>File must be an image</ErrorText>
+            <ErrorText error>
+              File must be a png or jpeg image up to 2MB
+            </ErrorText>
           ) : (
             <span>Upload an image</span>
           )}
