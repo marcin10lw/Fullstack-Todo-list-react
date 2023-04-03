@@ -9,6 +9,7 @@ import {
   ImageWrapper,
   RemoveImageIcon,
   RemoveImage,
+  ImagesListInfo,
 } from "./styled";
 import { motion } from "framer-motion";
 import { deleteFirebaseDoc, deleteFirebaseFile } from "../../firebaseFunctions";
@@ -44,41 +45,47 @@ const ImagesList = ({ taskId }) => {
   };
 
   return (
-    filteredImages.length > 0 && (
-      <Wrapper>
-        <StyledImagesList>
-          {filteredImages.map((image) => (
-            <motion.li layout key={image.id}>
-              <ImageWrapper onClick={() => setSelectedImage(image.url)}>
-                <Image
-                  as={motion.img}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5, opacity: 0.5 }}
-                  src={image.url}
-                  alt="storage image"
-                />
-                <RemoveImage
-                  disabled={isRemoving}
-                  onClick={(event) =>
-                    onRemoveImage(event, image.id, image.name)
-                  }
-                >
-                  <RemoveImageIcon />
-                </RemoveImage>
-              </ImageWrapper>
-            </motion.li>
-          ))}
-        </StyledImagesList>
+    <Wrapper>
+      {filteredImages.length > 0 ? (
+        <>
+          <StyledImagesList>
+            {filteredImages.map((image) => (
+              <motion.li layout key={image.id}>
+                <ImageWrapper onClick={() => setSelectedImage(image.url)}>
+                  <Image
+                    as={motion.img}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5, opacity: 0.5 }}
+                    src={image.url}
+                    alt="storage image"
+                  />
+                  <RemoveImage
+                    disabled={isRemoving}
+                    onClick={(event) =>
+                      onRemoveImage(event, image.id, image.name)
+                    }
+                  >
+                    <RemoveImageIcon />
+                  </RemoveImage>
+                </ImageWrapper>
+              </motion.li>
+            ))}
+          </StyledImagesList>
 
-        {selectedImage && (
-          <Carousel
-            selectedImage={selectedImage}
-            setSelectedImage={setSelectedImage}
-          />
-        )}
-      </Wrapper>
-    )
+          {selectedImage && (
+            <Carousel
+              selectedImage={selectedImage}
+              setSelectedImage={setSelectedImage}
+            />
+          )}
+        </>
+      ) : (
+        <ImagesListInfo>
+          You can only upload JPEG and PNG images with a maximum size of 2MB
+        </ImagesListInfo>
+      )}
+    </Wrapper>
   );
 };
 
