@@ -6,7 +6,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
-import { db, storage } from "../../config/firebase";
+import { auth, db, storage } from "../../config/firebase";
 
 export const addFirebaseDoc = async (data, collectionName) => {
   await addDoc(collection(db, collectionName), data);
@@ -31,7 +31,7 @@ export const updateFirebaseDoc = async (id, updatedProp) => {
 };
 
 export const deleteFirebaseFile = async (folder, name) => {
-  const fileRef = ref(storage, `${folder}/${name}`);
+  const fileRef = ref(storage, `${folder}/${auth.currentUser.uid}/${name}`);
   await deleteObject(fileRef);
 };
 

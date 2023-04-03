@@ -44,7 +44,7 @@ const App = () => {
         pauseOnFocusLoss={false}
         pauseOnHover={false}
       />
-      {<TodoList />}
+      <TodoList />
     </>
   );
 };
