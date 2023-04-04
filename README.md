@@ -10,7 +10,7 @@ Using this tool is a great way to stay organized when we have a lot on our minds
 
 ## Check out the Demo!
 
-[![](./readmeImage.png)](https://marcin10lw.github.io/To-do-list-react/)
+[![](./readmeImage.png)](https://marcin10lw.github.io/Fullstack-Todo-list-react/)
 
 ## YouCode
 
