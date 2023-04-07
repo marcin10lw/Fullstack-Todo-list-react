@@ -3,7 +3,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
 import styled, { css } from "styled-components";
 
-export const NavOverlay = styled.div`
+export const NavBackdrop = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     position: fixed;
     z-index: 99;
@@ -19,6 +19,20 @@ export const NavOverlay = styled.div`
       css`
         left: 0;
       `}
+  }
+`;
+
+export const SwiperBlock = styled.div`
+  display: none;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 35px;
+    z-index: 777;
   }
 `;
 
@@ -134,6 +148,7 @@ export const OpenNavbarButton = styled.button`
     height: 65px;
     width: 20px;
     padding: 0;
+    z-index: 888;
     border: none;
     border-radius: 0 5px 5px 0;
     background-color: ${({ theme }) => theme.colors.teal};

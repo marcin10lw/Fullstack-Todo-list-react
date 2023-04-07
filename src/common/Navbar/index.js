@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { auth } from "../../config/firebase";
 import { selectIsLoggedIn, selectUser } from "../../features/auth/authSlice";
+import { useSwipeable } from "react-swipeable";
 import {
   StyledNavbar,
   NavList,
@@ -14,10 +15,11 @@ import {
   HideNavbarButton,
   HideNavbarIcon,
   OpenNavbarIcon,
-  NavOverlay,
+  NavBackdrop,
   OpenNavbarButton,
   UserPhoto,
   UserDummy,
+  SwiperBlock,
 } from "./styled";
 
 const Navbar = () => {
@@ -36,6 +38,10 @@ const Navbar = () => {
     }
   };
 
+  const handlers = useSwipeable({
+    onSwiped: () => setShowNavbar(true),
+  });
+
   return (
     <>
       <OpenNavbarButton
@@ -43,10 +49,14 @@ const Navbar = () => {
       >
         <OpenNavbarIcon />
       </OpenNavbarButton>
-      <NavOverlay
+
+      <SwiperBlock {...handlers} />
+
+      <NavBackdrop
         showNavbar={showNavbar}
         onClick={() => setShowNavbar(false)}
       />
+
       <StyledNavbar showNavbar={showNavbar}>
         <NavList onClick={() => setShowNavbar(false)}>
           {isLoggedIn && (
