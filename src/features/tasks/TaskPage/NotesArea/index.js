@@ -18,7 +18,6 @@ const NotesArea = ({ task }) => {
       await updateFirebaseDoc(taskId, { ["noteContent"]: noteContent });
       toast.success("Note saved");
     } catch (error) {
-      console.log(error);
       toast.error("Couldn't save note");
     }
   };

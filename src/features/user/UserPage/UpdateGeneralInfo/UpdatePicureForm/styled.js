@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import { BiUpload } from "react-icons/bi";
 
 export const ImageForm = styled.form`
   display: flex;
@@ -61,4 +62,28 @@ export const ProfilePicture = styled.img`
 
 export const FileInput = styled.input`
   display: none;
+`;
+
+export const UploadFileButton = styled.button`
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.lightTeal};
+  transition: color 120ms ease-in-out;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.darkTeal};
+  }
+
+  &:disabled {
+    color: ${({ theme }) => theme.colors.doveGrey};
+    cursor: auto;
+  }
+`;
+
+export const UploadFileIcon = styled(BiUpload)`
+  display: block;
+  font-size: 30px;
+  height: 100%;
 `;

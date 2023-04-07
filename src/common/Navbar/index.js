@@ -24,7 +24,6 @@ const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
-
   const navigate = useNavigate();
 
   const logoutUser = async () => {

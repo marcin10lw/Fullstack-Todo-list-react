@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setActiveUser } from "../../../../auth/authSlice";
-import { checkIsAllowedFileType } from "../../../../../common/checkIsAllowedFile";
+import {
+  checkIsAllowedFileSize,
+  checkIsAllowedFileType,
+} from "../../../../../common/checkIsAllowedFile";
 import {
   ProfilePicture,
   ShadowBackdrop,
@@ -9,13 +12,14 @@ import {
   FileInput,
   AddIcon,
   ImageForm,
+  UploadFileButton,
+  UploadFileIcon,
 } from "./styled";
 import { auth, storage } from "../../../../../config/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
 import { toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
-import { Button } from "../../../../../common/Button";
 
 const UpdatePictureForm = () => {
   const [uploadStatus, setUploadStatus] = useState("success");
@@ -27,7 +31,10 @@ const UpdatePictureForm = () => {
   const onInputChange = ({ target }) => {
     const inputFile = target.files[0];
 
-    if (checkIsAllowedFileType(inputFile.type)) {
+    if (
+      checkIsAllowedFileType(inputFile.type) &&
+      checkIsAllowedFileSize(inputFile.size)
+    ) {
       setFile(inputFile);
       setFileError(false);
     } else {
@@ -53,15 +60,17 @@ const UpdatePictureForm = () => {
       await updateProfile(auth.currentUser, {
         photoURL,
       });
-      dispatch(setActiveUser({ ...auth.currentUser, photoURL }));
+      dispatch(
+        setActiveUser({
+          ...auth.currentUser,
+          photoURL,
+        })
+      );
       setFile(null);
-      setUploadStatus("success");
-      toast.success("Picture updated");
       window.location.reload();
     } catch (error) {
       setUploadStatus("error");
       toast.error("Couldn't update picture");
-      console.log(error);
     }
   };
 
@@ -75,7 +84,16 @@ const UpdatePictureForm = () => {
         </ImageWrapper>
         <FileInput type="file" onChange={onInputChange} />
       </label>
-      <Button disabled={!file}>Change profile picture</Button>
+      {file && (
+        <span>
+          {file.name.slice(15) === ""
+            ? file.name.slice(0, 15)
+            : `${file.name.slice(0, 15)}...`}
+        </span>
+      )}
+      <UploadFileButton disabled={!file}>
+        <UploadFileIcon />
+      </UploadFileButton>
     </ImageForm>
   );
 };
