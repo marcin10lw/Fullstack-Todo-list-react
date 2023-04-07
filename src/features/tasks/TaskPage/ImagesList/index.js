@@ -12,39 +12,37 @@ import {
   ImagesListInfo,
 } from "./styled";
 import { motion } from "framer-motion";
-import { deleteFirebaseFile } from "./deleteFirebaseFile";
-import { deleteFirebaseDoc } from "../../deleteFirebaseDoc";
 import { useDispatch, useSelector } from "react-redux";
-import { selectImagesByTaskId, setImages } from "../../imagesSlice";
+import {
+  deleteImage,
+  selectImagesByTaskId,
+  selectImagesStatus,
+  setImages,
+} from "../../imagesSlice";
+import { toast } from "react-toastify";
 
 const ImagesList = ({ taskId }) => {
   const { docs } = useFirestore("images");
-  const [isRemoving, setIsRemoving] = useState(false);
-
   const [selectedImage, setSelectedImage] = useState(null);
+  const imagesStatus = useSelector(selectImagesStatus);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setImages(docs));
   }, [docs]);
 
+  const onRemoveImage = async (event, imageId, name) => {
+    event.stopPropagation();
+    dispatch(deleteImage({ imageId, name }));
+
+    if (imagesStatus === "error") {
+      toast.error("Oops. Something went wrong...");
+    }
+  };
+
   const filteredImages = useSelector((state) =>
     selectImagesByTaskId(state, taskId)
   ).reverse();
-
-  const onRemoveImage = async (event, imageId, name) => {
-    event.stopPropagation();
-
-    setIsRemoving(true);
-    try {
-      await deleteFirebaseDoc(imageId, "images");
-      await deleteFirebaseFile("images", name);
-    } catch (error) {
-      console.error(error);
-    }
-    setIsRemoving(false);
-  };
-
   return (
     <Wrapper>
       {filteredImages.length > 0 ? (
@@ -62,7 +60,6 @@ const ImagesList = ({ taskId }) => {
                     alt="storage image"
                   />
                   <RemoveImage
-                    disabled={isRemoving}
                     onClick={(event) =>
                       onRemoveImage(event, image.id, image.name)
                     }
