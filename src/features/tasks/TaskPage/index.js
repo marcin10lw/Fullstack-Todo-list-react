@@ -28,7 +28,7 @@ const TaskPage = () => {
 
   return (
     <Container>
-      {task ? (
+      {task && (
         <>
           <Header heading="Task details" optionalContent={true} />
           <Section
@@ -56,8 +56,6 @@ const TaskPage = () => {
             optionalContent={<AddFileForm taskId={task.id} />}
           />
         </>
-      ) : (
-        <Header heading="There is no such task" />
       )}
     </Container>
   );

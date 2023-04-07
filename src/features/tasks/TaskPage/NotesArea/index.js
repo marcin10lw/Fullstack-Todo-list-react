@@ -1,33 +1,26 @@
-import { useDispatch } from "react-redux";
 import { Wrapper } from "../../../../common/Wrapper";
-import { updateTask } from "../../tasksSlice";
 import { useRef } from "react";
 import { useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { NoteSaveButton } from "./styled";
+import { updateFirebaseDoc } from "../../updateFirebaseDoc";
+import { toast } from "react-toastify";
 
 const NotesArea = ({ task }) => {
   const [noteContent, setNoteContent] = useState(task.noteContent);
-  const [error, setError] = useState(false);
+  const taskNoteContentDiffers = noteContent !== task.noteContent;
 
-  const editorRef = useRef(null);
   const taskId = task.id;
+  const editorRef = useRef(null);
 
-  const dispatch = useDispatch();
-
-  const saveNote = () => {
-    if (noteContent.trim() === "") {
-      setError(true);
-      setTimeout(() => setError(false), 2000);
-      return;
+  const saveNote = async () => {
+    try {
+      await updateFirebaseDoc(taskId, { ["noteContent"]: noteContent });
+      toast.success("Note saved");
+    } catch (error) {
+      console.log(error);
+      toast.error("Couldn't save note");
     }
-    dispatch(
-      updateTask({
-        id: taskId,
-        updatedProp: { ["noteContent"]: noteContent },
-      })
-    );
-    setError(false);
   };
 
   return (
@@ -68,9 +61,10 @@ const NotesArea = ({ task }) => {
         }}
       />
 
-      <NoteSaveButton disabled={error} onClick={saveNote}>
-        {error ? "Note's content can't be empty" : "Save note"}
-      </NoteSaveButton>
+      <NoteSaveButton
+        disabled={!taskNoteContentDiffers}
+        onClick={saveNote}
+      >Save note</NoteSaveButton>
     </Wrapper>
   );
 };
