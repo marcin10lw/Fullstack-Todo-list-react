@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
-const bpMobile = ({ theme }) => theme.breakpoints.mobile;
-
 export const Tasks = styled.ul`
   list-style: none;
   padding: 0;
@@ -21,7 +19,7 @@ export const Task = styled.li`
     border-bottom: 2px solid #5ea6a6c2;
   }
 
-  @media (max-width: ${bpMobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     grid-template-columns: auto 1fr auto;
   }
 
@@ -57,7 +55,7 @@ export const DeadlineDate = styled.span`
   margin-right: 20px;
   flex-shrink: 0;
 
-  @media (max-width: ${bpMobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     display: none;
   }
 `;

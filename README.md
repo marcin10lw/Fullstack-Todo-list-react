@@ -8,9 +8,9 @@ I present to you my To-do list created with React.js.
 
 Using this tool is a great way to stay organized when we have a lot on our minds. Go ahead and make your day more bearable!
 
-## Check out the Demo!
+## Check out the [Demo](https://marcin10lw.github.io/Fullstack-Todo-list-react/)!
 
-[![](./readmeImage.png)](https://marcin10lw.github.io/To-do-list-react/)
+[![](./readmeImage.png)](https://marcin10lw.github.io/Fullstack-Todo-list-react/)
 
 ## YouCode
 

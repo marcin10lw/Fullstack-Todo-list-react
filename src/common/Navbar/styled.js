@@ -3,11 +3,8 @@ import { IoIosArrowBack } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
 import styled, { css } from "styled-components";
 
-const white = ({ theme }) => theme.colors.white;
-const bpMobile = ({ theme }) => theme.breakpoints.mobile;
-
 export const NavOverlay = styled.div`
-  @media (max-width: ${bpMobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     position: fixed;
     z-index: 99;
     min-height: 100vh;
@@ -30,7 +27,7 @@ export const StyledNavbar = styled.nav`
   background-color: ${({ theme }) => theme.colors.teal};
   z-index: 999;
 
-  @media (max-width: ${bpMobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     margin: auto;
     position: fixed;
     top: 0;
@@ -56,7 +53,7 @@ export const NavList = styled.ul`
   justify-content: center;
   gap: 40px;
 
-  @media (max-width: ${bpMobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
@@ -64,7 +61,7 @@ export const NavList = styled.ul`
 `;
 
 export const ListElement = styled.li`
-  @media (max-width: ${bpMobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     width: 100%;
     flex-basis: 40px;
   }
@@ -74,7 +71,7 @@ export const StyledNavLink = styled(NavLink)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: ${white};
+  color: ${({ theme }) => theme.colors.white};
   position: relative;
 
   &:hover {
@@ -85,7 +82,7 @@ export const StyledNavLink = styled(NavLink)`
     font-weight: 700;
   }
 
-  @media (max-width: ${bpMobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     padding-left: 20px;
     height: 100%;
     width: 100%;
@@ -108,7 +105,7 @@ export const LogoutButton = styled(StyledNavLink)`
     opacity: 0.8;
   }
 
-  @media (max-width: ${bpMobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     padding-left: 20px;
   }
 `;
@@ -128,7 +125,7 @@ export const OpenNavbarIcon = styled(IoIosArrowBack)`
 export const OpenNavbarButton = styled.button`
   display: none;
 
-  @media (max-width: ${bpMobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -151,7 +148,7 @@ export const OpenNavbarButton = styled.button`
 export const HideNavbarButton = styled.button`
   display: none;
 
-  @media (max-width: ${bpMobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     display: block;
     border: none;
     background-color: #056363;
@@ -177,7 +174,7 @@ export const UserPhoto = styled.img`
   border-radius: 50%;
   margin-left: 10px;
 
-  @media (max-width: ${bpMobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     width: 26px;
     height: 26px;
   }
@@ -188,7 +185,7 @@ export const UserDummy = styled(FaUserCircle)`
   height: 30px;
   margin-left: 10px;
 
-  @media (max-width: ${bpMobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     width: 26px;
     height: 26px;
   }

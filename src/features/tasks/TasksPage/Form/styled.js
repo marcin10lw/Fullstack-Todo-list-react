@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-const teal = ({ theme }) => theme.colors.teal;
-
 export const StyledForm = styled.form`
   display: flex;
   align-items: center;
@@ -16,8 +14,8 @@ export const StyledForm = styled.form`
 
 export const Button = styled.button`
   padding: 10px;
-  border: 2px solid ${teal};
-  background-color: ${teal};
+  border: 2px solid ${({ theme }) => theme.colors.teal};
+  background-color: ${({ theme }) => theme.colors.teal};
   color: white;
   transition: opacity 200ms, transform 200ms;
   flex-shrink: 0;

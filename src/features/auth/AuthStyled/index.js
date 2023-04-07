@@ -1,8 +1,5 @@
 import styled, { css } from "styled-components";
 
-const teal = ({ theme }) => theme.colors.teal;
-const orange = ({ theme }) => theme.colors.orange;
-
 export const AuthSection = styled.section`
   max-width: 350px;
   width: 100%;
@@ -30,7 +27,7 @@ export const AuthInput = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.lightGrey};
 
   &:valid {
-    border-color: ${teal};
+    border-color: ${({ theme }) => theme.colors.teal};
   }
 `;
 
@@ -42,9 +39,9 @@ export const AuthButton = styled.button`
   width: 100%;
   padding: 10px 5px;
   border-radius: 5px;
-  border: 2px solid ${teal};
+  border: 2px solid ${({ theme }) => theme.colors.teal};
   font-weight: 700;
-  background-color: ${teal};
+  background-color: ${({ theme }) => theme.colors.teal};
   color: white;
   letter-spacing: 0.5px;
   cursor: pointer;
@@ -52,18 +49,18 @@ export const AuthButton = styled.button`
 
   &:hover {
     background-color: white;
-    color: ${teal};
+    color: ${({ theme }) => theme.colors.teal};
   }
 
   ${({ google }) =>
     google &&
     css`
       margin-top: 20px;
-      background-color: ${orange};
-      border: 2px solid ${orange};
+      background-color: ${({ theme }) => theme.colors.orange};
+      border: 2px solid ${({ theme }) => theme.colors.orange};
 
       &:hover {
-        color: ${orange};
+        color: ${({ theme }) => theme.colors.orange};
       }
     `}
 `;
