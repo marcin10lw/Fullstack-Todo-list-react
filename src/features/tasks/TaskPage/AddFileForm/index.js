@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import {
   checkIsAllowedFileSize,
   checkIsAllowedFileType,
-} from "../../../checkIsAllowedFileType";
+} from "../../../../common/checkIsAllowedFile";
 import useStorage from "../../../useStorage";
 import { AddFile, AddFileInput, ErrorText, Label, Form } from "./styled";
 
-const StorageForm = ({ taskId }) => {
+const AddFileForm = ({ taskId }) => {
   const [file, setFile] = useState(null);
   const [fileError, setFileError] = useState(false);
 
@@ -55,4 +55,4 @@ const StorageForm = ({ taskId }) => {
   );
 };
 
-export default StorageForm;
+export default AddFileForm;
