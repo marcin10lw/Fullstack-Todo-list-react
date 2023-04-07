@@ -1,4 +1,4 @@
-import Form from "./Form";
+import AddTaskForm from "./AddTaskForm";
 import TasksList from "./TasksList";
 import HideDone from "./HideDone";
 import Header from "../../../common/Header";
@@ -10,7 +10,7 @@ function TasksPage() {
   return (
     <Container>
       <Header heading="Todo List" />
-      <Section header="Add new task" content={<Form />} />
+      <Section header="Add new task" content={<AddTaskForm />} />
       <Section header="Search" content={<SearchTasks />} />
       <Section
         header="Tasks"

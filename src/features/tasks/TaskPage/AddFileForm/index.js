@@ -3,7 +3,7 @@ import {
   checkIsAllowedFileSize,
   checkIsAllowedFileType,
 } from "../../../../common/checkIsAllowedFile";
-import useStorage from "../../../useStorage";
+import useStorage from "./useStorage";
 import { AddFile, AddFileInput, ErrorText, Label, Form } from "./styled";
 
 const AddFileForm = ({ taskId }) => {
