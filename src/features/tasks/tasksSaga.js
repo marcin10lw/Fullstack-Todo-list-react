@@ -8,7 +8,8 @@ import {
   toggleHideDone,
   selectHideDone,
 } from "./tasksSlice";
-import { deleteFirebaseDoc, updateFirebaseDoc } from "./firebaseFunctions";
+import { updateFirebaseDoc } from "./firebaseFunctions";
+import { deleteFirebaseDoc } from "./deleteFirebaseDoc";
 import { addFirebaseDoc } from "./addFirebaseDoc";
 import { toggleFirebaseTaskDone } from "./toggleFirebaseTaskDone";
 import { saveValueInLocalStorage } from "./valuesLocalStorage";

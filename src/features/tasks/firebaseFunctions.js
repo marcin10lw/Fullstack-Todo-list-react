@@ -8,16 +8,6 @@ import {
 import { deleteObject, ref } from "firebase/storage";
 import { auth, db, storage } from "../../config/firebase";
 
-export const deleteFirebaseDoc = async (id, collectionName) => {
-  await deleteDoc(doc(db, collectionName, id));
-};
-
-export const deleteFirebaseDocsByTask = async (collectionName, images) => {
-  await images.forEach((image) => {
-    deleteDoc(doc(db, collectionName, image.id));
-  });
-};
-
 export const updateFirebaseDoc = async (id, updatedProp) => {
   const key = Object.keys(updatedProp)[0];
   const value = Object.values(updatedProp)[0];

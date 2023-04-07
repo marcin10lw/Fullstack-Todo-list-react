@@ -12,7 +12,8 @@ import {
   ImagesListInfo,
 } from "./styled";
 import { motion } from "framer-motion";
-import { deleteFirebaseDoc, deleteFirebaseFile } from "../../firebaseFunctions";
+import { deleteFirebaseFile } from "../../firebaseFunctions";
+import { deleteFirebaseDoc } from "../../deleteFirebaseDoc";
 import { useDispatch, useSelector } from "react-redux";
 import { selectImagesByTaskId, setImages } from "../../imagesSlice";
 
