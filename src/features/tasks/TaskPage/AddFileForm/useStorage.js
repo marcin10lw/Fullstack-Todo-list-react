@@ -3,8 +3,8 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { useState } from "react";
 import { useEffect } from "react";
 import { v4 } from "uuid";
-import { auth, storage } from "../config/firebase";
-import { addFirebaseDoc } from "./tasks/firebaseFunctions";
+import { auth, storage } from "../../../../config/firebase";
+import { addFirebaseDoc } from "../../addFirebaseDoc";
 
 const useStorage = (file, folder, taskId) => {
   const [progress, setProgress] = useState(0);
