@@ -8,7 +8,7 @@ import {
   toggleHideDone,
   selectHideDone,
 } from "./tasksSlice";
-import { updateFirebaseDoc } from "./firebaseFunctions";
+import { updateFirebaseDoc } from "./updateFirebaseDoc";
 import { deleteFirebaseDoc } from "./deleteFirebaseDoc";
 import { addFirebaseDoc } from "./addFirebaseDoc";
 import { toggleFirebaseTaskDone } from "./toggleFirebaseTaskDone";
