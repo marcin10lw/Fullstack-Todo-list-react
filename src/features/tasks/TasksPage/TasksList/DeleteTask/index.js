@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Backdrop } from "../../../Backdrop";
 import { deleteFirebaseDocsByTask } from "./deleteFirebaseDocsByTask";
-import { deleteFirebaseFilesByTask } from "../../../firebaseFunctions";
+import { deleteFirebaseFilesByTask } from "./deleteFirebaseFilesByTask";
 import { selectImagesByTaskId } from "../../../imagesSlice";
 import { deleteTask, selectStatus } from "../../../tasksSlice";
 import { TaskButton } from "../TaskButton";
