@@ -8,10 +8,6 @@ import {
 import { deleteObject, ref } from "firebase/storage";
 import { auth, db, storage } from "../../config/firebase";
 
-export const addFirebaseDoc = async (data, collectionName) => {
-  await addDoc(collection(db, collectionName), data);
-};
-
 export const toggleFirebaseTaskDone = async (id, done) => {
   await updateDoc(doc(db, "tasks", id), {
     done: !done,
@@ -20,6 +16,12 @@ export const toggleFirebaseTaskDone = async (id, done) => {
 
 export const deleteFirebaseDoc = async (id, collectionName) => {
   await deleteDoc(doc(db, collectionName, id));
+};
+
+export const deleteFirebaseDocsByTask = async (collectionName, images) => {
+  await images.forEach((image) => {
+    deleteDoc(doc(db, collectionName, image.id));
+  });
 };
 
 export const updateFirebaseDoc = async (id, updatedProp) => {
@@ -35,9 +37,12 @@ export const deleteFirebaseFile = async (folder, name) => {
   await deleteObject(fileRef);
 };
 
-export const deleteFirebaseFilesByTask = (folder, images) => {
-  images.forEach((image) => {
-    const fileRef = ref(storage, `${folder}/${image.name}`);
+export const deleteFirebaseFilesByTask = async (folder, images) => {
+  await images.forEach((image) => {
+    const fileRef = ref(
+      storage,
+      `${folder}/${auth.currentUser.uid}/${image.name}`
+    );
     deleteObject(fileRef);
   });
 };
