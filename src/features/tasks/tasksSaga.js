@@ -8,12 +8,9 @@ import {
   toggleHideDone,
   selectHideDone,
 } from "./tasksSlice";
-import {
-  deleteFirebaseDoc,
-  toggleFirebaseTaskDone,
-  updateFirebaseDoc,
-} from "./firebaseFunctions";
+import { deleteFirebaseDoc, updateFirebaseDoc } from "./firebaseFunctions";
 import { addFirebaseDoc } from "./addFirebaseDoc";
+import { toggleFirebaseTaskDone } from "./toggleFirebaseTaskDone";
 import { saveValueInLocalStorage } from "./valuesLocalStorage";
 
 function* toggleDoneWorker({ payload }) {

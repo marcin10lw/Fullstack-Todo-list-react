@@ -5,7 +5,7 @@ const tasksSlice = createSlice({
   name: "tasks",
   initialState: {
     tasks: [],
-    status: null,
+    status: "idle",
     isLoadingTasks: false,
     hideDone: getValueFromLocalStorage("hideDone", false),
   },

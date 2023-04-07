@@ -8,12 +8,6 @@ import {
 import { deleteObject, ref } from "firebase/storage";
 import { auth, db, storage } from "../../config/firebase";
 
-export const toggleFirebaseTaskDone = async (id, done) => {
-  await updateDoc(doc(db, "tasks", id), {
-    done: !done,
-  });
-};
-
 export const deleteFirebaseDoc = async (id, collectionName) => {
   await deleteDoc(doc(db, collectionName, id));
 };
