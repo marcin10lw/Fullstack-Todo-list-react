@@ -2,28 +2,31 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Backdrop } from "../../../Backdrop";
+import { deleteFirebaseDocsByTask } from "./deleteFirebaseDocsByTask";
 import { deleteFirebaseFilesByTask } from "../../../firebaseFunctions";
-import { selectImages } from "../../../TaskPage/imagesSlice";
+import { selectImagesByTaskId } from "../../../imagesSlice";
 import { deleteTask, selectStatus } from "../../../tasksSlice";
 import { TaskButton } from "../TaskButton";
 import { DeleteTaskWrapper, ConfirmDelete, ButtonsWrapper } from "./styled";
 import { Button } from "../../../../../common/Button";
 
 const DeleteTask = ({ task }) => {
+  const taskId = task.id;
   const [showAlert, setShowAlert] = useState(false);
+  const imagesToDelete = useSelector((state) =>
+    selectImagesByTaskId(state, taskId)
+  );
 
   const status = useSelector(selectStatus);
   const buttonDisabled = status === "loading";
-  const images = useSelector(selectImages);
 
   const dispatch = useDispatch();
 
-  const taskId = task.id;
   const onDeleteTask = () => {
-    const imagesToDelete = images.filter((image) => image.taskId === taskId);
-
     dispatch(deleteTask(taskId));
+
     deleteFirebaseFilesByTask("images", imagesToDelete);
+    deleteFirebaseDocsByTask("images", imagesToDelete);
   };
   return (
     <>
