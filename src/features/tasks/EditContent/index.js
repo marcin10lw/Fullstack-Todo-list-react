@@ -6,12 +6,12 @@ import {
   EditIcon,
   CloseButton,
   CloseButtonIcon,
+  ErrorMessage,
 } from "./styled";
 import { SaveButton } from "../TaskPage/SaveButton";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateTask } from "../tasksSlice";
-import { ErrorMessage } from "../TaskPage/ErrorMessage";
 import { Backdrop } from "../Backdrop";
 import { motion } from "framer-motion";
 

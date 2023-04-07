@@ -6,7 +6,7 @@ import { useState } from "react";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../../config/firebase";
 import { toast } from "react-toastify";
-import { addUserToDatabase } from "../authFirebaseFunctions";
+import { addUserToDatabase } from "../addUserToDatabase";
 import {
   AuthSection,
   AuthHeading,

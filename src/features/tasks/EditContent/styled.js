@@ -26,44 +26,6 @@ export const EditTaskMessage = styled.p`
   font-weight: 700;
 `;
 
-export const Overlay = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  min-height: 100vh;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 5;
-  transition: background-color 300ms ease-in-out;
-
-  ${({ show }) =>
-    !show &&
-    css`
-      visibility: hidden;
-      animation-name: overlay-hide;
-      animation-duration: 300ms;
-    `}
-
-  @keyframes overlay-hide {
-    from {
-      visibility: visible;
-    }
-    to {
-      visibility: hidden;
-    }
-  }
-
-  ${({ show }) =>
-    show &&
-    css`
-      background-color: rgb(0 0 0 / 26%);
-    `}
-`;
-
 export const Form = styled.form`
   position: relative;
   max-width: 450px;
@@ -115,4 +77,24 @@ export const Input = styled.input`
   &:focus {
     outline: 1px solid teal;
   }
+`;
+
+export const ErrorMessage = styled.p`
+  text-align: center;
+  color: darkred;
+  margin: 3px 0 0;
+  font-weight: 500;
+  font-size: 14px;
+  position: absolute;
+  top: 122px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 100ms ease-in-out;
+
+  ${({ error }) =>
+    error &&
+    css`
+      visibility: visible;
+      opacity: 1;
+    `}
 `;

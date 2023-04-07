@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Container from "../../../common/Container/styled";
 import { auth } from "../../../config/firebase";
-import { addUserToDatabase } from "../authFirebaseFunctions";
+import { addUserToDatabase } from "../addUserToDatabase";
 import { selectIsLoading, setIsLoading } from "../authSlice";
 import {
   AuthButton,

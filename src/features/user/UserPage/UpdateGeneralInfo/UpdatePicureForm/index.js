@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setActiveUser } from "../../../../auth/authSlice";
-import { checkIsAllowedFileType } from "../../../../checkIsAllowedFileType";
+import { checkIsAllowedFileType } from "../../../../../common/checkIsAllowedFile";
 import {
   ProfilePicture,
   ShadowBackdrop,

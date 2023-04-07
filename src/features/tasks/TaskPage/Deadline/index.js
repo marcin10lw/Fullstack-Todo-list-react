@@ -1,7 +1,7 @@
 import { DateInput, Text } from "./styled";
 import { Wrapper } from "../../../../common/Wrapper";
 import { useDispatch } from "react-redux";
-import { addDeadlineDate, updateTask } from "../../tasksSlice";
+import { updateTask } from "../../tasksSlice";
 
 const Deadline = ({ task }) => {
   const dispatch = useDispatch();
