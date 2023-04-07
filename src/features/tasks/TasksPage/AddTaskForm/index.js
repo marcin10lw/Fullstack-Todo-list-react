@@ -7,7 +7,7 @@ import { Wrapper } from "../../../../common/Wrapper";
 import { serverTimestamp } from "firebase/firestore";
 import { auth } from "../../../../config/firebase";
 
-const Form = () => {
+const AddTaskForm = () => {
   const [taskContent, setTaskContent] = useState("");
   const inputRef = useRef(null);
 
@@ -53,4 +53,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default AddTaskForm;
