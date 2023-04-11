@@ -7,8 +7,9 @@ import {
   updatePassword,
 } from "firebase/auth";
 import { toast } from "react-toastify";
-import { UpdatePasswordButton, UpdatePasswordInfo } from "./styled";
+import { UpdatePasswordInfo } from "./styled";
 import { FormText, Input } from "../UserStyled";
+import { Button } from "../../../../common/Button";
 
 const UpdatePassword = () => {
   const [currentPassowrd, setCurrentPassword] = useState("");
@@ -95,9 +96,9 @@ const UpdatePassword = () => {
             />
           </label>
         </p>
-        <UpdatePasswordButton disabled={isLoading}>
-          Change password
-        </UpdatePasswordButton>
+        <Button strong disabled={isLoading}>
+          Update password
+        </Button>
       </form>
     </Wrapper>
   );

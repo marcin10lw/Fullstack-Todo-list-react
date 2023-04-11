@@ -4,7 +4,10 @@ import Header from "../../../common/Header";
 import Section from "../../../common/Section";
 import { selectUser } from "../../auth/authSlice";
 import UpdateGeneralInfo from "./UpdateGeneralInfo";
-import ChangePassword from "./ChangePassword";
+import UpdatePassword from "./UpdatePassword";
+import ResetPage from "../../auth/ResetPage";
+import UpdateEmail from "./UpdateEmail";
+import { auth } from "../../../config/firebase";
 
 const UserPage = () => {
   const user = useSelector(selectUser);
@@ -16,7 +19,12 @@ const UserPage = () => {
         header={"Update general information"}
         content={<UpdateGeneralInfo />}
       />
-      <Section header={"Change password"} content={<ChangePassword />} />
+      <Section header={"Update password"} content={<UpdatePassword />} />
+      <Section
+        header={"Update email"}
+        content={<UpdateEmail />}
+        optionalContent={<span>{user.email}</span>}
+      />
     </Container>
   );
 };

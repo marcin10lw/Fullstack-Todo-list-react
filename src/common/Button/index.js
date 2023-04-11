@@ -15,12 +15,12 @@ export const Button = styled.button`
   &:disabled {
     color: ${({ theme }) => theme.colors.lightGrey};
     cursor: auto;
-    
-      ${({ error }) =>
-        error &&
-        css`
-          color: #b76b6b;
-        `};
+
+    ${({ error }) =>
+      error &&
+      css`
+        color: #b76b6b;
+      `};
   }
 
   ${({ remove }) =>
@@ -31,5 +31,11 @@ export const Button = styled.button`
       &:hover {
         color: ${({ theme }) => theme.colors.rose};
       }
+    `}
+
+  ${({ strong }) =>
+    strong &&
+    css`
+      font-weight: 700;
     `}
 `;
