@@ -29,10 +29,10 @@ const UpdateGeneralInfo = () => {
   const [fileError, setFileError] = useState(false);
   const [file, setFile] = useState(null);
   const user = useSelector(selectUser);
+  const [newUserName, setNewUserName] = useState(user.displayName);
 
   const currentUser = auth.currentUser;
 
-  const [newUserName, setnewUserName] = useState(user.displayName);
 
   const onInputChange = ({ target }) => {
     const inputFile = target.files[0];
@@ -112,7 +112,7 @@ const UpdateGeneralInfo = () => {
             <span>Username</span>
             <UserNameInput
               value={newUserName}
-              onChange={({ target }) => setnewUserName(target.value)}
+              onChange={({ target }) => setNewUserName(target.value)}
               required
             />
           </label>

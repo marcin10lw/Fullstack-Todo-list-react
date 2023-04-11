@@ -4,6 +4,7 @@ import Header from "../../../common/Header";
 import Section from "../../../common/Section";
 import { selectUser } from "../../auth/authSlice";
 import UpdateGeneralInfo from "./UpdateGeneralInfo";
+import ChangePassword from "./ChangePassword";
 
 const UserPage = () => {
   const user = useSelector(selectUser);
@@ -15,6 +16,7 @@ const UserPage = () => {
         header={"Update general information"}
         content={<UpdateGeneralInfo />}
       />
+      <Section header={"Change password"} content={<ChangePassword />} />
     </Container>
   );
 };
