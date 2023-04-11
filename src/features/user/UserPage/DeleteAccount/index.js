@@ -12,12 +12,15 @@ import { Button } from "../../../../common/Button";
 import { Backdrop } from "../../../../common/Backdrop";
 import { motion } from "framer-motion";
 import { PopupForm } from "../../../../common/PopupForm";
-import { ButtonsWrapper, DeleteText } from "./styled";
+import { ButtonsWrapper, DeleteAccountForm, DeleteText } from "./styled";
 
 const DeleteAccount = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [currentPassowrd, setCurrentPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const isUserSignedInWithGoogle =
+    auth?.currentUser.providerData[0].providerId === "google.com";
 
   const onFormSubmit = async (event) => {
     event.preventDefault();
@@ -31,7 +34,8 @@ const DeleteAccount = () => {
     );
 
     try {
-      await reauthenticateWithCredential(user, credential);
+      !isUserSignedInWithGoogle &&
+        (await reauthenticateWithCredential(user, credential));
       await deleteUser(user);
 
       setCurrentPassword("");
@@ -54,14 +58,14 @@ const DeleteAccount = () => {
           animate={{ opacity: 1 }}
           onClick={() => setShowAlert(false)}
         >
-          <PopupForm
+          <DeleteAccountForm
             onSubmit={onFormSubmit}
             onClick={(event) => event.stopPropagation()}
           >
             <DeleteText>
               Your account will be permanently deleted. It is irreversible.
             </DeleteText>
-            <p>
+            {!isUserSignedInWithGoogle && (
               <label>
                 <FormText>Current password</FormText>
                 <Input
@@ -72,7 +76,7 @@ const DeleteAccount = () => {
                   required
                 />
               </label>
-            </p>
+            )}
             <ButtonsWrapper>
               <Button strong remove disabled={isLoading}>
                 Delete permanently
@@ -86,7 +90,7 @@ const DeleteAccount = () => {
                 Cancel
               </Button>
             </ButtonsWrapper>
-          </PopupForm>
+          </DeleteAccountForm>
         </Backdrop>
       )}
       <Button

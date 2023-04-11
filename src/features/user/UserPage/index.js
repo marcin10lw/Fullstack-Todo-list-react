@@ -9,8 +9,8 @@ import DeleteAccount from "./DeleteAccount";
 
 const UserPage = () => {
   const user = auth.currentUser;
-  const isUserSignerInWithGoogle =
-    user.providerData[0].providerId === "google.com";
+  const isUserSignedInWithGoogle =
+    auth?.currentUser.providerData[0].providerId === "google.com";
 
   return (
     <Container narrow>
@@ -19,10 +19,10 @@ const UserPage = () => {
         header={"Update general information"}
         content={<UpdateGeneralInfo />}
       />
-      {!isUserSignerInWithGoogle && (
+      {!isUserSignedInWithGoogle && (
         <Section header={"Update password"} content={<UpdatePassword />} />
       )}
-      {!isUserSignerInWithGoogle && (
+      {!isUserSignedInWithGoogle && (
         <Section
           header={"Update email"}
           content={<UpdateEmail />}
