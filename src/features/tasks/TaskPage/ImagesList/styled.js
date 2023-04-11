@@ -70,4 +70,8 @@ export const ImagesListInfo = styled.p`
   font-size: 20px;
   text-align: center;
   color: ${({ theme }) => theme.colors.doveGrey};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+    font-size: 16px;
+  }
 `;
