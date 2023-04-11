@@ -33,7 +33,6 @@ const UpdateGeneralInfo = () => {
 
   const currentUser = auth.currentUser;
 
-
   const onInputChange = ({ target }) => {
     const inputFile = target.files[0];
 
@@ -51,6 +50,9 @@ const UpdateGeneralInfo = () => {
 
   const onFormSubmit = async (event) => {
     event.preventDefault();
+    const trimmedName = newUserName.trim();
+
+    if (trimmedName === "") return;
 
     if (file) {
       const uniqueName = `${file.name}${v4()}`;
@@ -64,7 +66,7 @@ const UpdateGeneralInfo = () => {
         const photoURL = await getDownloadURL(snapshot.ref);
         updateProfile(currentUser, {
           photoURL,
-          displayName: newUserName,
+          displayName: trimmedName,
         });
         window.location.reload();
       } catch (error) {
@@ -73,7 +75,7 @@ const UpdateGeneralInfo = () => {
     } else {
       updateProfile(currentUser, {
         photoURL: currentUser.photoURL,
-        displayName: newUserName,
+        displayName: trimmedName,
       });
       window.location.reload();
     }

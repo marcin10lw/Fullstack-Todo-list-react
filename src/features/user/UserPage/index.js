@@ -1,16 +1,16 @@
-import { useSelector } from "react-redux";
 import Container from "../../../common/Container/styled";
 import Header from "../../../common/Header";
 import Section from "../../../common/Section";
-import { selectUser } from "../../auth/authSlice";
 import UpdateGeneralInfo from "./UpdateGeneralInfo";
 import UpdatePassword from "./UpdatePassword";
-import ResetPage from "../../auth/ResetPage";
 import UpdateEmail from "./UpdateEmail";
 import { auth } from "../../../config/firebase";
+import DeleteAccount from "./DeleteAccount";
 
 const UserPage = () => {
-  const user = useSelector(selectUser);
+  const user = auth.currentUser;
+  const isUserSignerInWithGoogle =
+    user.providerData[0].providerId === "google.com";
 
   return (
     <Container narrow>
@@ -19,12 +19,17 @@ const UserPage = () => {
         header={"Update general information"}
         content={<UpdateGeneralInfo />}
       />
-      <Section header={"Update password"} content={<UpdatePassword />} />
-      <Section
-        header={"Update email"}
-        content={<UpdateEmail />}
-        optionalContent={<span>{user.email}</span>}
-      />
+      {!isUserSignerInWithGoogle && (
+        <Section header={"Update password"} content={<UpdatePassword />} />
+      )}
+      {!isUserSignerInWithGoogle && (
+        <Section
+          header={"Update email"}
+          content={<UpdateEmail />}
+          optionalContent={<span>{user.email}</span>}
+        />
+      )}
+      <Section header={"Delete account"} content={<DeleteAccount />} />
     </Container>
   );
 };
