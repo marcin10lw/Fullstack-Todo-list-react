@@ -38,8 +38,12 @@ const Navbar = () => {
     }
   };
 
-  const handlers = useSwipeable({
-    onSwiped: () => setShowNavbar(true),
+  const openMenuHandler = useSwipeable({
+    onSwipedLeft: () => setShowNavbar(true),
+  });
+
+  const closeMenuHandler = useSwipeable({
+    onSwipedRight: () => setShowNavbar(false),
   });
 
   return (
@@ -50,14 +54,15 @@ const Navbar = () => {
         <OpenNavbarIcon />
       </OpenNavbarButton>
 
-      <SwiperBlock {...handlers} />
+      <SwiperBlock {...openMenuHandler} />
 
       <NavBackdrop
         showNavbar={showNavbar}
         onClick={() => setShowNavbar(false)}
+        {...closeMenuHandler}
       />
 
-      <StyledNavbar showNavbar={showNavbar}>
+      <StyledNavbar showNavbar={showNavbar} {...closeMenuHandler}>
         <NavList onClick={() => setShowNavbar(false)}>
           {isLoggedIn && (
             <ListElement>
@@ -75,13 +80,6 @@ const Navbar = () => {
             </ListElement>
           )}
 
-          {isLoggedIn && (
-            <ListElement>
-              <LogoutButton as="button" onClick={logoutUser}>
-                Logout
-              </LogoutButton>
-            </ListElement>
-          )}
           {user && (
             <ListElement>
               <StyledNavLink to="/user">
@@ -92,6 +90,14 @@ const Navbar = () => {
                   <UserDummy />
                 )}
               </StyledNavLink>
+            </ListElement>
+          )}
+
+          {isLoggedIn && (
+            <ListElement>
+              <LogoutButton as="button" onClick={logoutUser}>
+                Logout
+              </LogoutButton>
             </ListElement>
           )}
         </NavList>

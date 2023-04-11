@@ -9,7 +9,7 @@ export const NavBackdrop = styled.div`
     z-index: 99;
     min-height: 100vh;
     top: 0;
-    left: -100%;
+    right: -100%;
     width: 100%;
     background: #5866666b;
     transition: all 200ms ease-in-out;
@@ -17,7 +17,7 @@ export const NavBackdrop = styled.div`
     ${({ showNavbar }) =>
       showNavbar &&
       css`
-        left: 0;
+        right: 0;
       `}
   }
 `;
@@ -29,9 +29,9 @@ export const SwiperBlock = styled.div`
     display: block;
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     height: 100vh;
-    width: 35px;
+    width: 40px;
     z-index: 777;
   }
 `;
@@ -45,7 +45,7 @@ export const StyledNavbar = styled.nav`
     margin: auto;
     position: fixed;
     top: 0;
-    left: -100%;
+    right: -100%;
     height: 100vh;
     width: 70%;
     transition: all 300ms ease-in-out;
@@ -53,7 +53,7 @@ export const StyledNavbar = styled.nav`
     ${({ showNavbar }) =>
       showNavbar &&
       css`
-        left: 0;
+        right: 0;
       `}
   }
 `;
@@ -128,12 +128,11 @@ export const HideNavbarIcon = styled(IoIosArrowBack)`
   height: 50px;
   width: 50px;
   color: #bababa;
-  transition: transform 60ms ease-in-out;
+  transform: rotate(180deg);
 `;
 
 export const OpenNavbarIcon = styled(IoIosArrowBack)`
-  transform: rotate(180deg);
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const OpenNavbarButton = styled.button`
@@ -145,12 +144,13 @@ export const OpenNavbarButton = styled.button`
     align-items: center;
     position: fixed;
     top: 10px;
-    height: 65px;
+    right: 0;
+    height: 55px;
     width: 20px;
     padding: 0;
     z-index: 888;
     border: none;
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px 0 0 5px;
     background-color: ${({ theme }) => theme.colors.teal};
     cursor: pointer;
 
