@@ -1,6 +1,6 @@
 import { CarouselImage } from "./styled";
 import { motion } from "framer-motion";
-import { Backdrop } from "../../../Backdrop";
+import { Backdrop } from "../../../../../common/Backdrop";
 
 const Carousel = ({ selectedImage, setSelectedImage }) => {
   return (

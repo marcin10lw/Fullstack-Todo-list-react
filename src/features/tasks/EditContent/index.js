@@ -1,5 +1,4 @@
 import {
-  Form,
   Input,
   EditButton,
   EditTaskMessage,
@@ -12,8 +11,9 @@ import { SaveButton } from "../TaskPage/SaveButton";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateTask } from "../tasksSlice";
-import { Backdrop } from "../Backdrop";
+import { Backdrop } from "../../../common/Backdrop";
 import { motion } from "framer-motion";
+import { PopupForm } from "../../../common/PopupForm";
 
 const EditContent = ({ task }) => {
   const dispatch = useDispatch();
@@ -49,7 +49,7 @@ const EditContent = ({ task }) => {
             animate={{ opacity: 1 }}
             onClick={() => setShowEditWindow(false)}
           >
-            <Form
+            <PopupForm
               as={motion.form}
               onSubmit={onTaskContentChange}
               onClick={(event) => event.stopPropagation()}
@@ -70,7 +70,7 @@ const EditContent = ({ task }) => {
               >
                 <CloseButtonIcon />
               </CloseButton>
-            </Form>
+            </PopupForm>
           </Backdrop>
         </>
       )}

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Backdrop } from "../../../Backdrop";
+import { Backdrop } from "../../../../../common/Backdrop";
 import { deleteFirebaseDocsByTask } from "./deleteFirebaseDocsByTask";
 import { deleteFirebaseFilesByTask } from "./deleteFirebaseFilesByTask";
 import { selectImagesByTaskId } from "../../../imagesSlice";
