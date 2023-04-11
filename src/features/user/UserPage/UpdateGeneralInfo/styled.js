@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
+import { Button } from "../../../../common/Button";
 
 export const UpdateForm = styled.form`
   display: flex;
@@ -112,24 +113,9 @@ export const UserNameInput = styled.input`
   }
 `;
 
-export const UpdateFileButton = styled.button`
-  border: none;
-  background-color: transparent;
-  padding: 0;
+export const UpdateFileButton = styled(Button)`
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.lightTeal};
-  cursor: pointer;
-  transition: color 120ms ease-in-out;
   align-self: flex-end;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.darkTeal};
-  }
-
-  &:disabled {
-    color: ${({ theme }) => theme.colors.doveGrey};
-    cursor: auto;
-  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     align-self: center;
