@@ -59,7 +59,6 @@ const Navbar = () => {
       <NavBackdrop
         showNavbar={showNavbar}
         onClick={() => setShowNavbar(false)}
-        {...closeMenuHandler}
       />
 
       <StyledNavbar showNavbar={showNavbar} {...closeMenuHandler}>
