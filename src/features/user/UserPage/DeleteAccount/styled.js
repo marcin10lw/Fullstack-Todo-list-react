@@ -1,4 +1,11 @@
 import styled from "styled-components";
+import { PopupForm } from "../../../../common/PopupForm";
+
+export const DeleteAccountForm = styled(PopupForm)`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
 
 export const DeleteText = styled.p`
   font-size: 18px;
