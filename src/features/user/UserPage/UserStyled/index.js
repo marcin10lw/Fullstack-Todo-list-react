@@ -1,10 +1,4 @@
 import styled from "styled-components";
-import { Button } from "../../../../common/Button";
-
-export const ChangePasswordInfo = styled.p`
-  margin: 0 0 20px;
-  color: ${({ theme }) => theme.colors.doveGrey};
-`;
 
 export const FormText = styled.span`
   display: inline-block;
@@ -31,8 +25,4 @@ export const Input = styled.input`
   &:invalid {
     border: 1px solid ${({ theme }) => theme.colors.falcon};
   }
-`;
-
-export const ChangePasswordButton = styled(Button)`
-  font-weight: 700;
 `;

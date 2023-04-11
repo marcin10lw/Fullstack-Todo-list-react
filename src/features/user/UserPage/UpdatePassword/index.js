@@ -7,10 +7,10 @@ import {
   updatePassword,
 } from "firebase/auth";
 import { toast } from "react-toastify";
-import { ChangePasswordButton, ChangePasswordInfo, FormText, Input } from "./styled";
-import { Button } from "../../../../common/Button";
+import { UpdatePasswordButton, UpdatePasswordInfo } from "./styled";
+import { FormText, Input } from "../UserStyled";
 
-const ChangePassword = () => {
+const UpdatePassword = () => {
   const [currentPassowrd, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirm, setNewPasswordConfirm] = useState("");
@@ -52,10 +52,10 @@ const ChangePassword = () => {
 
   return (
     <Wrapper>
-      <ChangePasswordInfo>
+      <UpdatePasswordInfo>
         Minimum password requirements: 8 characters, 1 number, 1 lowercase
         letter, and 1 uppercase letter.
-      </ChangePasswordInfo>
+      </UpdatePasswordInfo>
       <form onSubmit={onFormSubmit}>
         <p>
           <label>
@@ -95,12 +95,12 @@ const ChangePassword = () => {
             />
           </label>
         </p>
-        <ChangePasswordButton disabled={isLoading}>
+        <UpdatePasswordButton disabled={isLoading}>
           Change password
-        </ChangePasswordButton>
+        </UpdatePasswordButton>
       </form>
     </Wrapper>
   );
 };
 
-export default ChangePassword;
+export default UpdatePassword;
