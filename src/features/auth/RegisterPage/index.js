@@ -27,11 +27,12 @@ const RegisterPage = () => {
   const registerUser = async (event) => {
     event.preventDefault();
 
-    dispatch(setIsLoading(true));
     if (password !== passwordConfirm) {
       toast.error("Passwords do not match.");
       return;
     }
+
+    dispatch(setIsLoading(true));
 
     try {
       const { user } = await createUserWithEmailAndPassword(

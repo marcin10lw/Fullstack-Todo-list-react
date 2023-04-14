@@ -120,7 +120,7 @@ const UpdateGeneralInfo = () => {
           </label>
         </UpdateGrid>
 
-        <UpdateFileButton>Update</UpdateFileButton>
+        <UpdateFileButton>Update (will reload app)</UpdateFileButton>
       </UpdateForm>
     </Wrapper>
   );
