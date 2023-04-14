@@ -6,9 +6,11 @@ import UpdatePassword from "./UpdatePassword";
 import UpdateEmail from "./UpdateEmail";
 import { auth } from "../../../config/firebase";
 import DeleteAccount from "./DeleteAccount";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../auth/authSlice";
 
 const UserPage = () => {
-  const user = auth.currentUser;
+  const user = useSelector(selectUser);
   const isUserSignedInWithGoogle =
     auth?.currentUser.providerData[0].providerId === "google.com";
 
