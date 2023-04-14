@@ -1,10 +1,8 @@
-# Marcin Augun - To-do list in React
-
-## Development in progress...
+# Marcin Augun - Fullstack Todo list in React
 
 ## Description
 
-I present to you my To-do list created with React.js.
+I present to you my Fullstack Todo list application created with React JS and Firebase.
 
 Using this tool is a great way to stay organized when we have a lot on our minds. Go ahead and make your day more bearable!
 
@@ -21,6 +19,7 @@ YouCode is a frontend development online school with great community.
 ## Technologies used
 
     ✔ REACT.JS
+    ✔ FIREBASE
     ✔ CREATE-REACT-APP
     ✔ WEBPACK
     ✔ BABEL
@@ -30,31 +29,62 @@ YouCode is a frontend development online school with great community.
     ✔ REDUX-SAGA
     ✔ REACT-ROUTER
     ✔ ES6+ FEATURES
+    ✔ DATE-FNS
+    ✔ FRAMER-MOTION
+    ✔ REACT-SWIPEABLE
 
-## How I try to stand out (features added independently)
+## How I stand out
 
-    ✔ The ability to change the title
+### Features added independently of the YouCode course
+
+    ✔ Connecting application with Firebase
+    ✔ User authentication
+    ✔ The ability to edit task title
     ✔ Task creation date
     ✔ Deadline functionality
     ✔ Notes field bootstrapped with tiny
-    ✔ Tasks date filtering system
-
-## How I plan to develope it
-
-    🔲 Connecting with firebase
-    🔲 Creating user authentication with firebase
-    🔲 Creating firestore database
-    🔲 Creating firestore storage
+    ✔ Tasks deadline filtering system
+    ✔ Images storage
+    ✔ Navigation menu with with swipe events
+    ✔ User page
+    ✔ Capability to change:
+        - profile picture
+        - user name
+        - password
+        - email
+    ✔ Capability to delete account
 
 ## Page Preview
 
-![](todo-list-react.gif)
+### Register page
 
-## Page Not Found Preview
+![](todo-list-register.gif)
 
-![](todo-list-react-pageNotFound-preview.gif)
+### Tasks page
 
-**Stay tuned for updates!**
+![](todo-list-tasks.gif)
+
+### Single task page
+
+![](todo-list-task.gif)
+
+### User page
+
+![](todo-list-user.gif)
+
+### Not found page
+
+![](todo-list-notfound.gif)
+
+## Security
+
+With Firebase security rules, your account, data and files will not fall into the wrong hands.
+
+### How it works
+
+Firebase Security Rules stand between your data and malicious users.
+
+Firebase Security Rules work by matching a pattern against database paths, and then applying custom conditions to allow access to data at those paths. All Rules across Firebase features have a path-matching component and a conditional statement allowing read or write access. Rules are defined for each Firebase feature in this app to ensure only you can access your account's information.
 
 ## Create React App
 
