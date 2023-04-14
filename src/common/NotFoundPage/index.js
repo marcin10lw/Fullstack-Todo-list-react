@@ -22,7 +22,10 @@ const NotFoundPage = () => {
     <Container>
       <NotFoundPageSection>
         <p>Ooops...There is no such page 😥</p>
-        <p>We'll redirect you back to tasks in a moment 😄</p>
+        <p>
+          We'll redirect you back to {isLoggedIn ? "tasks" : "login page"} in a
+          moment 😄
+        </p>
         <p>
           {isLoggedIn ? (
             <GoBackLink to="/tasks">Go back to tasks</GoBackLink>
