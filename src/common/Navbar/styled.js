@@ -184,6 +184,7 @@ export const UserPhoto = styled.img`
   height: 30px;
   border-radius: 50%;
   margin-left: 10px;
+  object-fit: cover;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     width: 26px;
