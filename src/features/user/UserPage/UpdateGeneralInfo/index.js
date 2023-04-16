@@ -28,6 +28,7 @@ import { Wrapper } from "../../../../common/Wrapper";
 const UpdateGeneralInfo = () => {
   const [fileError, setFileError] = useState(false);
   const [file, setFile] = useState(null);
+
   const user = useSelector(selectUser);
   const [newUserName, setNewUserName] = useState(user.displayName);
 
@@ -48,6 +49,18 @@ const UpdateGeneralInfo = () => {
     }
   };
 
+  const getUrl = async () => {
+    const uniqueName = `${file.name}${v4()}`;
+    const storageRef = ref(
+      storage,
+      `profile/${auth.currentUser.uid}/${uniqueName}`
+    );
+
+    const snapshot = await uploadBytes(storageRef, file);
+    const photoURL = await getDownloadURL(snapshot.ref);
+    return photoURL;
+  };
+
   const onFormSubmit = async (event) => {
     event.preventDefault();
     const trimmedName = newUserName.trim();
@@ -55,19 +68,14 @@ const UpdateGeneralInfo = () => {
     if (trimmedName === "") return;
 
     if (file) {
-      const uniqueName = `${file.name}${v4()}`;
-      const storageRef = ref(
-        storage,
-        `profile/${auth.currentUser.uid}/${uniqueName}`
-      );
-
       try {
-        const snapshot = await uploadBytes(storageRef, file);
-        const photoURL = await getDownloadURL(snapshot.ref);
+        const photoURL = await getUrl();
+
         updateProfile(currentUser, {
           photoURL,
           displayName: trimmedName,
         });
+
         window.location.reload();
       } catch (error) {
         toast.error("Couldn't update picture");
