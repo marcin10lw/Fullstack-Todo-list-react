@@ -3,10 +3,19 @@ import Header from "../../../common/Header";
 import Section from "../../../common/Section";
 import { Paragraph, Link } from "./styled";
 import { Wrapper } from "../../../common/Wrapper";
+import { motion } from "framer-motion";
+import { variants } from "../../../common/motionVariants";
 
 const AuthorPage = () => {
   return (
-    <Container narrow>
+    <Container
+      as={motion.div}
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      narrow
+    >
       <Header heading="" />
       <Section
         header="Marcin Augun"
