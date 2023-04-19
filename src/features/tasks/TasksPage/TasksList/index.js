@@ -15,6 +15,24 @@ import { useEffect } from "react";
 import useFirestore from "../../useFirestore";
 import DeleteTask from "./DeleteTask";
 import { TaskButton } from "./TaskButton";
+import { AnimatePresence, motion } from "framer-motion";
+
+const listVariants = {
+  hidden: {
+    opacity: 0,
+    transition: {
+      delay: 0.1,
+      duration: 0.6,
+    },
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 0.1,
+      duration: 0.6,
+    },
+  },
+};
 
 const TasksList = () => {
   const [searchParams] = useSearchParams();
@@ -34,39 +52,43 @@ const TasksList = () => {
   const buttonDisabled = status === "loading";
   return (
     tasks && (
-      <Tasks>
-        {tasks.map((task) => {
-          const deadline = task.deadline;
+      <AnimatePresence>
+        <Tasks as={motion.ul} variants={listVariants}>
+          {tasks.map((task) => {
+            const deadline = task.deadline;
 
-          return (
-            <Task key={task.id} hiden={task.done && hideDone}>
-              <TaskButton
-                disabled={buttonDisabled}
-                done={task.done}
-                onClick={() =>
-                  dispatch(toggleDone({ id: task.id, done: task.done }))
-                }
-              />
+            return (
+              <Task key={task.id} hiden={task.done && hideDone}>
+                <TaskButton
+                  disabled={buttonDisabled}
+                  done={task.done}
+                  onClick={() =>
+                    dispatch(toggleDone({ id: task.id, done: task.done }))
+                  }
+                />
 
-              <Content done={task.done}>
-                <StyledLink to={`/tasks/${task.id}`}>{task.content}</StyledLink>
-              </Content>
+                <Content done={task.done}>
+                  <StyledLink to={`/tasks/${task.id}`}>
+                    {task.content}
+                  </StyledLink>
+                </Content>
 
-              {deadline && (
-                <DeadlineDate>
-                  {format(Date.parse(deadline), "do 'of' MMMM yyyy", {
-                    locale: enUS,
-                  })}
-                </DeadlineDate>
-              )}
+                {deadline && (
+                  <DeadlineDate>
+                    {format(Date.parse(deadline), "do 'of' MMMM yyyy", {
+                      locale: enUS,
+                    })}
+                  </DeadlineDate>
+                )}
 
-              <EditContent task={task} />
+                <EditContent task={task} />
 
-              <DeleteTask task={task} />
-            </Task>
-          );
-        })}
-      </Tasks>
+                <DeleteTask task={task} />
+              </Task>
+            );
+          })}
+        </Tasks>
+      </AnimatePresence>
     )
   );
 };
