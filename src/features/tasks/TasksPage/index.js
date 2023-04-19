@@ -6,28 +6,7 @@ import Section from "../../../common/Section";
 import Container from "../../../common/Container/styled";
 import SearchTasks from "./SearchTasks";
 import { motion } from "framer-motion";
-
-const variants = {
-  hidden: {
-    opacity: 0,
-    x: "-50vw",
-    scale: 0.8,
-    transition: {
-      delay: 0.1,
-      duration: 0.4,
-    },
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-    transition: {
-      delay: 0.1,
-      duration: 0.4,
-      when: "beforeChildren",
-    },
-  },
-};
+import { variants } from "../../../common/motionVariants";
 
 function TasksPage() {
   return (

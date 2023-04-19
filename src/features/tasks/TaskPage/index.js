@@ -14,6 +14,22 @@ import TimeLeft from "./TimeLeft";
 import AddFileForm from "./AddFileForm";
 import useFirestore from "../useFirestore";
 import ImagesList from "./ImagesList";
+import { motion } from "framer-motion";
+
+const variants = {
+  hidden: {
+    opacity: 0,
+    transition: {
+      duration: 0.3,
+    },
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+};
 
 const TaskPage = () => {
   const { id } = useParams();
@@ -27,7 +43,13 @@ const TaskPage = () => {
   }, [docs]);
 
   return (
-    <Container>
+    <Container
+      as={motion.div}
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+    >
       {task && (
         <>
           <Header heading="Task details" optionalContent={true} />
