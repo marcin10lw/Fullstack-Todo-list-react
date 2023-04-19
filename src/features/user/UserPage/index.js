@@ -8,6 +8,8 @@ import { auth } from "../../../config/firebase";
 import DeleteAccount from "./DeleteAccount";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../auth/authSlice";
+import { motion } from "framer-motion";
+import { variants } from "../../../common/motionVariants";
 
 const UserPage = () => {
   const user = useSelector(selectUser);
@@ -15,7 +17,14 @@ const UserPage = () => {
     auth?.currentUser.providerData[0].providerId === "google.com";
 
   return (
-    <Container narrow>
+    <Container
+      as={motion.div}
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      narrow
+    >
       <Header heading={`Hi, ${user.displayName}!`} />
       <Section
         header={"Update general information"}
