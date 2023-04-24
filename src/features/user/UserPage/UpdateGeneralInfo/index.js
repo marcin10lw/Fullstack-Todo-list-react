@@ -71,21 +71,25 @@ const UpdateGeneralInfo = () => {
       try {
         const photoURL = await getUrl();
 
-        updateProfile(currentUser, {
+        await updateProfile(currentUser, {
           photoURL,
           displayName: trimmedName,
         });
 
         window.location.reload();
       } catch (error) {
-        toast.error("Couldn't update picture");
+        toast.error("Couldn't update. Try refreshing app.");
       }
     } else {
-      updateProfile(currentUser, {
-        photoURL: currentUser.photoURL,
-        displayName: trimmedName,
-      });
-      window.location.reload();
+      try {
+        await updateProfile(currentUser, {
+          photoURL: currentUser.photoURL,
+          displayName: trimmedName,
+        });
+        window.location.reload();
+      } catch (error) {
+        toast.error("Couldn't update. Try refreshing app.");
+      }
     }
   };
 

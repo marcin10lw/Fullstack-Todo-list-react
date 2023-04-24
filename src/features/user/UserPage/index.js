@@ -23,7 +23,7 @@ const UserPage = () => {
       initial="hidden"
       animate="visible"
       exit="hidden"
-      narrow
+      narrow="true"
     >
       <Header heading={`Hi, ${user.displayName}!`} />
       <Section

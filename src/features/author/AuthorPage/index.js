@@ -14,7 +14,7 @@ const AuthorPage = () => {
       initial="hidden"
       animate="visible"
       exit="hidden"
-      narrow
+      narrow="true"
     >
       <Header heading="" />
       <Section
