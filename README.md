@@ -6,7 +6,7 @@ I present to you my Fullstack Todo list application created with React JS and Fi
 
 Using this tool is a great way to stay organized when we have a lot on our minds. Go ahead and make your day more bearable!
 
-## Check out the [Demo](https://marcin10lw.github.io/Fullstack-Todo-list-react/)!
+## Check out the [Demo!](https://marcin10lw.github.io/Fullstack-Todo-list-react/)
 
 [![](./readmeImage.png)](https://marcin10lw.github.io/Fullstack-Todo-list-react/)
 
@@ -16,24 +16,20 @@ This project is a task within [YouCode](https://youcode.pl/zostawiam-maila/).
 
 YouCode is a frontend development online school with great community.
 
-## Technologies used
+# 💻 Project Tech Stack:
 
-    ✔ REACT.JS
-    ✔ FIREBASE
-    ✔ CREATE-REACT-APP
-    ✔ WEBPACK
-    ✔ BABEL
-    ✔ STYLED COMPONENTS
-    ✔ FLEXBOX
-    ✔ REDUX-TOOLKIT
-    ✔ REDUX-SAGA
-    ✔ REACT-ROUTER
-    ✔ ES6+ FEATURES
-    ✔ DATE-FNS
-    ✔ FRAMER-MOTION
-    ✔ REACT-SWIPEABLE
+![react](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)
+![reactrouter](https://img.shields.io/badge/React%20Router-CA4245.svg?style=for-the-badge&logo=React-Router&logoColor=white)
+![redux](https://img.shields.io/badge/Redux-764ABC.svg?style=for-the-badge&logo=Redux&logoColor=white)
+![redux-saga](https://img.shields.io/badge/Redux--Saga-999999.svg?style=for-the-badge&logo=Redux-Saga&logoColor=white)
+![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
+![framer motion](https://img.shields.io/badge/Framer--Motion-0055FF.svg?style=for-the-badge&logo=Framer&logoColor=white)
+![create react app](https://img.shields.io/badge/Create%20React%20App-09D3AC.svg?style=for-the-badge&logo=Create-React-App&logoColor=white)
+![webpack](https://img.shields.io/badge/Webpack-8DD6F9.svg?style=for-the-badge&logo=Webpack&logoColor=black)
+![babel](https://img.shields.io/badge/Babel-F9DC3E.svg?style=for-the-badge&logo=Babel&logoColor=black)
+![normalize](https://img.shields.io/badge/Normalize.css-E3695F.svg?style=for-the-badge&logo=normalizedotcss&logoColor=white)
 
-## How I stand out
+## How I try to stand out
 
 ### Features added independently of the YouCode course
 
