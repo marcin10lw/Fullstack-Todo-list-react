@@ -6,7 +6,7 @@ I present to you my Fullstack Todo list application created with React JS and Fi
 
 Using this tool is a great way to stay organized when we have a lot on our minds. Go ahead and make your day more bearable!
 
-## Check out the [Demo!](https://marcin10lw.github.io/Fullstack-Todo-list-react/)
+## Live Site URL: [marcin10lw.github.io/Fullstack-Todo-list-react](https://marcin10lw.github.io/Fullstack-Todo-list-react/)
 
 [![](./readmeImage.png)](https://marcin10lw.github.io/Fullstack-Todo-list-react/)
 
