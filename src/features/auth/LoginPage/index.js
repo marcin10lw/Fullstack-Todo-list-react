@@ -1,6 +1,6 @@
 import Container from "../../../common/Container/styled";
 import { AiOutlineGoogle } from "react-icons/ai";
-import { Text } from "./styled";
+import { CredentialsInfo, DescriptionListGroup, Text } from "./styled";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
@@ -17,6 +17,8 @@ import {
 } from "../AuthStyled";
 import { useDispatch } from "react-redux";
 import { setIsLoading } from "../authSlice";
+import { AiOutlineCopy } from "react-icons/ai";
+import { credentialsList } from "./credentialsList";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -57,38 +59,63 @@ const LoginPage = () => {
     }
   };
 
+  const onCredentialCopy = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast.success("Copied do clipboard", { position: "bottom-center" });
+    } catch (error) {
+      toast.error("Couldn't copy to clipboard", { position: "bottom-center" });
+    }
+  };
+
   return (
-    <Container auth>
-      <AuthSection>
-        <AuthHeading>Login</AuthHeading>
-        <AuthForm onSubmit={loginUser}>
-          <AuthInput
-            value={email}
-            onChange={({ target }) => setEmail(target.value)}
-            type="email"
-            placeholder="Email..."
-            required
-          />
-          <AuthInput
-            value={password}
-            onChange={({ target }) => setPassword(target.value)}
-            type="password"
-            placeholder="Password..."
-            required
-          />
-          <AuthButton>Login</AuthButton>
-        </AuthForm>
-        <Text>
-          <Link to="/reset">Forgot Password?</Link>
-        </Text>
-        <AuthButton onClick={signInWithGoogle} google>
-          <AiOutlineGoogle size={20} /> Sign In With Google
-        </AuthButton>
-        <AuthMessage>
-          Don't have an account? <Link to="/register">Register</Link>
-        </AuthMessage>
-      </AuthSection>
-    </Container>
+    <>
+      <Container auth>
+        <AuthSection>
+          <CredentialsInfo>
+            <p>To test the application use this credentials:</p>
+            <dl>
+              {credentialsList.map(({ id, type, content }) => (
+                <DescriptionListGroup key={id}>
+                  <dt>{type}:</dt>
+                  <dd>{content}</dd>
+                  <button onClick={() => onCredentialCopy(content)}>
+                    <AiOutlineCopy />
+                  </button>
+                </DescriptionListGroup>
+              ))}
+            </dl>
+          </CredentialsInfo>
+          <AuthHeading>Login</AuthHeading>
+          <AuthForm onSubmit={loginUser}>
+            <AuthInput
+              value={email}
+              onChange={({ target }) => setEmail(target.value)}
+              type="email"
+              placeholder="Email..."
+              required
+            />
+            <AuthInput
+              value={password}
+              onChange={({ target }) => setPassword(target.value)}
+              type="password"
+              placeholder="Password..."
+              required
+            />
+            <AuthButton>Login</AuthButton>
+          </AuthForm>
+          <Text>
+            <Link to="/reset">Forgot Password?</Link>
+          </Text>
+          <AuthButton onClick={signInWithGoogle} google>
+            <AiOutlineGoogle size={20} /> Sign In With Google
+          </AuthButton>
+          <AuthMessage>
+            Don't have an account? <Link to="/register">Register</Link>
+          </AuthMessage>
+        </AuthSection>
+      </Container>
+    </>
   );
 };
 
