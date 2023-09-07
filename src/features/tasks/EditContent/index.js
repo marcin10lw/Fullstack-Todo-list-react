@@ -30,7 +30,7 @@ const EditContent = ({ task }) => {
       return;
     }
     dispatch(
-      updateTask({ id: task.id, updatedProp: { ["content"]: newTaskContent } })
+      updateTask({ id: task.id, updatedProp: { content: newTaskContent } })
     );
     setShowEditWindow(false);
     setError(false);

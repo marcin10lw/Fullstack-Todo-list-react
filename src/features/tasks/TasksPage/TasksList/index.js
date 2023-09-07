@@ -46,6 +46,8 @@ const TasksList = () => {
 
   useEffect(() => {
     dispatch(setTasks(docs));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [docs]);
 
   const buttonDisabled = status === "loading";

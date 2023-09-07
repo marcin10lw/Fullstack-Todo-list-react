@@ -15,7 +15,7 @@ const NotesArea = ({ task }) => {
 
   const saveNote = async () => {
     try {
-      await updateFirebaseDoc(taskId, { ["noteContent"]: noteContent });
+      await updateFirebaseDoc(taskId, { noteContent: noteContent });
       toast.success("Note saved");
     } catch (error) {
       toast.error("Couldn't save note");
@@ -60,10 +60,9 @@ const NotesArea = ({ task }) => {
         }}
       />
 
-      <NoteSaveButton
-        disabled={!taskNoteContentDiffers}
-        onClick={saveNote}
-      >Save note</NoteSaveButton>
+      <NoteSaveButton disabled={!taskNoteContentDiffers} onClick={saveNote}>
+        Save note
+      </NoteSaveButton>
     </Wrapper>
   );
 };

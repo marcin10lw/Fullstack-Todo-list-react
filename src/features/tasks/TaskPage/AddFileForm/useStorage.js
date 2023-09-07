@@ -48,6 +48,8 @@ const useStorage = (file, folder, taskId) => {
           ));
       }
     );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [file]);
 
   return { progress, error, url };

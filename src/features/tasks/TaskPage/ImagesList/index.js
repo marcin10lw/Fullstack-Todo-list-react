@@ -29,6 +29,8 @@ const ImagesList = ({ taskId }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setImages(docs));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [docs]);
 
   const onRemoveImage = async (event, imageId, name) => {

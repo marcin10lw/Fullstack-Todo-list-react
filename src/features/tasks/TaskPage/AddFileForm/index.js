@@ -10,7 +10,7 @@ const AddFileForm = ({ taskId }) => {
   const [file, setFile] = useState(null);
   const [fileError, setFileError] = useState(false);
 
-  const { progress, error, url } = useStorage(file, "images", taskId);
+  const { progress, url } = useStorage(file, "images", taskId);
 
   useEffect(() => {
     setFile(null);

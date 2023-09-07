@@ -8,7 +8,7 @@ const Deadline = ({ task }) => {
 
   const onInputChange = ({ target }) => {
     dispatch(
-      updateTask({ id: task.id, updatedProp: { ["deadline"]: target.value } })
+      updateTask({ id: task.id, updatedProp: { deadline: target.value } })
     );
   };
 

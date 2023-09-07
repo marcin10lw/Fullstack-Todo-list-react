@@ -40,6 +40,8 @@ const TaskPage = () => {
 
   useEffect(() => {
     dispatch(setTasks(docs));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [docs]);
 
   return (

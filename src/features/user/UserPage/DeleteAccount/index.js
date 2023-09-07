@@ -11,7 +11,6 @@ import { toast } from "react-toastify";
 import { Button } from "../../../../common/Button";
 import { Backdrop } from "../../../../common/Backdrop";
 import { motion } from "framer-motion";
-import { PopupForm } from "../../../../common/PopupForm";
 import { ButtonsWrapper, DeleteAccountForm, DeleteText } from "./styled";
 
 const DeleteAccount = () => {
