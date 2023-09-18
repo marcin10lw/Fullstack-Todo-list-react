@@ -17,12 +17,12 @@ export const Button = styled.button`
   border: 2px solid ${({ theme }) => theme.colors.teal};
   background-color: ${({ theme }) => theme.colors.teal};
   color: white;
-  transition: opacity 200ms, transform 200ms;
+  transition: opacity 200ms ease-in-out;
   flex-shrink: 0;
+  cursor: pointer;
 
   &:hover {
     opacity: 0.85;
-    transform: scale(1.1);
   }
   &:active {
     opacity: 0.7;
