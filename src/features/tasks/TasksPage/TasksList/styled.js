@@ -7,16 +7,29 @@ export const Tasks = styled.ul`
   padding: 20px;
 `;
 
+export const StyledLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.darkTeal};
+  text-decoration: none;
+  position: relative;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.teal};
+  }
+`;
+
 export const Task = styled.li`
   display: flex;
   align-items: center;
   padding: 10px;
   border-bottom: 2px solid hsl(0, 0%, 85%);
   grid-gap: 12px;
-  transition: border-bottom 100ms ease-in-out;
 
   &:hover {
     border-bottom: 2px solid #5ea6a6c2;
+
+    ${StyledLink} {
+      text-decoration: underline;
+    }
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
@@ -32,21 +45,12 @@ export const Task = styled.li`
 
 export const Content = styled.span`
   flex-basis: 100%;
+
   ${({ done }) =>
     done &&
     css`
       text-decoration: line-through;
     `}
-`;
-
-export const StyledLink = styled(Link)`
-  color: ${({ theme }) => theme.colors.darkTeal};
-  text-decoration: none;
-  position: relative;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.teal};
-  }
 `;
 
 export const DeadlineDate = styled.span`

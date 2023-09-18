@@ -11,6 +11,7 @@ export const TaskButton = styled.button`
   background-color: ${({ theme }) => theme.colors.teal};
   transition: opacity 150ms;
   flex-shrink: 0;
+  cursor: pointer;
 
   &:hover {
     opacity: 0.85;
