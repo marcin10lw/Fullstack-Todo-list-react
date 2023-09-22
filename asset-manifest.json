@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Fullstack-Todo-list-react/static/css/main.b3eeeea7.css",
-    "main.js": "/Fullstack-Todo-list-react/static/js/main.555d6f0d.js",
+    "main.js": "/Fullstack-Todo-list-react/static/js/main.31888e89.js",
     "index.html": "/Fullstack-Todo-list-react/index.html",
     "main.b3eeeea7.css.map": "/Fullstack-Todo-list-react/static/css/main.b3eeeea7.css.map",
-    "main.555d6f0d.js.map": "/Fullstack-Todo-list-react/static/js/main.555d6f0d.js.map"
+    "main.31888e89.js.map": "/Fullstack-Todo-list-react/static/js/main.31888e89.js.map"
   },
   "entrypoints": [
     "static/css/main.b3eeeea7.css",
-    "static/js/main.555d6f0d.js"
+    "static/js/main.31888e89.js"
   ]
 }
